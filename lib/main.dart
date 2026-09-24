@@ -6,7 +6,7 @@ import 'package:southsea_cinema/views/movie_listing.dart';
 void main() {
   runApp(const SouthseaCinemaApp());
 }
-
+//here
 class SouthseaCinemaApp extends StatelessWidget {
   const SouthseaCinemaApp({super.key});
 
