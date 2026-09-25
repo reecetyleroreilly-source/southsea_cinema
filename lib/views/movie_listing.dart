@@ -15,13 +15,20 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: const SizedBox.shrink(
-        child: Column(
-          title: Text('Title'),
-          
-        )
-      ),
+      //body: const SizedBox.shrink()
+      
+      body: const Align( alignment: Alignment.centerLeft,
+        child: Text('Iron Man 3', fontsize)
+      )
+
+      
     );
+
+    
+
   }
+
+  
+  
 
 }
