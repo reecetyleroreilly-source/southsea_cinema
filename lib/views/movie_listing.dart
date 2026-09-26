@@ -28,10 +28,11 @@ class MovieListing extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Title(color: Colors.black, child: const Text(
                   'Iron Man 3',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
+                )),
+                
                 const Text(
                     'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
                 DropdownMenu<int>(
