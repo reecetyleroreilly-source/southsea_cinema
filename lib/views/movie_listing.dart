@@ -38,6 +38,9 @@ class MovieListing extends StatelessWidget {
 
                   const Text(
                       'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+
+                  const SizedBox(height: 20),
+
                   DropdownMenu<int>(
                     initialSelection: 5,
                     label: const Text('Number of People'),
@@ -49,6 +52,9 @@ class MovieListing extends StatelessWidget {
                       DropdownMenuEntry(value: 5, label: '5 People')
                     ],
                   ),
+
+                  const SizedBox(height: 20),
+
                   ElevatedButton(
                     onPressed: () => print('Added to basket'),
                     child: const Text('Add to Basket'),
