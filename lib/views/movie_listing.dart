@@ -17,16 +17,16 @@ class MovieListing extends StatelessWidget {
         drawer: const NavDrawer(),
         //body: const SizedBox.shrink()
 
-        body: Align(
+        body: Align(//Main Body of the Movie Page
           alignment: Alignment.topLeft,
 
-            child: Container(
+            child: Container(//Holds the words
               width: 600,
               height:400,
               child: Column(
 
                 children: [
-                  Title(
+                  Title(//is all of the Title of the movie
                       color: Colors.black,
                       child: const Text(
                         'Iron Man 3',
@@ -34,16 +34,17 @@ class MovieListing extends StatelessWidget {
                             TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                       )),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 20),//spacing between words
 
                   const Text(
                       'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
                   const SizedBox(height: 20),
 
-                  DropdownMenu<int>(
+                  DropdownMenu<int>(//Drop Down Menu
                     initialSelection: 5,
                     label: const Text('Number of People'),
+                    
                     dropdownMenuEntries: [
                       DropdownMenuEntry(value: 1, label: '1 Person'),
                       DropdownMenuEntry(value: 2, label: '2 People'),
@@ -56,7 +57,7 @@ class MovieListing extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   ElevatedButton(
-                    onPressed: () => print('Added to basket'),
+                    onPressed: () => print('Added to basket'),//outputs in terminal
                     child: const Text('Add to Basket'),
                   ),
                 ],
