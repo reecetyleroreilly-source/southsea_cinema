@@ -16,19 +16,39 @@ class MovieListing extends StatelessWidget {
       ),
       drawer: const NavDrawer(),
       //body: const SizedBox.shrink(
-        //body: Column(
-          //Align(alignment: Alignment.centerLeft,
-            //child: Text('Iron Man 3')
-          //)
-
-            
-          
         
       //)
+
+      body: Container(
+        alignment: Alignment.topLeft,
+        //color: Colors.amber[50],
+        
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+
+          children: [
+            const Text('Iron Man 3'),
+
+            const TextField(
+ 
+              decoration: InputDecoration(
+                labelText: 'description here'
+              ),
+              
+            )
+          ],
+
+        )
+
+        //child: const Text('Iron Man 3')
+        
+        
+      ),
       
-      body: const Align( alignment: Alignment.centerLeft,
-        child: Text('Iron Man 3')
-      )
+
+      
+      
+
 
       
     );
