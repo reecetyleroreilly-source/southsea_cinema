@@ -15,55 +15,76 @@ class MovieListing extends StatelessWidget {
           elevation: 0,
         ),
         drawer: const NavDrawer(),
-        //body: const SizedBox.shrink()
+        body: const SizedBox.shrink(
 
-        body: Align(//Main Body of the Movie Page
+        child: Align(
+          //Main Body of the Movie Page
           alignment: Alignment.topLeft,
-
-            child: Container(//Holds the words
-              width: 600,
-              height:400,
-              child: Column(
-
-                children: [
-                  Title(//is all of the Title of the movie
-                      color: Colors.black,
-                      child: const Text(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(
                         'Iron Man 3',
-                        style:
-                            TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                      )),
+                        style:                            TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      
+                    )
 
-                  const SizedBox(height: 20),//spacing between words
+                  ]
+                ),
+                
+                
 
-                  const Text(
+                
+
+                Row(
+                  children: [
+                  Text(
                       'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
                   const SizedBox(height: 20),
-
-                  DropdownMenu<int>(//Drop Down Menu
+                  ],
+                ),
+                  
+                Row(
+                  children: [
+                  DropdownMenu<int>(
+                    //Drop Down Menu
                     initialSelection: 5,
-                    label: const Text('Number of People'),
-                    
+                    //label: const Text('Number of People'),
+
                     dropdownMenuEntries: [
-                      DropdownMenuEntry(value: 1, label: '1 Person'),
-                      DropdownMenuEntry(value: 2, label: '2 People'),
-                      DropdownMenuEntry(value: 3, label: '3 People'),
+                      DropdownMenuEntry(value: 1, label: '1 Person'),                      DropdownMenuEntry(value: 2, label: '2 People'),
+                      DropdownMenuEntry(value: 3, label: '3 People'),                   
                       DropdownMenuEntry(value: 4, label: '4 People'),
                       DropdownMenuEntry(value: 5, label: '5 People')
                     ],
                   ),
 
-                  const SizedBox(height: 20),
 
-                  ElevatedButton(
-                    onPressed: () => print('Added to basket'),//outputs in terminal
-                    child: const Text('Add to Basket'),
-                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
+              
+              
+              
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () => print('Added to basket'), //outputs in terminal
+                    child: const Text('Add to Basket'),                
+                  ),
+                ],
+              )
+              ],
+            )
+            
+           
+              
+                
+              
             ),
-        )
-    );
+          ),
+        );
   }
 }
