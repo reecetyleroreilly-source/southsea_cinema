@@ -33,10 +33,6 @@ class MovieListing extends StatelessWidget {
                   ]
                 ),
                 
-                
-
-                
-
                 Row(
                   children: [
                   Text(
@@ -48,10 +44,8 @@ class MovieListing extends StatelessWidget {
                   
                 Row(
                   children: [
-                  DropdownMenu<int>(
-                    //Drop Down Menu
+                  DropdownMenu<int>(//DropDown Menu
                     initialSelection: 5,
-                    //label: const Text('Number of People'),
 
                     dropdownMenuEntries: [
                       DropdownMenuEntry(value: 1, label: '1 Person'),                      DropdownMenuEntry(value: 2, label: '2 People'),
@@ -61,21 +55,18 @@ class MovieListing extends StatelessWidget {
                     ],
                   ),
 
-
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                 ],
               ),
-              
-              
-              
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () => print('Added to basket'), //outputs in terminal
-                    child: const Text('Add to Basket'),                
-                  ),
-                ],
-              )
+        
+              // Row(
+              //   children: [
+              //     ElevatedButton(
+              //       onPressed: () => print('Added to basket'), //outputs in terminal
+              //       child: Text('Add to Basket'),                
+              //     ),
+              //   ],
+              // )
               ],
             )
             
@@ -88,3 +79,5 @@ class MovieListing extends StatelessWidget {
         );
   }
 }
+
+
