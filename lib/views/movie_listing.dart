@@ -3,37 +3,40 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
-  const MovieListing({super.key});
+
+
+  const MovieListing({super.key,this.onAdded,
+  });
+
+  final VoidCallback? onAdded;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
-        backgroundColor: cinemaSurface,
-        iconTheme: const IconThemeData(color: cinemaBrand),
-        elevation: 0,
-      ),
-      drawer: const NavDrawer(),
-      //body: const SizedBox.shrink(
+        appBar: AppBar(
+          title: const Text(appTitle, style: cinemaHeaderStyle),
+          backgroundColor: cinemaSurface,
+          iconTheme: const IconThemeData(color: cinemaBrand),
+          elevation: 0,
+        ),
+        drawer: const NavDrawer(),
+        //body: const SizedBox.shrink(
         body: Align(
-          //Main Body of the Movie Page
-          alignment: Alignment.topLeft,
-
-          child: Container(
-            //Holds the words
-            width: 600,
-            height: 400,
-            child: Column(
-              
+            //Main Body of the Movie Page
+            alignment: Alignment.topLeft,
+            child: Container(
+              //Holds the words
+              width: 600,
+              height: 400,
+              child: Column(
                 children: [
                   Title(
                       //is all of the Title of the movie
                       color: Colors.black,
                       child: const Text(
                         'Iron Man 3',
-                        style:
-                            TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
                       )),
 
                   const SizedBox(height: 20), //spacing between words
@@ -45,16 +48,17 @@ class MovieListing extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   const Text('Southsea Cinema Room'),
-                  const Text('Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
+                  const Text(
+                      'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
 
                   const SizedBox(height: 20),
 
-                  const Text('Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
+                  const Text(
+                      'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
 
                   const SizedBox(height: 20),
 
                   const Text('Select Quntities (Up to 5 in total)'),
-
 
                   DropdownMenu<int>(
                     //Drop Down Menu
@@ -73,14 +77,49 @@ class MovieListing extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   ElevatedButton(
-                    onPressed: () => print('Added to basket'), //outputs in terminal
+                    onPressed: onAdded ?? () => debugPrint('Added to basket'),
+                    //onPressed: () => print('Added to basket'), //outputs in terminal
+                    //onPressed: onAdded,
                     child: const Text('Add to Basket'),
                   ),
                 ],
-              
-            ),
-          )
-    )
+              ),
+            )));
+  }
+}
+
+class basket extends StatefulWidget {
+  //const basket({super.key});
+
+  @override
+  State<basket> createState() => _basket();
+}
+
+class _basket extends State<basket> {
+  String _added = "Empty";
+
+  void _added_basket(){
+    setState((){
+      _added = "Added to Basket";
+    });
+  }
+
+  @override
+  Widget build(BuildContext Context){
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(_added),
+          MovieListing(
+            onAdded: () => setState(() => _added = 'Added to Basket'),
+          ),
+          
+
+
+          //MovieListing( onAdded: _added_basket)
+        ],
+      )
     );
   }
 }
