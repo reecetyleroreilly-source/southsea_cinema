@@ -21,7 +21,7 @@ class MovieListing extends StatelessWidget {
         drawer: const NavDrawer(),
         //body: const SizedBox.shrink(
         body: Align(alignment: Alignment.topLeft,
-          child: basket(),
+          child: Movie(),
 
         ),
         // body: Align(
@@ -94,14 +94,14 @@ class MovieListing extends StatelessWidget {
   }
 }
 
-class basket extends StatefulWidget {
+class Movie extends StatefulWidget {
   //const basket({super.key});
 
   @override
-  State<basket> createState() => _basket();
+  State<Movie> createState() => _Movie();
 }
 
-class _basket extends State<basket> {
+class _Movie extends State<Movie> {
   String added = 'Empty';
 
   void _added_basket() {
@@ -175,8 +175,11 @@ class _basket extends State<basket> {
                       child: const Text('Add to Basket'),
                     ),
 
-                    
-                    Text(added),
+                    Container(
+                      child: Text(added),
+                      color: Colors.blue,
+                    )
+
                   ],
                 )
                 
