@@ -111,10 +111,10 @@ class _Movie extends State<Movie> {
                     ),
 
                     Container(
-                      child: Text(added), //displayed text
                       color: Colors.blue,
+                      child: Text(added), //displayed text
                     )
-                    
+
                   ],
                 )
               )
