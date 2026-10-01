@@ -3,12 +3,11 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
-
-
-  const MovieListing({super.key,this.onAdded,
+  const MovieListing({
+    super.key, //this.onAdded,
   });
 
-  final VoidCallback? onAdded;
+  //final VoidCallback? onAdded;
 
   @override
   Widget build(BuildContext context) {
@@ -21,70 +20,77 @@ class MovieListing extends StatelessWidget {
         ),
         drawer: const NavDrawer(),
         //body: const SizedBox.shrink(
-        body: Align(
-            //Main Body of the Movie Page
-            alignment: Alignment.topLeft,
-            child: Container(
-              //Holds the words
-              width: 600,
-              height: 400,
-              child: Column(
-                children: [
-                  Title(
-                      //is all of the Title of the movie
-                      color: Colors.black,
-                      child: const Text(
-                        'Iron Man 3',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      )),
+        body: Align(alignment: Alignment.topLeft,
+          child: basket(),
 
-                  const SizedBox(height: 20), //spacing between words
+        ),
+        // body: Align(
+        //     //Main Body of the Movie Page
+        //     alignment: Alignment.topLeft,
+        //     child: Container(
+        //       //Holds the words
+        //       width: 600,
+        //       height: 400,
+        //       child: Column(
+        //         children: [
+        //           Title(
+        //               //is all of the Title of the movie
+        //               color: Colors.black,
+        //               child: const Text(
+        //                 'Iron Man 3',
+        //                 style: TextStyle(
+        //                     fontSize: 22, fontWeight: FontWeight.bold),
+        //               )),
 
-                  const Text('Movie Description'),
-                  const Text(
-                      'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+        //           const SizedBox(height: 20), //spacing between words
 
-                  const SizedBox(height: 20),
+        //           const Text('Movie Description'),
+        //           const Text(
+        //               'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                  const Text('Southsea Cinema Room'),
-                  const Text(
-                      'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
+        //           const SizedBox(height: 20),
 
-                  const SizedBox(height: 20),
+        //           const Text('Southsea Cinema Room'),
+        //           const Text(
+        //               'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
 
-                  const Text(
-                      'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
+        //           const SizedBox(height: 20),
 
-                  const SizedBox(height: 20),
+        //           const Text(
+        //               'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
 
-                  const Text('Select Quntities (Up to 5 in total)'),
+        //           const SizedBox(height: 20),
 
-                  DropdownMenu<int>(
-                    //Drop Down Menu
-                    initialSelection: 5,
-                    //label: const Text('Number of People'),
+        //           const Text('Select Quntities (Up to 5 in total)'),
 
-                    dropdownMenuEntries: [
-                      DropdownMenuEntry(value: 1, label: '1 Person'),
-                      DropdownMenuEntry(value: 2, label: '2 People'),
-                      DropdownMenuEntry(value: 3, label: '3 People'),
-                      DropdownMenuEntry(value: 4, label: '4 People'),
-                      DropdownMenuEntry(value: 5, label: '5 People')
-                    ],
-                  ),
+        //           DropdownMenu<int>(
+        //             //Drop Down Menu
+        //             initialSelection: 5,
+        //             //label: const Text('Number of People'),
 
-                  const SizedBox(height: 20),
+        //             dropdownMenuEntries: [
+        //               DropdownMenuEntry(value: 1, label: '1 Person'),
+        //               DropdownMenuEntry(value: 2, label: '2 People'),
+        //               DropdownMenuEntry(value: 3, label: '3 People'),
+        //               DropdownMenuEntry(value: 4, label: '4 People'),
+        //               DropdownMenuEntry(value: 5, label: '5 People')
+        //             ],
+        //           ),
 
-                  ElevatedButton(
-                    onPressed: onAdded ?? () => debugPrint('Added to basket'),
-                    //onPressed: () => print('Added to basket'), //outputs in terminal
-                    //onPressed: onAdded,
-                    child: const Text('Add to Basket'),
-                  ),
-                ],
-              ),
-            )));
+        //           const SizedBox(height: 20),
+
+        //           ElevatedButton(
+        //             //onPressed: onAdded & debugPrint('Added to basket'),
+        //             //onPressed: () => print('Added to basket'), //outputs in terminal
+        //             onPressed: _added_basket(),
+        //             child: const Text('Add to Basket'),
+        //           ),
+
+        //           const Text(added)
+        //         ],
+        //       ),
+        //     ))
+        );
   }
 }
 
@@ -96,30 +102,86 @@ class basket extends StatefulWidget {
 }
 
 class _basket extends State<basket> {
-  String _added = "Empty";
+  String added = 'Empty';
 
-  void _added_basket(){
-    setState((){
-      _added = "Added to Basket";
+  void _added_basket() {
+    setState(() {
+      added = "Added to Basket";
     });
   }
 
   @override
-  Widget build(BuildContext Context){
+  Widget build(BuildContext Context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(_added),
-          MovieListing(
-            onAdded: () => setState(() => _added = 'Added to Basket'),
-          ),
-          
+        body: Align(
+            //Main Body of the Movie Page
+            alignment: Alignment.topLeft,
+            child: Container(
+                //Holds the words
+                width: 600,
+                height: 900,
+                child: Column(
+                  children: [
+                    Title(
+                        //is all of the Title of the movie
+                        color: Colors.black,
+                        child: const Text(
+                          'Iron Man 3',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        )),
 
+                    const SizedBox(height: 20), //spacing between words
 
-          //MovieListing( onAdded: _added_basket)
-        ],
-      )
-    );
+                    const Text('Movie Description'),
+                    const Text(
+                        'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+
+                    const SizedBox(height: 20),
+
+                    const Text('Southsea Cinema Room'),
+                    const Text(
+                        'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
+
+                    const SizedBox(height: 20),
+
+                    const Text(
+                        'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
+
+                    const SizedBox(height: 20),
+
+                    const Text('Select Quntities (Up to 5 in total)'),
+
+                    DropdownMenu<int>(
+                      //Drop Down Menu
+                      initialSelection: 5,
+                      //label: const Text('Number of People'),
+
+                      dropdownMenuEntries: [
+                        DropdownMenuEntry(value: 1, label: '1 Person'),
+                        DropdownMenuEntry(value: 2, label: '2 People'),
+                        DropdownMenuEntry(value: 3, label: '3 People'),
+                        DropdownMenuEntry(value: 4, label: '4 People'),
+                        DropdownMenuEntry(value: 5, label: '5 People')
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    ElevatedButton(
+                      //onPressed: onAdded & debugPrint('Added to basket'),
+                      //onPressed: () => print('Added to basket'), //outputs in terminal
+                      onPressed: _added_basket,
+                      child: const Text('Add to Basket'),
+                    ),
+
+                    
+                    Text(added),
+                  ],
+                )
+                
+                
+
+              )));
   }
 }
