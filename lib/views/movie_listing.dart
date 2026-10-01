@@ -12,24 +12,24 @@ class MovieListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle, style: cinemaHeaderStyle),
-          backgroundColor: cinemaSurface,
-          iconTheme: const IconThemeData(color: cinemaBrand),
-          elevation: 0,
-        ),
-        drawer: const NavDrawer(),
-        //body: const SizedBox.shrink(
-        body: Align(alignment: Alignment.topLeft,
-          child: Movie(),
-
-        ),
-        
-        );
+      appBar: AppBar(
+        title: const Text(appTitle, style: cinemaHeaderStyle),
+        backgroundColor: cinemaSurface,
+        iconTheme: const IconThemeData(color: cinemaBrand),
+        elevation: 0,
+      ),
+      drawer: const NavDrawer(),
+      //body: const SizedBox.shrink(
+      body: Align(
+        alignment: Alignment.topLeft,
+        child: Movie(),
+      ),
+    );
   }
 }
 
-class Movie extends StatefulWidget {//stateful widget
+class Movie extends StatefulWidget {
+  //stateful widget
   //const basket({super.key});
 
   @override
@@ -50,13 +50,12 @@ class _Movie extends State<Movie> {
     return Scaffold(
         body: Align(
             //Main Body of the Movie Page
-            alignment: Alignment.topLeft,//aligns the code to the top left
+            alignment: Alignment.topLeft, //aligns the code to the top left
             child: Container(
                 //Holds the words
                 width: 600,
                 height: 900,
                 child: Column(
-                  
                   children: [
                     Title(
                         //is all of the Title of the movie
@@ -69,11 +68,12 @@ class _Movie extends State<Movie> {
 
                     const SizedBox(height: 20), //spacing between words
 
-                    const Text('Movie Description'),//a description of the movie - Not Needed
+                    const Text(
+                        'Movie Description'), //a description of the movie - Not Needed
                     const Text(
                         'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                    const SizedBox(height: 20),//used to space out the code 
+                    const SizedBox(height: 20), //used to space out the code
 
                     const Text('Southsea Cinema Room'),
                     const Text(
@@ -105,18 +105,20 @@ class _Movie extends State<Movie> {
                     const SizedBox(height: 20),
 
                     ElevatedButton(
-                      onPressed: _added_basket, // calls on the function and changes the code
+                      onPressed:
+                          _added_basket, // calls on the function and changes the code
                       child: const Text('Add to Basket'),
                     ),
 
                     Container(
-                      child: Text(added),//displayed text
+                      child: Text(added), //displayed text
                       color: Colors.blue,
                     )
-
-                  ], 
+                    
+                  ],
                 )
-              )));
+              )
+            )
+          );
   }
 }
-
