@@ -29,7 +29,7 @@ class MovieListing extends StatelessWidget {
   }
 }
 
-class Movie extends StatefulWidget {
+class Movie extends StatefulWidget {//stateful widget
   //const basket({super.key});
 
   @override
@@ -50,12 +50,13 @@ class _Movie extends State<Movie> {
     return Scaffold(
         body: Align(
             //Main Body of the Movie Page
-            alignment: Alignment.topLeft,
+            alignment: Alignment.topLeft,//aligns the code to the top left
             child: Container(
                 //Holds the words
                 width: 600,
                 height: 900,
                 child: Column(
+                  
                   children: [
                     Title(
                         //is all of the Title of the movie
@@ -68,11 +69,11 @@ class _Movie extends State<Movie> {
 
                     const SizedBox(height: 20), //spacing between words
 
-                    const Text('Movie Description'),
+                    const Text('Movie Description'),//a description of the movie - Not Needed
                     const Text(
                         'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 20),//used to space out the code 
 
                     const Text('Southsea Cinema Room'),
                     const Text(
@@ -104,22 +105,18 @@ class _Movie extends State<Movie> {
                     const SizedBox(height: 20),
 
                     ElevatedButton(
-                      //onPressed: onAdded & debugPrint('Added to basket'),
-                      //onPressed: () => print('Added to basket'), //outputs in terminal
-                      onPressed: _added_basket,
+                      onPressed: _added_basket, // calls on the function and changes the code
                       child: const Text('Add to Basket'),
                     ),
 
                     Container(
-                      child: Text(added),
+                      child: Text(added),//displayed text
                       color: Colors.blue,
                     )
 
-                  ],
+                  ], 
                 )
-                
-                
-
               )));
   }
 }
+
