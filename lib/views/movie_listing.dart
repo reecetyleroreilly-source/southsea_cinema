@@ -61,7 +61,7 @@ class _Movie extends State<Movie> {
                         //is all of the Title of the movie
                         color: Colors.black,
                         child: const Text(
-                          'Iron Man 3',
+                          'Iron Man 3 - (12A)',
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         )),
