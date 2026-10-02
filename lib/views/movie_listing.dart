@@ -54,7 +54,7 @@ class _Movie extends State<Movie> {
             //aligns the code to the top left
             child: Container(
                 //Holds the words
-                //color: Color(0xFFFFFFFF),
+                color: Color(0xFF1B1E28),
                 //width: 600,
                 //height: 900,
                 child: Column(
@@ -73,7 +73,8 @@ class _Movie extends State<Movie> {
                             child: const Text(
                               'Iron Man 3 - (12A)',
                               style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                                  fontSize: 22, fontWeight: FontWeight.bold,
+                                  color: cinemaFontWhite),
                             )),
 
                         const SizedBox(height: 20), //spacing between words
@@ -89,17 +90,14 @@ class _Movie extends State<Movie> {
 
                     Row(
                       children: [
-                        const Text('Southsea Cinema Room'),
+                        const Text('Southsea Cinema Room', style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
                       ]
                     ),
 
                     Row(
                       children: [
                         const Text(
-                          'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
-
-                    
-
+                          'Friday 2nd October 2026 - 18:00 - Ends at 20:10' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
                       ],
                     ),
 
@@ -108,14 +106,13 @@ class _Movie extends State<Movie> {
                     Row(
                       children: [
                         const Text(
-                          'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
-
+                          'Please not the Discounts/Membership benefts will be applied once you selected your tickets' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
                         
                       ]
                     ),
                     Row(
                       children: [
-                        const Text('Select Quntities (Up to 5 in total)'),
+                        const Text('Select Quntities (Up to 5 in total)' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
                       ]
                     ),
 
@@ -123,7 +120,7 @@ class _Movie extends State<Movie> {
 
                     Row(
                       children: [
-                        const Text('Tickets', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)
+                        const Text('Tickets', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color:cinemaFontWhite),)
                       ],
                     ),
 
@@ -144,7 +141,7 @@ class _Movie extends State<Movie> {
                           
                         ),
 
-                        const Text('Adult (£7.50')
+                        const Text('Adult - £7.50' ,style: TextStyle(fontSize: 18, color:cinemaFontWhite))
                       ]
                     ),
 
