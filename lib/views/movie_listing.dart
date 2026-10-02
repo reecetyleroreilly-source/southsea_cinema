@@ -55,43 +55,62 @@ class _Movie extends State<Movie> {
             child: Container(
                 //Holds the words
                 //color: Color(0xFFFFFFFF),
-                width: 600,
-                height: 900,
+                //width: 600,
+                //height: 900,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 15,
+                  
                   children: [
-                    Title(
-                        //is all of the Title of the movie
-                        color: Colors.black,
-                        child: const Text(
-                          'Iron Man 3 - (12A)',
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
-                        )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Title(
+                            //is all of the Title of the movie
+                            color: Colors.black,
+                            child: const Text(
+                              'Iron Man 3 - (12A)',
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            )),
 
-                    const SizedBox(height: 20), //spacing between words
+                        const SizedBox(height: 20), //spacing between words
+                      ]
+                      ),
+                  
+                    //const Text(
+                      //  'Movie Description'), //a description of the movie - Not Needed
+                    //const Text(
+                      //  'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                    const Text(
-                        'Movie Description'), //a description of the movie - Not Needed
-                    const Text(
-                        'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+                    //const SizedBox(height: 20), //used to space out the code
 
-                    const SizedBox(height: 20), //used to space out the code
+                    Row(
+                      children: [
+                        const Text('Southsea Cinema Room'),
+                        const Text(
+                          'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
 
-                    const Text('Southsea Cinema Room'),
-                    const Text(
-                        'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
+                        const SizedBox(height: 20),
+                      ]
+                    ),
 
-                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        const Text(
+                          'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
 
-                    const Text(
-                        'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
+                        const SizedBox(height: 20),
+                      ]
+                    ),
+                    Row(
+                      children: [
+                        const Text('Select Quntities (Up to 5 in total) - Adult (£7.50)'),
+                      ]),
 
-                    const SizedBox(height: 20),
-
-                    const Text('Select Quntities (Up to 5 in total) - Adult (£7.50)'),
-
+                    
                     DropdownMenu<int>(
                       //Drop Down Menu
                       initialSelection: 5,
@@ -119,7 +138,7 @@ class _Movie extends State<Movie> {
                       child: Text(added), //displayed text
                     )
 
-                  ],
+                  ]
                 )
               )
             )
