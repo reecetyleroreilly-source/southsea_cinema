@@ -50,12 +50,15 @@ class _Movie extends State<Movie> {
     return Scaffold(
         body: Align(
             //Main Body of the Movie Page
-            alignment: Alignment.topLeft, //aligns the code to the top left
+            alignment: Alignment.topLeft,
+            //aligns the code to the top left
             child: Container(
                 //Holds the words
                 width: 600,
                 height: 900,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Title(
                         //is all of the Title of the movie
@@ -86,7 +89,7 @@ class _Movie extends State<Movie> {
 
                     const SizedBox(height: 20),
 
-                    const Text('Select Quntities (Up to 5 in total)'),
+                    const Text('Select Quntities (Up to 5 in total) - Adult (£7.50)'),
 
                     DropdownMenu<int>(
                       //Drop Down Menu
