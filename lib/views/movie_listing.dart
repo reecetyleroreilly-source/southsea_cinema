@@ -54,6 +54,7 @@ class _Movie extends State<Movie> {
             //aligns the code to the top left
             child: Container(
                 //Holds the words
+                //color: Color(0xFFFFFFFF),
                 width: 600,
                 height: 900,
                 child: Column(
@@ -95,7 +96,7 @@ class _Movie extends State<Movie> {
                       //Drop Down Menu
                       initialSelection: 5,
                       //label: const Text('Number of People'),
-
+                      
                       dropdownMenuEntries: [
                         DropdownMenuEntry(value: 1, label: '1 Person'),
                         DropdownMenuEntry(value: 2, label: '2 People'),
