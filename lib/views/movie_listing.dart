@@ -91,14 +91,14 @@ class _Movie extends State<Movie> {
 
                     Row(
                       children: [
-                        const Text('Southsea Cinema Room', style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
+                        const Text('Southsea Cinema Room', style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
                       ]
                     ),
 
                     Row(
                       children: [
                         const Text(
-                          'Friday 2nd October 2026 - 18:00 - Ends at 20:10' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
+                          'Friday 2nd October 2026 - 18:00 - Ends at 20:10' , style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
                       ],
                     ),
 
@@ -107,13 +107,13 @@ class _Movie extends State<Movie> {
                     Row(
                       children:[
                       const Text(
-                        'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
+                        'Please not the Discounts/Membership benefts will be applied once you selected your tickets' , style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
 
                     ],),
                     
                     Row(
                       children: [
-                        const Text('Select Quntities (Up to 5 in total)' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
+                        const Text('Select Quntities (Up to 5 in total)' , style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
                       ]
                     ),
 
@@ -142,7 +142,7 @@ class _Movie extends State<Movie> {
                           
                         ),
 
-                        const Text('Adult - £7.50' ,style: TextStyle(fontSize: 18, color:cinemaFontWhite))
+                        const Text('Adult - £7.50' ,style: TextStyle(fontSize: 16, color:cinemaFontWhite))
                       ]
                     ),
 
