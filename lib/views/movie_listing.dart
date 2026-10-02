@@ -85,57 +85,84 @@ class _Movie extends State<Movie> {
                     //const Text(
                       //  'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                    //const SizedBox(height: 20), //used to space out the code
+                    const SizedBox(height: 20), //used to space out the code
 
                     Row(
                       children: [
                         const Text('Southsea Cinema Room'),
+                      ]
+                    ),
+
+                    Row(
+                      children: [
                         const Text(
                           'Friday 2nd October 2026 - 18:00 - Ends at 20:10 '),
 
-                        const SizedBox(height: 20),
-                      ]
+                    
+
+                      ],
                     ),
+
+                    const SizedBox(height: 20),
 
                     Row(
                       children: [
                         const Text(
                           'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
 
-                        const SizedBox(height: 20),
+                        
                       ]
                     ),
                     Row(
                       children: [
-                        const Text('Select Quntities (Up to 5 in total) - Adult (£7.50)'),
-                      ]),
+                        const Text('Select Quntities (Up to 5 in total)'),
+                      ]
+                    ),
 
-                    
-                    DropdownMenu<int>(
-                      //Drop Down Menu
-                      initialSelection: 5,
-                      //label: const Text('Number of People'),
-                      
-                      dropdownMenuEntries: [
-                        DropdownMenuEntry(value: 1, label: '1 Person'),
-                        DropdownMenuEntry(value: 2, label: '2 People'),
-                        DropdownMenuEntry(value: 3, label: '3 People'),
-                        DropdownMenuEntry(value: 4, label: '4 People'),
-                        DropdownMenuEntry(value: 5, label: '5 People')
+                    const SizedBox(height: 15),
+
+                    Row(
+                      children: [
+                        const Text('Tickets', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)
                       ],
                     ),
 
-                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        DropdownMenu<int>(
+                          //Drop Down Menu
+                          initialSelection: 5,
+                          //label: const Text('Number of People'),
 
-                    ElevatedButton(
-                      onPressed:
-                          _added_basket, // calls on the function and changes the code
-                      child: const Text('Add to Basket'),
+                          dropdownMenuEntries: [
+                            DropdownMenuEntry(value: 1, label: '1 Person'),
+                            DropdownMenuEntry(value: 2, label: '2 People'),
+                            DropdownMenuEntry(value: 3, label: '3 People'),
+                            DropdownMenuEntry(value: 4, label: '4 People'),
+                            DropdownMenuEntry(value: 5, label: '5 People')
+                          ],
+                          
+                        ),
+
+                        const Text('Adult (£7.50')
+                      ]
                     ),
 
-                    Container(
-                      color: Colors.blue,
-                      child: Text(added), //displayed text
+                    //const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed:
+                              _added_basket, // calls on the function and changes the code
+                          child: const Text('Add to Basket'),
+                        ),
+
+                        Container(
+                          color: Colors.blue,
+                          child: Text(added), //displayed text
+                        )
+
+                      ]
                     )
 
                   ]
