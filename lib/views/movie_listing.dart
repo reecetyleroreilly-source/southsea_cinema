@@ -52,6 +52,7 @@ class _Movie extends State<Movie> {
             //Main Body of the Movie Page
             alignment: Alignment.topLeft,
             //aligns the code to the top left
+
             child: Container(
                 //Holds the words
                 color: Color(0xFF1B1E28),
@@ -104,12 +105,12 @@ class _Movie extends State<Movie> {
                     const SizedBox(height: 20),
 
                     Row(
-                      children: [
-                        const Text(
-                          'Please not the Discounts/Membership benefts will be applied once you selected your tickets' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
-                        
-                      ]
-                    ),
+                      children:[
+                      const Text(
+                        'Please not the Discounts/Membership benefts will be applied once you selected your tickets'),
+
+                    ],),
+                    
                     Row(
                       children: [
                         const Text('Select Quntities (Up to 5 in total)' , style: TextStyle(fontSize: 18, color:cinemaFontWhite)),
