@@ -4,9 +4,9 @@ class MovieInfo {
   final String description;
   final String imagePath;
 
-  const MovieInfo({ 
-    required this.id, 
-    required this.name,
-    required this.description, 
-    required this.imagePath})
+  const MovieInfo(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.imagePath});
 }
