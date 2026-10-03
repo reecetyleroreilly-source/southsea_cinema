@@ -1,3 +1,16 @@
 import 'package:southsea_cinema/Models/Movie_info.dart';
 
-class 
+class SouthseaCinemaRespository {
+  List<MovieInfo> getMovieInfo(
+    return const [
+      MovieInfo(
+        id: 'IronMan3',
+        name: 'Iron Man 3',
+        description: '',
+        imagePath: 'assets/images/Iron Man Poster.jpg'
+      ),
+    ];
+
+  )
+
+}
