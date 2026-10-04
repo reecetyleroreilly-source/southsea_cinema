@@ -15,12 +15,10 @@ class MovieCard extends StatelessWidget {
 
       child: Padding(
           padding: EdgeInsets.all(8.0),
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              
+            children: [             
               Row(
                 children: [
                    Text(
@@ -50,22 +48,27 @@ class MovieCard extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    
                     children: [
-                      
                       Text(
                         movie.description,
                         style: const TextStyle(color: cinemaFontWhite),
                       )
                     ],
-
                   )
                 )
               ]),
 
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text('Book Tickets', style: const TextStyle(color: cinemaFontWhite))
+                ],
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                spacing: 20,
+                children: [
+                  Text(movie.date),
                   ElevatedButton(onPressed: () {}, child: const Text('Book'))
                 ],
               )
