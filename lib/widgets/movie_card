@@ -1,0 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:southsea_cinema/Models/Movie_info.dart';
+
+class MovieCard extends StatelessWidget{
+  final MovieInfo movie_info;
+
+  const MovieCard({super.key, required this.movie_info});
+
+  @overide 
+}
