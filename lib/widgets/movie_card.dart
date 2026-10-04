@@ -12,58 +12,55 @@ class MovieCard extends StatelessWidget {
     return Card(
       color: Color(0xFF1B1E28),
       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-
       child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [             
+            children: [
               Row(
                 children: [
-                   Text(
-                      movie.name,
-                      style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.bold, color: cinemaFontWhite),
+                  Text(
+                    movie.name,
+                    style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: cinemaFontWhite),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text('(12a)')
+                ],
+              ),
+              Row(
+                  spacing: 10.0,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      movie.imagePath,
+                      width: 200,
+                      height: 240,
+                      fit: BoxFit.cover,
                     ),
-                    const SizedBox(height: 8,),
-
-                    Text('(12a)')
-                ],
-              ),
-
-
-              Row(
-                spacing: 10.0,
-                crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Image.asset(
-                  movie.imagePath,
-                  width: 200,
-                  height: 240,
-                  fit: BoxFit.cover,
-                ),
-
-                
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        movie.description,
-                        style: const TextStyle(color: cinemaFontWhite),
-                      )
-                    ],
-                  )
-                )
-              ]),
-
+                    Expanded(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          movie.description,
+                          style: const TextStyle(color: cinemaFontWhite),
+                        )
+                      ],
+                    ))
+                  ]),
               Row(
                 children: [
-                  Text('Book Tickets', style: const TextStyle(color: cinemaFontWhite))
+                  Text('Book Tickets',
+                      style: const TextStyle(color: cinemaFontWhite))
                 ],
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 spacing: 20,
