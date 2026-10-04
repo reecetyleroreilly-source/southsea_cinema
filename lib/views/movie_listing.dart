@@ -82,10 +82,10 @@ class _Movie extends State<Movie> {
                       ]
                       ),
                   
-                    //const Text(
-                      //  'Movie Description'), //a description of the movie - Not Needed
-                    //const Text(
-                      //  'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+                    const Text(
+                        'Movie Description'), //a description of the movie - Not Needed
+                    const Text(
+                        'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
                     const SizedBox(height: 20), //used to space out the code
 

@@ -12,48 +12,57 @@ class MovieCard extends StatelessWidget {
     return Card(
       color: Color(0xFF1B1E28),
       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+
       child: Padding(
           padding: EdgeInsets.all(8.0),
+
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               
               Row(
+                children: [
+                   Text(
+                      movie.name,
+                      style: const TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold, color: cinemaFontWhite),
+                    ),
+                    const SizedBox(height: 8,),
+
+                    Text('(12a)')
+                ],
+              ),
+
+
+              Row(
+                spacing: 10.0,
                 crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Image.asset(
                   movie.imagePath,
-                  width: 80,
-                  height: 80,
+                  width: 200,
+                  height: 240,
                   fit: BoxFit.cover,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+
+                
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     
-                    Text(
-                      movie.name,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold, color: cinemaFontWhite),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
+                    children: [
+                      
+                      Text(
+                        movie.description,
+                        style: const TextStyle(color: cinemaFontWhite),
+                      )
+                    ],
 
-                    Container(
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Column(
-                          children: [
-                            Text(movie.description,
-                              style: const TextStyle(color: cinemaFontWhite)),
-                          ],
-                        ),
-                      ),
-                    )
-
-                  ],
+                  )
                 )
               ]),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
