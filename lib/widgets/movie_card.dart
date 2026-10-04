@@ -9,14 +9,19 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Card(
+      
+      
       color: Color(0xFF1B1E28),
       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Padding(
           padding: EdgeInsets.all(8.0),
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
               Row(
                 children: [
@@ -44,16 +49,19 @@ class MovieCard extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     Expanded(
+                      child: Container(
+                        
                         child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          movie.description,
-                          style: const TextStyle(color: cinemaFontWhite),
-                        )
-                      ],
-                    ))
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            movie.description,
+                            style: const TextStyle(color: cinemaFontWhite),
+                          )
+                        ],
+                                            ),
+                      ))
                   ]),
               Row(
                 children: [
