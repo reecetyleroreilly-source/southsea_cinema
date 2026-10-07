@@ -18,6 +18,7 @@ class MovieListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
         body: Align(
       alignment: Alignment.topLeft,
       child: Movie1(
@@ -55,7 +56,7 @@ class _Movie extends State<Movie1> {
   Widget build(BuildContext Context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Order ${widget.movie.name}'),
+          title: Text('Order ${widget.movie.name}', style: TextStyle(color: cinemaFontWhite),),
         ),
         body: Align(
             //Main Body of the Movie Page
@@ -79,8 +80,8 @@ class _Movie extends State<Movie1> {
                             Title(
                                 //is all of the Title of the movie
                                 color: Colors.black,
-                                child: const Text(
-                                  'Iron Man 3 - (12A)',
+                                child:  Text(
+                                  widget.movie.name,
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
@@ -90,14 +91,18 @@ class _Movie extends State<Movie1> {
                             const SizedBox(height: 20), //spacing between words
                           ]),
 
-                      const Text(
-                          'Movie Description'), //a description of the movie - Not Needed
-                      const Text(
-                          'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
+                      Text('Description: '),
+
+                      Text(
+                          widget.movie.description), //a description of the movie - Not Needed
+
+                          
+                      
                       const SizedBox(height: 20), //used to space out the code
 
                       Row(children: [
+                        
                         const Text('Southsea Cinema Room',
                             style: TextStyle(
                                 fontSize: 16, color: cinemaFontWhite)),
