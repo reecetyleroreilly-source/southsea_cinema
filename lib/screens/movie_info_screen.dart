@@ -3,28 +3,177 @@ import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
-class MovieInfoScreen extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
+
+class MovieListing extends StatelessWidget {
+  final Movie movie;
+  const MovieListing(
+      {super.key, //this.onAdded,
+      required this.movie});
+
+  //final VoidCallback? onAdded;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Align(
+      alignment: Alignment.topLeft,
+      child: Movie1(
+        movie: movie,
+      ),
+    ));
+  }
+}
+
+class Movie1 extends StatefulWidget {
+  //stateful widget
+  //const basket({super.key});
+
   final Movie movie;
 
-  const MovieInfoScreen({
+  const Movie1({
     super.key,
     required this.movie,
   });
 
   @override
-  State<MovieInfoScreen> createState() {
-    return _MovieInfoState();
-  }
+  State<Movie1> createState() => _Movie();
 }
 
-class _MovieInfoState extends State<MovieInfoScreen> {
+class _Movie extends State<Movie1> {
+  String added = 'Empty';
+
+  void _added_basket() {
+    setState(() {
+      added = "Added to Basket";
+    });
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext Context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Book ${widget.movie.name}'),
-      ),
-      body: Center(child: Column()),
-    );
+        appBar: AppBar(
+          title: Text('Order ${widget.movie.name}'),
+        ),
+        body: Align(
+            //Main Body of the Movie Page
+            alignment: Alignment.topLeft,
+            //aligns the code to the top left
+
+            child: Container(
+                //Holds the words
+                color: Color(0xFF1B1E28),
+                //width: 600,
+                //height: 900,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 15,
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Title(
+                                //is all of the Title of the movie
+                                color: Colors.black,
+                                child: const Text(
+                                  'Iron Man 3 - (12A)',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      color: cinemaFontWhite),
+                                )),
+
+                            const SizedBox(height: 20), //spacing between words
+                          ]),
+
+                      const Text(
+                          'Movie Description'), //a description of the movie - Not Needed
+                      const Text(
+                          'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+
+                      const SizedBox(height: 20), //used to space out the code
+
+                      Row(children: [
+                        const Text('Southsea Cinema Room',
+                            style: TextStyle(
+                                fontSize: 16, color: cinemaFontWhite)),
+                      ]),
+
+                      Row(
+                        children: [
+                          const Text(
+                              'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite)),
+                        ],
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      Row(
+                        children: [
+                          const Text(
+                              'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite)),
+                        ],
+                      ),
+
+                      Row(children: [
+                        const Text('Select Quntities (Up to 5 in total)',
+                            style: TextStyle(
+                                fontSize: 16, color: cinemaFontWhite)),
+                      ]),
+
+                      const SizedBox(height: 15),
+
+                      Row(
+                        children: [
+                          const Text(
+                            'Tickets',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: cinemaFontWhite),
+                          )
+                        ],
+                      ),
+
+                      Row(children: [
+                        DropdownMenu<int>(
+                          //Drop Down Menu
+                          initialSelection: 5,
+                          //label: const Text('Number of People'),
+
+                          dropdownMenuEntries: [
+                            DropdownMenuEntry(value: 1, label: '1 Person'),
+                            DropdownMenuEntry(value: 2, label: '2 People'),
+                            DropdownMenuEntry(value: 3, label: '3 People'),
+                            DropdownMenuEntry(value: 4, label: '4 People'),
+                            DropdownMenuEntry(value: 5, label: '5 People')
+                          ],
+                        ),
+                        const Text('Adult - £7.50',
+                            style:
+                                TextStyle(fontSize: 16, color: cinemaFontWhite))
+                      ]),
+
+                      //const SizedBox(height: 20),
+                      Row(children: [
+                        ElevatedButton(
+                          onPressed:
+                              _added_basket, // calls on the function and changes the code
+                          child: const Text('Add to Basket'),
+                        ),
+                        Container(
+                          color: Colors.blue,
+                          child: Text(added), //displayed text
+                        )
+                      ])
+                    ]))));
   }
 }

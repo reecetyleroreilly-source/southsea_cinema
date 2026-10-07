@@ -73,7 +73,7 @@ class MovieCard extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return MovieInfoScreen(movie: movie);
+                          return MovieListing(movie: movie);
                         }));
                       },
                       child: const Text('Book'))
