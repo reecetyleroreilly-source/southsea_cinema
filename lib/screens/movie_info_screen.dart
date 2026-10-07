@@ -18,7 +18,6 @@ class MovieListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
         body: Align(
       alignment: Alignment.topLeft,
       child: Movie1(
@@ -56,24 +55,21 @@ class _Movie extends State<Movie1> {
   Widget build(BuildContext Context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Order ${widget.movie.name}', style: TextStyle(color: cinemaFontWhite),),
+          title: Text(
+            'Order ${widget.movie.name}',
+            style: TextStyle(color: cinemaFontWhite),
+          ),
         ),
-        body: Align(
-            //Main Body of the Movie Page
-            alignment: Alignment.topLeft,
-            //aligns the code to the top left
+        body: LayoutBuilder(builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 15,
 
-            child: Container(
-                //Holds the words
-                color: Color(0xFF1B1E28),
-                //width: 600,
-                //height: 900,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 15,
-                    children: [
-                      Row(
+                children: [
+                  Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -91,82 +87,120 @@ class _Movie extends State<Movie1> {
                             const SizedBox(height: 20), //spacing between words
                           ]),
 
+                          Text('Description: '),
 
-                      Text('Description: '),
+                          Text(widget.movie.description), //a description of the movie - Not Needed
 
-                      Text(
-                          widget.movie.description), //a description of the movie - Not Needed
+                          const SizedBox(height: 20), //used to space out the code
 
-                          
-                      
-                      const SizedBox(height: 20), //used to space out the code
-
-                      Row(children: [
+                          Row(children: [
                         
-                        const Text('Southsea Cinema Room',
+                          const Text('Southsea Cinema Room',
                             style: TextStyle(
                                 fontSize: 16, color: cinemaFontWhite)),
-                      ]),
+                          ]),
 
-                      Row(
-                        children: [
-                          const Text(
-                              'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
-                              style: TextStyle(
-                                  fontSize: 16, color: cinemaFontWhite)),
-                        ],
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      Row(
-                        children: [
-                          const Text(
-                              'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
-                              style: TextStyle(
-                                  fontSize: 16, color: cinemaFontWhite)),
-                        ],
-                      ),
-
-                      Row(children: [
-                        const Text('Select Quntities (Up to 5 in total)',
-                            style: TextStyle(
+                          Row(
+                          children: [
+                            const Text(
+                                'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
+                                style: TextStyle(
                                 fontSize: 16, color: cinemaFontWhite)),
-                      ]),
-
-                      const SizedBox(height: 15),
-
-                      Row(
-                        children: [
-                          const Text(
-                            'Tickets',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: cinemaFontWhite),
-                          )
-                        ],
-                      ),
-
-                      Row(children: [
-                        DropdownMenu<int>(
-                          //Drop Down Menu
-                          initialSelection: 5,
-                          //label: const Text('Number of People'),
-
-                          dropdownMenuEntries: [
-                            DropdownMenuEntry(value: 1, label: '1 Person'),
-                            DropdownMenuEntry(value: 2, label: '2 People'),
-                            DropdownMenuEntry(value: 3, label: '3 People'),
-                            DropdownMenuEntry(value: 4, label: '4 People'),
-                            DropdownMenuEntry(value: 5, label: '5 People')
                           ],
-                        ),
-                        const Text('Adult - £7.50',
-                            style:
-                                TextStyle(fontSize: 16, color: cinemaFontWhite))
-                      ]),
+                          ),
 
+                          const SizedBox(height: 20),
+
+                          Row(
+                            children: [
+                              const Text(
+                                  'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
+                                  style: TextStyle(
+                                      fontSize: 16, color: cinemaFontWhite)),
+                            ],
+                          ),
+
+                          Row(children: [
+                          const Text('Select Quntities (Up to 5 in total)',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite)),
+                          ]),
+
+                          const SizedBox(height: 15),
+
+
+                          Row(
+                            children: [
+                              const Text(
+                                'Tickets',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: cinemaFontWhite),
+                              )
+                            ],
+                          ),
+
+                          Row(children: [
+                              DropdownMenu<int>(
+                                //Drop Down Menu
+                                initialSelection: 5,
+                                //label: const Text('Number of People'),
+
+                                dropdownMenuEntries: [
+                                  DropdownMenuEntry(value: 1, label: '1 Person'),
+                                  DropdownMenuEntry(value: 2, label: '2 People'),
+                                  DropdownMenuEntry(value: 3, label: '3 People'),
+                                  DropdownMenuEntry(value: 4, label: '4 People'),
+                                  DropdownMenuEntry(value: 5, label: '5 People')
+                                ],
+                              ),
+                              const Text('Adult - £7.50',
+                                  style:
+                                      TextStyle(fontSize: 16, color: cinemaFontWhite))
+                            ]),
+
+
+
+
+
+                ],
+              ),
+            );
+
+          }
+        }));
+  }
+}
+
+child: Align(
+            //Main Body of the Movie Page
+            alignment: Alignment.topLeft,
+            //aligns the code to the top left
+
+            child: Container(
+                //Holds the words
+                color: Color(0xFF1B1E28),
+                //width: 600,
+                //height: 900,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 15,
+                    children: [
+                      
+
+
+                      
+
+                      
+
+
+                      
+
+                      
+
+                      
                       //const SizedBox(height: 20),
                       Row(children: [
                         ElevatedButton(
@@ -181,4 +215,3 @@ class _Movie extends State<Movie1> {
                       ])
                     ]))));
   }
-}
