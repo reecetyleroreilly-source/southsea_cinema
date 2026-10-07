@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/screens/movie_info_screen.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -9,19 +10,14 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
-      
-      
       color: Color(0xFF1B1E28),
       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Padding(
           padding: EdgeInsets.all(8.0),
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
               Row(
                 children: [
@@ -49,9 +45,8 @@ class MovieCard extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     Expanded(
-                      child: Container(
-                        
-                        child: Column(
+                        child: Container(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -60,8 +55,8 @@ class MovieCard extends StatelessWidget {
                             style: const TextStyle(color: cinemaFontWhite),
                           )
                         ],
-                                            ),
-                      ))
+                      ),
+                    ))
                   ]),
               Row(
                 children: [
@@ -74,7 +69,14 @@ class MovieCard extends StatelessWidget {
                 spacing: 20,
                 children: [
                   Text(movie.date),
-                  ElevatedButton(onPressed: () {}, child: const Text('Book'))
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return MovieInfoScreen(movie: movie);
+                        }));
+                      },
+                      child: const Text('Book'))
                 ],
               )
             ],
