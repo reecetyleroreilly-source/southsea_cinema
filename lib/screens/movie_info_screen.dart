@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:southsea_cinema/Models/movie.dart';
-import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/widgets/nav_drawer.dart';
-
-import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
@@ -52,257 +49,230 @@ class _Movie extends State<Movie1> {
   }
 
   @override
-  Widget build(BuildContext Context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Order ${widget.movie.name}',
-            style: TextStyle(color: cinemaFontWhite),
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth > 600) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Book ${widget.movie.name}',
+              style: TextStyle(color: cinemaFontWhite),
+            ),
           ),
-        ),
-        body: LayoutBuilder(builder: (context, constraints) {
-          if (constraints.maxWidth > 600) {
-            return Container(
-              color: Color(0xFF1B1E28),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 15,
-
-                children: [
-                  Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+          body: Align(
+            alignment: Alignment.topLeft,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Column(
                           children: [
-                            Title(
-                                //is all of the Title of the movie
-                                color: Colors.black,
-                                child:  Text(
-                                  widget.movie.name,
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: cinemaFontWhite),
-                                )),
+                            Image.asset(
+                              widget.movie.imagePath,
+                              width: 100,
+                              height: 200,
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            
+                              Row(
+                                children: [Text(widget.movie.description)],
+                              ),
+                            
+                          ],
+                        )
+                      ],
+                    ),
+              
+                    Row(children: [
+                      const Text('Southsea Cinema Room',
+                          style:
+                              TextStyle(fontSize: 16, color: cinemaFontWhite)),
+                    ]),
 
-                            const SizedBox(height: 20), //spacing between words
-                          ]),
+                    Row(
+                      children: [Text(widget.movie.date)],
+                    ),
 
-                          Text('Description: '),
-
-                          Text(widget.movie.description), //a description of the movie - Not Needed
-
-                          const SizedBox(height: 20), //used to space out the code
-
-                          Row(children: [
-                        
-                          const Text('Southsea Cinema Room',
+                    Row(
+                      children: [
+                        const Text(
+                            'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
                             style: TextStyle(
                                 fontSize: 16, color: cinemaFontWhite)),
-                          ]),
+                      ],
+                    ),
 
-                          Row(
+                    Row(children: [
+                      const Text('Select Quntities (Up to 5 in total)',
+                          style:
+                              TextStyle(fontSize: 16, color: cinemaFontWhite)),
+                    ]),
+
+                    Row(
+                      children: [
+                        const Text(
+                          'Tickets',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: cinemaFontWhite),
+                        )
+                      ],
+                    ),
+
+                    Row(children: [
+                      DropdownMenu<int>(
+                        //Drop Down Menu
+                        initialSelection: 5,
+                        //label: const Text('Number of People'),
+
+                        dropdownMenuEntries: [
+                          DropdownMenuEntry(value: 1, label: '1 Person'),
+                          DropdownMenuEntry(value: 2, label: '2 People'),
+                          DropdownMenuEntry(value: 3, label: '3 People'),
+                          DropdownMenuEntry(value: 4, label: '4 People'),
+                          DropdownMenuEntry(value: 5, label: '5 People')
+                        ],
+                      ),
+                      const Text('Adult - £7.50',
+                          style:
+                              TextStyle(fontSize: 16, color: cinemaFontWhite))
+                    ]),
+
+                    //const SizedBox(height: 20),
+                    Row(children: [
+                      ElevatedButton(
+                        onPressed:
+                            _added_basket, // calls on the function and changes the code
+                        child: const Text('Add to Basket'),
+                      ),
+                      Container(
+                        color: Colors.blue,
+                        child: Text(added), //displayed text
+                      )
+                    ])
+                  ],
+                )
+              ])
+            ),
+          
+        );
+      } else {
+        return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                'Book ${widget.movie.name}',
+                style: TextStyle(color: cinemaFontWhite),
+              ),
+            ),
+            body: Align(
+                alignment: Alignment.topLeft,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Column(children: [
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                Image.asset(
+                                  widget.movie.imagePath,
+                                  width: 100,
+                                  height: 200,
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [Text(widget.movie.description)],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ]
+                      ),
+
+                        Row(children: [
+                          const Text('Southsea Cinema Room',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite)),
+                        ]),
+
+                        Row(
+                          children: [Text(widget.movie.date)],
+                        ),
+
+                        Row(
                           children: [
                             const Text(
-                                'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
+                                'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
                                 style: TextStyle(
-                                fontSize: 16, color: cinemaFontWhite)),
+                                    fontSize: 16, color: cinemaFontWhite)),
                           ],
-                          ),
+                        ),
 
-                          const SizedBox(height: 20),
-
-                          Row(
-                            children: [
-                              const Text(
-                                  'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
-                                  style: TextStyle(
-                                      fontSize: 16, color: cinemaFontWhite)),
-                            ],
-                          ),
-
-                          Row(children: [
+                        Row(children: [
                           const Text('Select Quntities (Up to 5 in total)',
                               style: TextStyle(
                                   fontSize: 16, color: cinemaFontWhite)),
-                          ]),
+                        ]),
 
-                          const SizedBox(height: 15),
-
-
-                          Row(
-                            children: [
-                              const Text(
-                                'Tickets',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: cinemaFontWhite),
-                              )
-                            ],
-                          ),
-
-                          Row(children: [
-                              DropdownMenu<int>(
-                                //Drop Down Menu
-                                initialSelection: 5,
-                                //label: const Text('Number of People'),
-
-                                dropdownMenuEntries: [
-                                  DropdownMenuEntry(value: 1, label: '1 Person'),
-                                  DropdownMenuEntry(value: 2, label: '2 People'),
-                                  DropdownMenuEntry(value: 3, label: '3 People'),
-                                  DropdownMenuEntry(value: 4, label: '4 People'),
-                                  DropdownMenuEntry(value: 5, label: '5 People')
-                                ],
-                              ),
-                              const Text('Adult - £7.50',
-                                  style:
-                                      TextStyle(fontSize: 16, color: cinemaFontWhite))
-                            ]),
-
-                            Row(children: [
-                              ElevatedButton(
-                                onPressed:
-                                    _added_basket, // calls on the function and changes the code
-                                child: const Text('Add to Basket'),
-                              ),
-                              Container(
-                                color: Colors.blue,
-                                child: Text(added), //displayed text
-                              )
-                            ])
-
-
-
-
-
-                ],
-              ),
-            );
-
-          }
-          else{
-            return Container(
-              color: Color(0xFF1B1E28),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 15,
-
-                children: [
-                  Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Title(
-                                //is all of the Title of the movie
-                                color: Colors.black,
-                                child:  Text(
-                                  widget.movie.name,
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: cinemaFontWhite),
-                                )),
-
-                            const SizedBox(height: 20), //spacing between words
-                          ]),
-
-                          Text('Description: '),
-
-                          Text(widget.movie.description), //a description of the movie - Not Needed
-
-                          const SizedBox(height: 20), //used to space out the code
-
-                          Row(children: [
-                        
-                          const Text('Southsea Cinema Room',
-                            style: TextStyle(
-                                fontSize: 16, color: cinemaFontWhite)),
-                          ]),
-
-                          Row(
+                        Row(
                           children: [
                             const Text(
-                                'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
-                                style: TextStyle(
-                                fontSize: 16, color: cinemaFontWhite)),
-                          ],
-                          ),
-
-                          const SizedBox(height: 20),
-
-                          Row(
-                            children: [
-                              const Text(
-                                  'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
-                                  style: TextStyle(
-                                      fontSize: 16, color: cinemaFontWhite)),
-                            ],
-                          ),
-
-                          Row(children: [
-                          const Text('Select Quntities (Up to 5 in total)',
+                              'Tickets',
                               style: TextStyle(
-                                  fontSize: 16, color: cinemaFontWhite)),
-                          ]),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: cinemaFontWhite),
+                            )
+                          ],
+                        ),
 
-                          const SizedBox(height: 15),
+                        Row(children: [
+                          DropdownMenu<int>(
+                            //Drop Down Menu
+                            initialSelection: 5,
+                            //label: const Text('Number of People'),
 
-
-                          Row(
-                            children: [
-                              const Text(
-                                'Tickets',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: cinemaFontWhite),
-                              )
+                            dropdownMenuEntries: [
+                              DropdownMenuEntry(value: 1, label: '1 Person'),
+                              DropdownMenuEntry(value: 2, label: '2 People'),
+                              DropdownMenuEntry(value: 3, label: '3 People'),
+                              DropdownMenuEntry(value: 4, label: '4 People'),
+                              DropdownMenuEntry(value: 5, label: '5 People')
                             ],
                           ),
+                          const Text('Adult - £7.50',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite))
+                        ]),
 
-                          Row(children: [
-                              DropdownMenu<int>(
-                                //Drop Down Menu
-                                initialSelection: 5,
-                                //label: const Text('Number of People'),
-
-                                dropdownMenuEntries: [
-                                  DropdownMenuEntry(value: 1, label: '1 Person'),
-                                  DropdownMenuEntry(value: 2, label: '2 People'),
-                                  DropdownMenuEntry(value: 3, label: '3 People'),
-                                  DropdownMenuEntry(value: 4, label: '4 People'),
-                                  DropdownMenuEntry(value: 5, label: '5 People')
-                                ],
-                              ),
-                              const Text('Adult - £7.50',
-                                  style:
-                                      TextStyle(fontSize: 16, color: cinemaFontWhite))
-                            ]),
-
-                            Row(children: [
-                              ElevatedButton(
-                                onPressed:
-                                    _added_basket, // calls on the function and changes the code
-                                child: const Text('Add to Basket'),
-                              ),
-                              Container(
-                                color: Colors.blue,
-                                child: Text(added), //displayed text
-                              )
-                            ])
-
-
-
-
-
-                ],
-              ),
-            );
-          }
-    }));
+                        //const SizedBox(height: 20),
+                        Row(children: [
+                          ElevatedButton(
+                            onPressed:
+                                _added_basket, // calls on the function and changes the code
+                            child: const Text('Add to Basket'),
+                          ),
+                          Container(
+                            color: Colors.blue,
+                            child: Text(added), //displayed text
+                          )
+                        ])
+                      ])
+                    ));
+      }
+    });
   }
 }
-
