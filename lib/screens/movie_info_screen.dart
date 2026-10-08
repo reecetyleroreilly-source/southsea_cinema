@@ -66,27 +66,27 @@ class _Movie extends State<Movie1> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                  
                     Row(
                       children: [
                         Column(
-                          children: [
-                            Image.asset(
-                              widget.movie.imagePath,
-                              width: 100,
-                              height: 200,
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            
-                              Row(
-                                children: [Text(widget.movie.description)],
-                              ),
-                            
-                          ],
-                        )
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      widget.movie.imagePath,
+                                      width: 100,
+                                      height: 200,
+                                    ),
+
+                                    Expanded(child: Text(widget.movie.description, softWrap: true,)),
+                                  ],
+                                )
+                              ],
+                            ),
                       ],
                     ),
               
@@ -178,29 +178,33 @@ class _Movie extends State<Movie1> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Column(children: [
+                      Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                         Row(
                           children: [
                             Column(
                               children: [
-                                Image.asset(
-                                  widget.movie.imagePath,
-                                  width: 100,
-                                  height: 200,
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      widget.movie.imagePath,
+                                      width: 100,
+                                      height: 200,
+                                    ),
+
+                                    Expanded(child: Text(widget.movie.description, softWrap: true,)),
+                                  ],
                                 )
                               ],
                             ),
-                            Column(
-                              children: [
-                                Row(
-                                  children: [Text(widget.movie.description)],
-                                ),
-                              ],
-                            )
+                            
+                              
                           ],
                         ),
-                      ]
-                      ),
+                      
+                      
 
                         Row(children: [
                           const Text('Southsea Cinema Room',
@@ -271,7 +275,7 @@ class _Movie extends State<Movie1> {
                           )
                         ])
                       ])
-                    ));
+                    ])));
       }
     });
   }
