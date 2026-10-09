@@ -45,7 +45,8 @@ class MovieCard extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     Expanded(
-                        child: Container(
+                      child: Container(
+                      color: Color(0xFF1B1E28),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,

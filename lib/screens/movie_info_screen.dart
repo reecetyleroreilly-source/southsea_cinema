@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+//import 'package:flutter/rendering.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/widgets/nav_drawer.dart';
+//import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
   final Movie movie;
@@ -42,7 +42,7 @@ class Movie1 extends StatefulWidget {
 class _Movie extends State<Movie1> {
   String added = 'Empty';
 
-  void _added_basket() {
+  void _addedBasket() {
     setState(() {
       added = "Added to Basket";
     });
@@ -66,6 +66,7 @@ class _Movie extends State<Movie1> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
+                  color: Color(0xFF1B1E28),
                   width: 800,
                   height: 1000,
                   child: Column(
@@ -155,7 +156,7 @@ class _Movie extends State<Movie1> {
                       Row(children: [
                         ElevatedButton(
                           onPressed:
-                              _added_basket, // calls on the function and changes the code
+                              _addedBasket, // calls on the function and changes the code
                           child: const Text('Add to Basket'),
                         ),
                         Container(
@@ -185,6 +186,7 @@ class _Movie extends State<Movie1> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
+                        color: Color(0xFF1B1E28),
                         width: 800,
                         height: 600,
                         child: Column(
@@ -275,7 +277,7 @@ class _Movie extends State<Movie1> {
                                             Row(children: [
                         ElevatedButton(
                           onPressed:
-                              _added_basket, // calls on the function and changes the code
+                              _addedBasket, // calls on the function and changes the code
                           child: const Text('Add to Basket'),
                         ),
                         Container(

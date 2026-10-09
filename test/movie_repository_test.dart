@@ -20,14 +20,12 @@ void main() {
       expect(pacificrim.price, 7.50);
       expect(pacificrim.imagePath, isNotEmpty);
 
-
-
       expect(movies.length, 2);
     });
 
-    test('getMoviebyID returns mathcing movies when id exists', (){
-      
-    })
-
+    test('getMoviebyID returns mathcing movies when id exists', () {
+      final MovieRespository respository = MovieRespository();
+      final Movie? movie = respository.getMoviesByID('non-existent');
+    });
   });
 }
