@@ -25,7 +25,17 @@ void main() {
 
     test('getMoviebyID returns mathcing movies when id exists', () {
       final MovieRespository respository = MovieRespository();
-      final Movie? movie = respository.getMoviesByID('non-existent');
+      final Movie? movie = respository.getMoviesByID('ironman3');
+
+      expect(movie, isNotNull);
+      expect(movie?.name, 'Iron Man 3');
+      expect(movie?.price, 7.50);
     });
-  });
-}
+
+    test('get movieById return null when id does not exist', (){
+
+    });
+    
+    
+  
+  );}
