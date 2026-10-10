@@ -61,7 +61,7 @@ class MovieCard extends StatelessWidget {
                   ]),
               Row(
                 children: [
-                  Text('Book Tickets',
+                  Text('Book Tickets - ${movie.formattedPrice}',
                       style: const TextStyle(color: cinemaFontWhite))
                 ],
               ),
@@ -70,6 +70,7 @@ class MovieCard extends StatelessWidget {
                 spacing: 20,
                 children: [
                   Text(movie.date),
+
                   ElevatedButton(
                       onPressed: () {
                         Navigator.push(context,
