@@ -8,13 +8,13 @@ void main() {
       final MovieRespository respository = MovieRespository();
       final List<Movie> movies = respository.getMovies();
 
-      final Movie ironman3 = movies[1];
+      final Movie ironman3 = movies[0];
       expect(ironman3.id, 'ironman3');
       expect(ironman3.name, 'Iron Man 3');
       expect(ironman3.price, 7.50);
       expect(ironman3.imagePath, isNotEmpty);
 
-      final Movie pacificrim = movies[0];
+      final Movie pacificrim = movies[1];
       expect(pacificrim.id, 'pacificrim');
       expect(pacificrim.name, 'Pacific Rim');
       expect(pacificrim.price, 7.50);
@@ -25,15 +25,18 @@ void main() {
 
     test('getMoviebyID returns mathcing movies when id exists', () {
       final MovieRespository respository = MovieRespository();
-      final Movie? movie = respository.getMoviesByID('ironman3');
+      final Movie? movie = respository.getMoviesByID('pacificrim');
 
       expect(movie, isNotNull);
-      expect(movie?.name, 'Iron Man 3');
+      expect(movie?.name, 'Pacific Rim');
       expect(movie?.price, 7.50);
     });
 
-    test('get movieById return null when id does not exist', (){
+    test('get movieById return null when id does not exist', () {
+      final MovieRespository respository = MovieRespository();
+      final Movie? movie = respository.getMoviesByID('non-existent');
 
+      expect(movie, isNull);
     });
   });
 }
