@@ -14,8 +14,10 @@ class MovieScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie Screen', style: TextStyle(color: cinemaFontWhite), ),
-        
+        title: const Text(
+          'Movie Screen',
+          style: TextStyle(color: cinemaFontWhite),
+        ),
       ),
       body: ListView.builder(
           itemCount: movies.length,
@@ -23,5 +25,17 @@ class MovieScreen extends StatelessWidget {
             return MovieCard(movie: movies[index]);
           }),
     );
+  }
+}
+
+class MovieItemDisplay extends StatelessWidget {
+  final int quantity;
+  final String itemType;
+
+  const MovieItemDisplay(this.quantity, this.itemType, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('$quantity $itemType movies');
   }
 }
