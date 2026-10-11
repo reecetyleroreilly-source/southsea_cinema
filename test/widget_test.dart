@@ -38,5 +38,17 @@ void main() {
       expect(find.text('£7.50'), findsOneWidget);
       expect(find.text('Book'), findsNWidgets(2));
     });
+
+    testWidgets('Tapping book navigates to movie screen with selected Movie',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const MovieScreen());
+
+      await tester.tap(find.text('Book').first);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MovieScreen), findsOneWidget);
+      expect(find.text('book'), findsOneWidget);
+      expect(find.text('0 Iron Man 3 Movie'), findsOneWidget);
+    });
   });
 }
