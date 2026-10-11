@@ -31,6 +31,7 @@ class MovieListing extends StatelessWidget {
 class Movie extends StatefulWidget {
   //stateful widget
   //const basket({super.key});
+  const Movie({super.key});
 
   @override
   State<Movie> createState() => _Movie();
@@ -39,14 +40,14 @@ class Movie extends StatefulWidget {
 class _Movie extends State<Movie> {
   String added = 'Empty';
 
-  void _added_basket() {
+  void _addBasket() {
     setState(() {
       added = "Added to Basket";
     });
   }
 
   @override
-  Widget build(BuildContext Context) {
+  Widget build(BuildContext context) {
     return Scaffold(
         body: Align(
             //Main Body of the Movie Page
@@ -59,74 +60,82 @@ class _Movie extends State<Movie> {
                 //width: 600,
                 //height: 900,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 15,
-                  
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Title(
-                            //is all of the Title of the movie
-                            color: Colors.black,
-                            child: const Text(
-                              'Iron Man 3 - (12A)',
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold,
-                                  color: cinemaFontWhite),
-                            )),
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 15,
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Title(
+                                //is all of the Title of the movie
+                                color: Colors.black,
+                                child: const Text(
+                                  'Iron Man 3 - (12A)',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      color: cinemaFontWhite),
+                                )),
 
-                        const SizedBox(height: 20), //spacing between words
-                      ]
-                      ),
-                  
-                    const Text(
-                        'Movie Description'), //a description of the movie - Not Needed
-                    const Text(
-                        'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+                            const SizedBox(height: 20), //spacing between words
+                          ]),
 
-                    const SizedBox(height: 20), //used to space out the code
-
-                    Row(
-                      children: [
-                        const Text('Southsea Cinema Room', style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
-                      ]
-                    ),
-
-                    Row(
-                      children: [
-                        const Text(
-                          'Friday 2nd October 2026 - 18:00 - Ends at 20:10' , style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
-                      ],
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    Row(
-                      children:[
                       const Text(
-                        'Please not the Discounts/Membership benefts will be applied once you selected your tickets' , style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
+                          'Movie Description'), //a description of the movie - Not Needed
+                      const Text(
+                          'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                    ],),
-                    
-                    Row(
-                      children: [
-                        const Text('Select Quntities (Up to 5 in total)' , style: TextStyle(fontSize: 16, color:cinemaFontWhite)),
-                      ]
-                    ),
+                      const SizedBox(height: 20), //used to space out the code
 
-                    const SizedBox(height: 15),
+                      Row(children: [
+                        const Text('Southsea Cinema Room',
+                            style: TextStyle(
+                                fontSize: 16, color: cinemaFontWhite)),
+                      ]),
 
-                    Row(
-                      children: [
-                        const Text('Tickets', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color:cinemaFontWhite),)
-                      ],
-                    ),
+                      Row(
+                        children: [
+                          const Text(
+                              'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite)),
+                        ],
+                      ),
 
-                    Row(
-                      children: [
+                      const SizedBox(height: 20),
+
+                      Row(
+                        children: [
+                          const Text(
+                              'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
+                              style: TextStyle(
+                                  fontSize: 16, color: cinemaFontWhite)),
+                        ],
+                      ),
+
+                      Row(children: [
+                        const Text('Select Quntities (Up to 5 in total)',
+                            style: TextStyle(
+                                fontSize: 16, color: cinemaFontWhite)),
+                      ]),
+
+                      const SizedBox(height: 15),
+
+                      Row(
+                        children: [
+                          const Text(
+                            'Tickets',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: cinemaFontWhite),
+                          )
+                        ],
+                      ),
+
+                      Row(children: [
                         DropdownMenu<int>(
                           //Drop Down Menu
                           initialSelection: 5,
@@ -139,34 +148,24 @@ class _Movie extends State<Movie> {
                             DropdownMenuEntry(value: 4, label: '4 People'),
                             DropdownMenuEntry(value: 5, label: '5 People')
                           ],
-                          
                         ),
+                        const Text('Adult - £7.50',
+                            style:
+                                TextStyle(fontSize: 16, color: cinemaFontWhite))
+                      ]),
 
-                        const Text('Adult - £7.50' ,style: TextStyle(fontSize: 16, color:cinemaFontWhite))
-                      ]
-                    ),
-
-                    //const SizedBox(height: 20),
-                    Row(
-                      children: [
+                      //const SizedBox(height: 20),
+                      Row(children: [
                         ElevatedButton(
                           onPressed:
-                              _added_basket, // calls on the function and changes the code
+                              _addBasket, // calls on the function and changes the code
                           child: const Text('Add to Basket'),
                         ),
-
                         Container(
                           color: Colors.blue,
                           child: Text(added), //displayed text
                         )
-
-                      ]
-                    )
-
-                  ]
-                )
-              )
-            )
-          );
+                      ])
+                    ]))));
   }
 }

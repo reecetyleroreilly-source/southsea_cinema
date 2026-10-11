@@ -32,7 +32,8 @@ void main() {
       const movie = Movie(
         id: 'pacificrim',
         name: 'Pacific Rim',
-        description: 'Earth fights colossal alien monsters called Kaiju, which emerge from an interdimensional portal in the ocean, by using giant robotic mechs called Jaegers controlled by two pilots through a neural bridge',
+        description:
+            'Earth fights colossal alien monsters called Kaiju, which emerge from an interdimensional portal in the ocean, by using giant robotic mechs called Jaegers controlled by two pilots through a neural bridge',
         date: 'Thursday 12th Decemeber 2026 - 13:00 to 15:11',
         price: 7.50,
         imagePath: 'assets/images/Pacific Rim Poster.jpg',

@@ -60,70 +60,66 @@ class _Movie extends State<Movie1> {
             ),
           ),
           body: Align(
-            alignment: Alignment.topLeft,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                
-                Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        widget.movie.imagePath,
-                                        width: 100,
-                                        height: 200,
-                                      ),
-                  
-                  
-                                    ],
-                                  )
-                                ],
-                              ),
-                        
-                      
-          
-                Column(
+              alignment: Alignment.topLeft,
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      color: Color(0xFF1B1E28),
-                      width: 600,
-                      height: 500,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                        
-                          const SizedBox(height: 15),
-                    
-                            Text(widget.movie.description, softWrap: true,),
-                          
-                          const SizedBox(height: 15),
-                    
-                            const Text('Southsea Cinema Room',
-                                style:
-                                    TextStyle(fontSize: 16, color: cinemaFontWhite)),
-                    
-                          const SizedBox(height: 15),
-                    
-                            Text(widget.movie.date),
-                          
-                          const SizedBox(height: 15),
-                      
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset(
+                              widget.movie.imagePath,
+                              width: 100,
+                              height: 200,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          color: Color(0xFF1B1E28),
+                          width: 600,
+                          height: 500,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 15),
+
+                              Text(
+                                widget.movie.description,
+                                softWrap: true,
+                              ),
+
+                              const SizedBox(height: 15),
+
+                              const Text('Southsea Cinema Room',
+                                  style: TextStyle(
+                                      fontSize: 16, color: cinemaFontWhite)),
+
+                              const SizedBox(height: 15),
+
+                              Text(widget.movie.date),
+
+                              const SizedBox(height: 15),
+
                               const Text(
                                   'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
                                   style: TextStyle(
                                       fontSize: 16, color: cinemaFontWhite)),
-                           
-                          const SizedBox(height: 15),
-                      
-                            const Text('Select Quntities (Up to 5 in total)',
-                                style:
-                                    TextStyle(fontSize: 16, color: cinemaFontWhite)),
-                          
-                          const SizedBox(height: 15),
-                      
+
+                              const SizedBox(height: 15),
+
+                              const Text('Select Quntities (Up to 5 in total)',
+                                  style: TextStyle(
+                                      fontSize: 16, color: cinemaFontWhite)),
+
+                              const SizedBox(height: 15),
+
                               const Text(
                                 'Tickets',
                                 style: TextStyle(
@@ -131,48 +127,51 @@ class _Movie extends State<Movie1> {
                                     fontWeight: FontWeight.bold,
                                     color: cinemaFontWhite),
                               ),
-                            
-                          const SizedBox(height: 15),
-                      
-                          Row(children: [
-                            DropdownMenu<int>(
-                              //Drop Down Menu
-                              initialSelection: 5,
-                              //label: const Text('Number of People'),
-                      
-                              dropdownMenuEntries: [
-                                DropdownMenuEntry(value: 1, label: '1 Person'),
-                                DropdownMenuEntry(value: 2, label: '2 People'),
-                                DropdownMenuEntry(value: 3, label: '3 People'),
-                                DropdownMenuEntry(value: 4, label: '4 People'),
-                                DropdownMenuEntry(value: 5, label: '5 People')
-                              ],
-                            ),
-                            Text(widget.movie.formattedPrice,
-                                style:
-                                    TextStyle(fontSize: 16, color: cinemaFontWhite))
-                          ]),
-                      
-                          //const SizedBox(height: 20),
-                          Row(children: [
-                            ElevatedButton(
-                              onPressed:
-                                  _addedBasket, // calls on the function and changes the code
-                              child: const Text('Add to Basket'),
-                            ),
-                            Container(
-                              color: Colors.blue,
-                              child: Text(added), //displayed text
-                            )
-                          ])
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ])
-            ),
-          
+
+                              const SizedBox(height: 15),
+
+                              Row(children: [
+                                DropdownMenu<int>(
+                                  //Drop Down Menu
+                                  initialSelection: 5,
+                                  //label: const Text('Number of People'),
+
+                                  dropdownMenuEntries: [
+                                    DropdownMenuEntry(
+                                        value: 1, label: '1 Person'),
+                                    DropdownMenuEntry(
+                                        value: 2, label: '2 People'),
+                                    DropdownMenuEntry(
+                                        value: 3, label: '3 People'),
+                                    DropdownMenuEntry(
+                                        value: 4, label: '4 People'),
+                                    DropdownMenuEntry(
+                                        value: 5, label: '5 People')
+                                  ],
+                                ),
+                                Text(widget.movie.formattedPrice,
+                                    style: TextStyle(
+                                        fontSize: 16, color: cinemaFontWhite))
+                              ]),
+
+                              //const SizedBox(height: 20),
+                              Row(children: [
+                                ElevatedButton(
+                                  onPressed:
+                                      _addedBasket, // calls on the function and changes the code
+                                  child: const Text('Add to Basket'),
+                                ),
+                                Container(
+                                  color: Colors.blue,
+                                  child: Text(added), //displayed text
+                                )
+                              ])
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                  ])),
         );
       } else {
         return Scaffold(
@@ -188,20 +187,19 @@ class _Movie extends State<Movie1> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                       Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                      widget.movie.imagePath,
-                                      width: 100,
-                                      height: 200,
-                                    ),
-                                  ],
-                                )
-                              ],
-                        ),
-
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                widget.movie.imagePath,
+                                width: 100,
+                                height: 200,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                       Column(
                         children: [
                           Container(
@@ -209,37 +207,40 @@ class _Movie extends State<Movie1> {
                             width: 600,
                             height: 500,
                             child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                
-                              Text(widget.movie.description, softWrap: true,),
-                            
-                              const SizedBox(height: 15),
-                            
-                              const Text('Southsea Cinema Room',
-                                  style:
-                                      TextStyle(fontSize: 16, color: cinemaFontWhite)),
-                                                  
-                              const SizedBox(height: 15),
-                                                  
-                              Text(widget.movie.date),
-                                                  
-                              const SizedBox(height: 15),
-                                                  
+                                Text(
+                                  widget.movie.description,
+                                  softWrap: true,
+                                ),
+
+                                const SizedBox(height: 15),
+
+                                const Text('Southsea Cinema Room',
+                                    style: TextStyle(
+                                        fontSize: 16, color: cinemaFontWhite)),
+
+                                const SizedBox(height: 15),
+
+                                Text(widget.movie.date),
+
+                                const SizedBox(height: 15),
+
                                 const Text(
                                     'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
                                     style: TextStyle(
                                         fontSize: 16, color: cinemaFontWhite)),
-                                                  
-                              const SizedBox(height: 15),
-                              
-                              const Text('Select Quntities (Up to 5 in total)',
-                                  style:
-                                      TextStyle(fontSize: 16, color: cinemaFontWhite)),
-                                                  
-                              const SizedBox(height: 15),
-                              
+
+                                const SizedBox(height: 15),
+
+                                const Text(
+                                    'Select Quntities (Up to 5 in total)',
+                                    style: TextStyle(
+                                        fontSize: 16, color: cinemaFontWhite)),
+
+                                const SizedBox(height: 15),
+
                                 const Text(
                                   'Tickets',
                                   style: TextStyle(
@@ -247,44 +248,49 @@ class _Movie extends State<Movie1> {
                                       fontWeight: FontWeight.bold,
                                       color: cinemaFontWhite),
                                 ),
-                              
-                                                  
-                              const SizedBox(height: 15),
-                              
-                              Row(children: [
-                              DropdownMenu<int>(
-                                //Drop Down Menu
-                                initialSelection: 5,
-                                //label: const Text('Number of People'),
-                              
-                                dropdownMenuEntries: [
-                                  DropdownMenuEntry(value: 1, label: '1 Person'),
-                                  DropdownMenuEntry(value: 2, label: '2 People'),
-                                  DropdownMenuEntry(value: 3, label: '3 People'),
-                                  DropdownMenuEntry(value: 4, label: '4 People'),
-                                  DropdownMenuEntry(value: 5, label: '5 People')
-                                ],
-                              ),
-                                Text(widget.movie.formattedPrice,
-                                  style:
-                                      TextStyle(fontSize: 16, color: cinemaFontWhite))
-                                                  ]),
-                              
-                                                  //const SizedBox(height: 20),
-                                                  Row(children: [
-                              ElevatedButton(
-                                onPressed:
-                                    _addedBasket, // calls on the function and changes the code
-                                child: const Text('Add to Basket'),
-                              ),
-                              Container(
-                                color: Colors.blue,
-                                child: Text(added), //displayed text
-                              )
-                                                  ])
-                                                ],),
+
+                                const SizedBox(height: 15),
+
+                                Row(children: [
+                                  DropdownMenu<int>(
+                                    //Drop Down Menu
+                                    initialSelection: 5,
+                                    //label: const Text('Number of People'),
+
+                                    dropdownMenuEntries: [
+                                      DropdownMenuEntry(
+                                          value: 1, label: '1 Person'),
+                                      DropdownMenuEntry(
+                                          value: 2, label: '2 People'),
+                                      DropdownMenuEntry(
+                                          value: 3, label: '3 People'),
+                                      DropdownMenuEntry(
+                                          value: 4, label: '4 People'),
+                                      DropdownMenuEntry(
+                                          value: 5, label: '5 People')
+                                    ],
+                                  ),
+                                  Text(widget.movie.formattedPrice,
+                                      style: TextStyle(
+                                          fontSize: 16, color: cinemaFontWhite))
+                                ]),
+
+                                //const SizedBox(height: 20),
+                                Row(children: [
+                                  ElevatedButton(
+                                    onPressed:
+                                        _addedBasket, // calls on the function and changes the code
+                                    child: const Text('Add to Basket'),
+                                  ),
+                                  Container(
+                                    color: Colors.blue,
+                                    child: Text(added), //displayed text
+                                  )
+                                ])
+                              ],
                             ),
-                          ],
+                          ),
+                        ],
                       )
                     ])));
       }
