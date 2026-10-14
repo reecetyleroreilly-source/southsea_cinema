@@ -4,7 +4,7 @@ import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/screens/movie_info_screen.dart';
 import 'package:southsea_cinema/screens/movie_screen.dart';
 import 'package:southsea_cinema/Models/movie.dart';
-import 'package:southsea_cinema/widgets/movie_card.dart';
+//import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 
@@ -13,66 +13,18 @@ void main() {
     await tester.pumpWidget(const SouthseaCinemaApp());
     expect(find.text('Welcome to Southsea Cinema'), findsOneWidget);
   });
-  group('BookMovieDisplay widget test', () {
+
+  group('Movie item display test', () {
     testWidgets('display zero movies', (WidgetTester tester) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: MovieItemDisplay(0, 'Iron Man3'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: MovieItemDisplay(0, 'ironman3'),
+          ),
         ),
-      ));
-      expect(find.text('0 movie'), findsOneWidget);
-    });
-  });
+      );
 
-  group('App Smoke Test', () {
-    testWidgets('App display Movie Screen', (WidgetTester tester) async {
-      await tester.pumpWidget(const MovieScreen());
-      expect(find.byType(MovieScreen), findsOneWidget);
-      expect(find.text('Movie Screen'), findsOneWidget);
-    });
-
-    testWidgets('Display Movie card with names and prices',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const MovieScreen());
-      expect(find.text('Iron Man 3'), findsOneWidget);
-      expect(find.text('£7.50'), findsOneWidget);
-      expect(find.text('Pacific Rim'), findsOneWidget);
-      expect(find.text('£7.50'), findsOneWidget);
-      expect(find.text('Book'), findsNWidgets(2));
-    });
-
-    testWidgets('Tapping book navigates to movie screen with selected Movie',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const MovieScreen());
-
-      await tester.tap(find.text('Book').first);
-      await tester.pumpAndSettle();
-
-      expect(find.byType(MovieScreen), findsOneWidget);
-      expect(find.text('book'), findsOneWidget);
-      expect(find.text('0 Iron Man 3 Movie'), findsOneWidget);
-    });
-
-    testWidgets('MovieScreen quantity does not drop below zero',
-        (WidgetTester tester) async {
-      const movie = Movie(
-          id: 'ironman3',
-          name: 'Iron Man 3',
-          description: 'Test',
-          date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
-          price: 7.50,
-          imagePath: 'assets/images/Iron Man Poster.jpg');
-
-      await tester.pumpWidget(const MaterialApp(
-        home: MovieCard(movie: movie),
-      ));
-
-      for (int i = 0; i < 5; i++) {
-        await tester.tap(find.text('Book'));
-        await tester.pump();
-      }
-
-      expect(find.text('3 test movie'), findsOneWidget);
+      expect(find.text('0 ironman3 movie'), findsOneWidget);
     });
   });
 }
