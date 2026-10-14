@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/main.dart';
-import 'package:southsea_cinema/repositories/movie_respository.dart';
-import 'package:southsea_cinema/screens/movie_info_screen.dart';
+//import 'package:southsea_cinema/repositories/movie_respository.dart';
+//import 'package:southsea_cinema/screens/movie_info_screen.dart';
 import 'package:southsea_cinema/screens/movie_screen.dart';
-import 'package:southsea_cinema/Models/movie.dart';
-import 'package:southsea_cinema/views/movie_listing.dart';
-import 'package:southsea_cinema/widgets/movie_card.dart';
-import 'package:southsea_cinema/widgets/movie_card.dart';
-import 'package:southsea_cinema/screens/movie_info_screen.dart';
-import 'package:southsea_cinema/widgets/movie_card.dart';
+//import 'package:southsea_cinema/Models/movie.dart';
+//import 'package:southsea_cinema/views/movie_listing.dart';
+//import 'package:southsea_cinema/widgets/movie_card.dart';
+//import 'package:southsea_cinema/widgets/movie_card.dart';
+//import 'package:southsea_cinema/screens/movie_info_screen.dart';
+//import 'package:southsea_cinema/widgets/movie_card.dart';
 
 void main() {
   testWidgets('Basic app loading test', (WidgetTester tester) async {
@@ -26,7 +26,6 @@ void main() {
           ),
         ),
       );
-
       expect(find.text('0 Iron Man 3 movies'), findsOneWidget);
     });
   });
@@ -58,9 +57,8 @@ void main() {
 
       expect(find.byType(MovieScreen), findsOneWidget);
       expect(find.text('Book'), findsOneWidget);
-      //expect(find.text('0 ironman 3 movies'), findsOneWidget);
+      expect(find.text('1 ironman 3 movies'), findsOneWidget);
     });
-
 
   });
 }
