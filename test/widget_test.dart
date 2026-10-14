@@ -19,12 +19,12 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: MovieItemDisplay(0, 'ironman3'),
+            body: MovieItemDisplay(0, 'Iron Man 3'),
           ),
         ),
       );
 
-      expect(find.text('0 ironman3 movie'), findsOneWidget);
+      expect(find.text('0 Iron Man 3 movies'), findsOneWidget);
     });
   });
 }
