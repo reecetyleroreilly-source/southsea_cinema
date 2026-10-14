@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:flutter/rendering.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/screens/movie_screen.dart';
 //import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
@@ -45,6 +46,14 @@ class _Movie extends State<Movie1> {
   void _addedBasket() {
     setState(() {
       added = "Added to Basket";
+      MovieItemDisplay(1, widget.movie.name);
+    });
+  }
+
+  void removeBasket() {
+    setState(() {
+      added = "Empty";
+      MovieItemDisplay(0, widget.movie.name);
     });
   }
 
@@ -161,6 +170,9 @@ class _Movie extends State<Movie1> {
                                       _addedBasket, // calls on the function and changes the code
                                   child: const Text('Add to Basket'),
                                 ),
+                                ElevatedButton(
+                                    onPressed: removeBasket,
+                                    child: const Text('Remove')),
                                 Container(
                                   color: Colors.blue,
                                   child: Text(added), //displayed text

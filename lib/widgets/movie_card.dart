@@ -77,7 +77,7 @@ class MovieCard extends StatelessWidget {
                           return MovieListing(movie: movie);
                         }));
                       },
-                      child: const Text('Book'))
+                      child: Text('Book - ${movie.name}'))
                 ],
               )
             ],
