@@ -62,7 +62,7 @@ class MovieCard extends StatelessWidget {
               Row(
                 children: [
                   Text('Book Tickets - ${movie.formattedPrice}',
-                      style: const TextStyle(color: cinemaFontWhite))
+                      style: const TextStyle(color: cinemaFontWhite, fontSize: 16, fontWeight: FontWeight.bold),),
                 ],
               ),
               Row(
