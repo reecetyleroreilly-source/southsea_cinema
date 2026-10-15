@@ -5,6 +5,8 @@ import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/constants.dart';
 
 class MovieScreen extends StatelessWidget {
+  
+  
   const MovieScreen({super.key});
 
   @override

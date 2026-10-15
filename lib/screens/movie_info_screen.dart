@@ -7,9 +7,11 @@ import 'package:southsea_cinema/screens/movie_screen.dart';
 
 class MovieListing extends StatelessWidget {
   final Movie movie;
+  final int maxquantity;
   const MovieListing(
       {super.key, //this.onAdded,
-      required this.movie});
+      required this.movie,
+      this.maxquantity = 1});
 
   //final VoidCallback? onAdded;
 
@@ -30,11 +32,9 @@ class Movie1 extends StatefulWidget {
   //const basket({super.key});
 
   final Movie movie;
+  final int maxquantity;
 
-  const Movie1({
-    super.key,
-    required this.movie,
-  });
+  const Movie1({super.key, required this.movie, this.maxquantity = 1});
 
   @override
   State<Movie1> createState() => _Movie();
@@ -42,19 +42,26 @@ class Movie1 extends StatefulWidget {
 
 class _Movie extends State<Movie1> {
   String added = 'Empty';
+  int _quantity = 0;
 
   void _addedBasket() {
-    setState(() {
-      added = "Added to Basket";
-      MovieItemDisplay(1, widget.movie.name);
-    });
+    if (_quantity < widget.maxquantity) {
+      setState(() {
+        added = "Added to Basket";
+        _quantity = _quantity + 1;
+        MovieItemDisplay(1, widget.movie.name);
+      });
+    }
   }
 
   void removeBasket() {
-    setState(() {
-      added = "Empty";
-      MovieItemDisplay(0, widget.movie.name);
-    });
+    if (_quantity < widget.maxquantity) {
+      setState(() {
+        added = "Remove";
+        _quantity = _quantity - 1;
+        MovieItemDisplay(0, widget.movie.name);
+      });
+    }
   }
 
   @override
