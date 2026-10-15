@@ -55,13 +55,13 @@ class _Movie extends State<Movie1> {
   }
 
   void removeBasket() {
-    if (_quantity < widget.maxquantity) {
+    //if (_quantity < widget.maxquantity) {
       setState(() {
-        added = "Remove";
+        added = "Empty";
         _quantity = _quantity - 1;
         MovieItemDisplay(0, widget.movie.name);
       });
-    }
+    //}
   }
 
   @override
