@@ -97,44 +97,48 @@ class _Movie extends State<Movie1> {
                     Column(
                       children: [
                         Container(
+                          
                           color: Color(0xFF1B1E28),
                           width: 600,
                           height: 500,
+                          child: SingleChildScrollView(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SizedBox(height: 15),
+                              
+                              
+                              const SizedBox(height: 4),
 
                               Text(
                                 widget.movie.description,
                                 softWrap: true,
                               ),
 
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 4),
 
                               const Text('Southsea Cinema Room',
                                   style: TextStyle(
                                       fontSize: 16, color: cinemaFontWhite)),
 
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 4),
 
                               Text(widget.movie.date),
 
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 4),
 
                               const Text(
                                   'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
                                   style: TextStyle(
                                       fontSize: 16, color: cinemaFontWhite)),
 
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 8),
 
                               const Text('Select Quntities (Up to 5 in total)',
                                   style: TextStyle(
                                       fontSize: 16, color: cinemaFontWhite)),
 
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 4),
 
                               const Text(
                                 'Tickets',
@@ -144,7 +148,7 @@ class _Movie extends State<Movie1> {
                                     color: cinemaFontWhite),
                               ),
 
-                              const SizedBox(height: 15),
+                              const SizedBox(height: 4),
 
                               Row(children: [
                                 DropdownMenu<int>(
@@ -185,9 +189,10 @@ class _Movie extends State<Movie1> {
                                   child: Text(added), //displayed text
                                 )
                               ])
-                            ],
-                          ),
+                          ],
                         ),
+                          ))
+                        
                       ],
                     )
                   ])),

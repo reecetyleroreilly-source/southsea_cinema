@@ -65,7 +65,7 @@ class MovieCard extends StatelessWidget {
                       style: const TextStyle(color: cinemaFontWhite, fontSize: 16, fontWeight: FontWeight.bold),),
                 ],
               ),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 spacing: 20,
                 children: [
@@ -77,8 +77,9 @@ class MovieCard extends StatelessWidget {
                           return MovieListing(movie: movie);
                         }));
                       },
-                      child: Text('Book - ${movie.name}'))
-                ],
+                      //child: Text('Book - ${movie.name}'))
+                      child: Text('Book')),
+                ],    
               )
             ],
           )),

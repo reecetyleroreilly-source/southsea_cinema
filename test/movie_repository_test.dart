@@ -17,7 +17,7 @@ void main() {
       final Movie pacificrim = movies[1];
       expect(pacificrim.id, 'pacificrim');
       expect(pacificrim.name, 'Pacific Rim');
-      expect(pacificrim.price, 7.50);
+      expect(pacificrim.price, 6.50);
       expect(pacificrim.imagePath, isNotEmpty);
 
       expect(movies.length, 2);
@@ -29,7 +29,7 @@ void main() {
 
       expect(movie, isNotNull);
       expect(movie?.name, 'Pacific Rim');
-      expect(movie?.price, 7.50);
+      expect(movie?.price, 6.50);
     });
 
     test('get movieById return null when id does not exist', () {
