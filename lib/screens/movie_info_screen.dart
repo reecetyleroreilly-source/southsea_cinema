@@ -80,8 +80,8 @@ class _Movie extends State<Movie1> {
                           children: [
                             Image.asset(
                               widget.movie.imagePath,
-                              width: 100,
-                              height: 200,
+                              width: 200,
+                              height: 400,
                             ),
                           ],
                         )
@@ -205,8 +205,8 @@ class _Movie extends State<Movie1> {
                             children: [
                               Image.asset(
                                 widget.movie.imagePath,
-                                width: 100,
-                                height: 200,
+                                width: 200,
+                                height: 400,
                               ),
                             ],
                           )
