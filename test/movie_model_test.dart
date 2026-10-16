@@ -7,7 +7,7 @@ void main() {
   group('Movie model tests', () {
     test('create movie instance with given properties', () {
       // Change 'const' to 'final' or 'var'
-      final movie = Movie(
+      final movie = MovieModel(
         id: 'ironman3',
         name: 'Iron Man 3',
         description:
@@ -29,7 +29,7 @@ void main() {
     test(
         'formattedPrice returns price prefized with pound sign and two decminals',
         () {
-      const movie = Movie(
+      const movie = MovieModel(
         id: 'pacificrim',
         name: 'Pacific Rim',
         description:

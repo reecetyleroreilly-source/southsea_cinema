@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 //import 'package:flutter/rendering.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/screens/movie_screen.dart';
+import 'package:southsea_cinema/views/movie_screen.dart';
 //import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
-  final Movie movie;
+  final MovieModel movie;
   final int maxquantity;
   const MovieListing(
       {super.key, //this.onAdded,
@@ -31,7 +31,7 @@ class Movie1 extends StatefulWidget {
   //stateful widget
   //const basket({super.key});
 
-  final Movie movie;
+  final MovieModel movie;
   final int maxquantity;
 
   const Movie1({super.key, required this.movie, this.maxquantity = 1});

@@ -1,4 +1,4 @@
-class Movie {
+class MovieModel {
   final String id;
   final String name;
   final String description;
@@ -6,7 +6,7 @@ class Movie {
   final double price;
   final String imagePath;
 
-  const Movie({
+  const MovieModel({
     required this.id,
     required this.name,
     required this.description,

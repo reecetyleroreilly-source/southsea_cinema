@@ -6,15 +6,15 @@ void main() {
   group('repository unit test', () {
     test('getMovie returns two movies', () {
       final MovieRespository respository = MovieRespository();
-      final List<Movie> movies = respository.getMovies();
+      final List<MovieModel> movies = respository.getMovies();
 
-      final Movie ironman3 = movies[0];
+      final MovieModel ironman3 = movies[0];
       expect(ironman3.id, 'ironman3');
       expect(ironman3.name, 'Iron Man 3');
       expect(ironman3.price, 7.50);
       expect(ironman3.imagePath, isNotEmpty);
 
-      final Movie pacificrim = movies[1];
+      final MovieModel pacificrim = movies[1];
       expect(pacificrim.id, 'pacificrim');
       expect(pacificrim.name, 'Pacific Rim');
       expect(pacificrim.price, 6.50);
@@ -25,7 +25,7 @@ void main() {
 
     test('getMoviebyID returns mathcing movies when id exists', () {
       final MovieRespository respository = MovieRespository();
-      final Movie? movie = respository.getMoviesByID('pacificrim');
+      final MovieModel? movie = respository.getMoviesByID('pacificrim');
 
       expect(movie, isNotNull);
       expect(movie?.name, 'Pacific Rim');
@@ -34,7 +34,7 @@ void main() {
 
     test('get movieById return null when id does not exist', () {
       final MovieRespository respository = MovieRespository();
-      final Movie? movie = respository.getMoviesByID('non-existent');
+      final MovieModel? movie = respository.getMoviesByID('non-existent');
 
       expect(movie, isNull);
     });

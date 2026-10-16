@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final MovieRespository respository = MovieRespository();
-    final List<Movie> movies = respository.getMovies();
+    final List<MovieModel> movies = respository.getMovies();
     return Scaffold(
       appBar: AppBar(
         title: const Text(

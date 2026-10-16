@@ -5,7 +5,7 @@ import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/screens/movie_info_screen.dart';
 //import 'package:southsea_cinema/repositories/movie_respository.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
-import 'package:southsea_cinema/screens/movie_screen.dart';
+import 'package:southsea_cinema/views/movie_screen.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/Models/movie.dart';
 //import 'package:southsea_cinema/views/movie_listing.dart';
@@ -82,7 +82,7 @@ void main() {
 
     testWidgets('MovieScreen quantity does not drop below zero',
         (WidgetTester tester) async {
-      const movie = Movie(
+      const movie = MovieModel(
           id: 'ironman3',
           name: 'Iron Man 3',
           description: 'test description',
@@ -101,7 +101,7 @@ void main() {
 
     testWidgets('Movie Screen quantity does not exceed max quantity',
         (WidgetTester tester) async {
-      const movie = Movie(
+      const movie = MovieModel(
           id: 'ironman3',
           name: 'Iron Man 3',
           description: 'test description',

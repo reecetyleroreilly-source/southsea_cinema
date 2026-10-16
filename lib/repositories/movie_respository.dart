@@ -1,9 +1,9 @@
 import 'package:southsea_cinema/Models/movie.dart';
 
 class MovieRespository {
-  List<Movie> getMovies() {
+  List<MovieModel> getMovies() {
     return const [
-      Movie(
+      MovieModel(
           id: 'ironman3',
           name: 'Iron Man 3',
           description:
@@ -11,7 +11,7 @@ class MovieRespository {
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
           imagePath: 'assets/images/Iron Man Poster.jpg'),
-      Movie(
+      MovieModel(
           id: 'pacificrim',
           name: 'Pacific Rim',
           description:
@@ -22,7 +22,7 @@ class MovieRespository {
     ];
   }
 
-  Movie? getMoviesByID(String id) {
+  MovieModel? getMoviesByID(String id) {
     for (final movie in getMovies()) {
       if (movie.id == id) {
         return movie;

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
+
+
 class MovieListing extends StatelessWidget {
-  const MovieListing({
-    super.key, //this.onAdded,
-  });
+  final MovieModel movie;
+  final int maxquantity;
+  const MovieListing(
+      {super.key, //this.onAdded,
+      required this.movie,
+      this.maxquantity = 1});
 
   //final VoidCallback? onAdded;
 
@@ -22,7 +28,7 @@ class MovieListing extends StatelessWidget {
       //body: const SizedBox.shrink(
       body: Align(
         alignment: Alignment.topLeft,
-        child: Movie(),
+        child: Movie(movie: movie),
       ),
     );
   }
@@ -31,7 +37,11 @@ class MovieListing extends StatelessWidget {
 class Movie extends StatefulWidget {
   //stateful widget
   //const basket({super.key});
-  const Movie({super.key});
+
+  final MovieModel movie;
+  final int maxquantity;
+
+  const Movie({super.key, required this.movie, this.maxquantity = 1});
 
   @override
   State<Movie> createState() => _Movie();
@@ -39,11 +49,26 @@ class Movie extends StatefulWidget {
 
 class _Movie extends State<Movie> {
   String added = 'Empty';
+  int _quantity = 0;
 
-  void _addBasket() {
-    setState(() {
-      added = "Added to Basket";
-    });
+  void _addedBasket() {
+    if (_quantity < widget.maxquantity) {
+      setState(() {
+        added = "Added to Basket";
+        _quantity = _quantity + 1;
+        
+      });
+    }
+  }
+
+  void removeBasket() {
+    //if (_quantity < widget.maxquantity) {
+      setState(() {
+        added = "Empty";
+        _quantity = _quantity - 1;
+        
+      });
+    //}
   }
 
   @override
@@ -59,69 +84,86 @@ class _Movie extends State<Movie> {
                 color: Color(0xFF1B1E28),
                 //width: 600,
                 //height: 900,
+
+                
+
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 15,
+                    spacing: 10,
                     children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Title(
-                                //is all of the Title of the movie
-                                color: Colors.black,
-                                child: const Text(
-                                  'Iron Man 3 - (12A)',
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: cinemaFontWhite),
-                                )),
 
-                            const SizedBox(height: 20), //spacing between words
-                          ]),
+                      
 
-                      const Text(
-                          'Movie Description'), //a description of the movie - Not Needed
-                      const Text(
-                          'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+                      Column(
+                        children: [  
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Title(
+                                    //is all of the Title of the movie
+                                    color: Colors.black,
+                                    child: const Text(
+                                      'Iron Man 3 - (12A)',
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                          color: cinemaFontWhite),
+                                   )),
+                        
+                                const SizedBox(height: 5), //spacing between words
+                              ]),
+                        ]),
 
-                      const SizedBox(height: 20), //used to space out the code
-
-                      Row(children: [
-                        const Text('Southsea Cinema Room',
-                            style: TextStyle(
-                                fontSize: 16, color: cinemaFontWhite)),
-                      ]),
-
-                      Row(
+                      Column(
                         children: [
-                          const Text(
-                              'Friday 2nd October 2026 - 18:00 - Ends at 20:10',
-                              style: TextStyle(
-                                  fontSize: 16, color: cinemaFontWhite)),
+                          Row(
+                            children: [
+                              Image.asset(
+                                widget.movie.imagePath,
+                                width: 200,
+                                height: 300,
+                              ),
+                        
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                      'Movie Description'),
+
+
+                                    const Text(
+                                  'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+
+                                  
+
+
+                                ]
+                              ),
+                            ),
+                            
+                            
+                          ],
+                        ),
+
+                        const SizedBox(height: 5), //used to space out the code
+
+
                         ],
                       ),
-
-                      const SizedBox(height: 20),
-
-                      Row(
+                      
+                      Column(
                         children: [
-                          const Text(
-                              'Please not the Discounts/Membership benefts will be applied once you selected your tickets',
-                              style: TextStyle(
-                                  fontSize: 16, color: cinemaFontWhite)),
-                        ],
-                      ),
-
+                        
+                        
                       Row(children: [
                         const Text('Select Quntities (Up to 5 in total)',
                             style: TextStyle(
                                 fontSize: 16, color: cinemaFontWhite)),
                       ]),
 
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 5),
 
                       Row(
                         children: [
@@ -158,7 +200,7 @@ class _Movie extends State<Movie> {
                       Row(children: [
                         ElevatedButton(
                           onPressed:
-                              _addBasket, // calls on the function and changes the code
+                              _addedBasket, // calls on the function and changes the code
                           child: const Text('Add to Basket'),
                         ),
                         Container(

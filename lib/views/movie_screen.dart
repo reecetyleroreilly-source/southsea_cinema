@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_respository.dart';
+import 'package:southsea_cinema/views/movie_listing.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
@@ -13,7 +14,7 @@ class MovieScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MovieRespository respository = MovieRespository();
-    final List<Movie> movies = respository.getMovies();
+    final List<MovieModel> movies = respository.getMovies();
 
     return Scaffold(
       appBar: AppBar(
@@ -26,20 +27,20 @@ class MovieScreen extends StatelessWidget {
       body: ListView.builder(
           itemCount: movies.length,
           itemBuilder: (context, index) {
-            return MovieCard(movie: movies[index]);
+            return MovieListing(movie: movies[index]);
           }),
     );
   }
 }
 
-class MovieItemDisplay extends StatelessWidget {
-  final int quantity;
-  final String itemType;
+ class MovieItemDisplay extends StatelessWidget {
+   final int quantity;
+   final String itemType;
 
-  const MovieItemDisplay(this.quantity, this.itemType, {super.key});
+   const MovieItemDisplay(this.quantity, this.itemType, {super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Text('$quantity $itemType movies');
-  }
+   @override
+   Widget build(BuildContext context) {
+     return Text('$quantity $itemType movies');
+ }
 }

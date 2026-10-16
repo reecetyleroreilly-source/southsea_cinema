@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/screens/movie_info_screen.dart';
+//import 'package:southsea_cinema/screens/movie_info_screen.dart';
+import 'package:southsea_cinema/views/movie_listing.dart';
 
 class MovieCard extends StatelessWidget {
-  final Movie movie;
+  final MovieModel movie;
 
   const MovieCard({super.key, required this.movie});
 
