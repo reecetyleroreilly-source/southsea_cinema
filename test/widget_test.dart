@@ -6,8 +6,8 @@ import 'package:southsea_cinema/screens/movie_info_screen.dart';
 //import 'package:southsea_cinema/repositories/movie_respository.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
 import 'package:southsea_cinema/screens/movie_screen.dart';
-import 'package:southsea_cinema/widgets/movie_card.dart';
-import 'package:southsea_cinema/Models/movie.dart';
+//import 'package:southsea_cinema/widgets/movie_card.dart';
+//import 'package:southsea_cinema/Models/movie.dart';
 //import 'package:southsea_cinema/views/movie_listing.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
@@ -83,8 +83,8 @@ void main() {
     testWidgets('MovieScreen quantity does not drop below zero',
         (WidgetTester tester) async {
       const movie = Movie(
-          id: 'test',
-          name: 'test movie',
+          id: 'ironman3',
+          name: 'Iron Man 3',
           description: 'test description',
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
@@ -102,8 +102,8 @@ void main() {
     testWidgets('Movie Screen quantity does not exceed max quantity',
         (WidgetTester tester) async {
       const movie = Movie(
-          id: 'test',
-          name: 'test movie',
+          id: 'ironman3',
+          name: 'Iron Man 3',
           description: 'test description',
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,

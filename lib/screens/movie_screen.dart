@@ -3,6 +3,7 @@ import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_respository.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieScreen extends StatelessWidget {
   
@@ -21,6 +22,7 @@ class MovieScreen extends StatelessWidget {
           style: TextStyle(color: cinemaFontWhite),
         ),
       ),
+      
       body: ListView.builder(
           itemCount: movies.length,
           itemBuilder: (context, index) {
