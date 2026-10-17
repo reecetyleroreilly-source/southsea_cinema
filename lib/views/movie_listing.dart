@@ -18,6 +18,7 @@ class MovieListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
         backgroundColor: cinemaSurface,
@@ -26,6 +27,7 @@ class MovieListing extends StatelessWidget {
       ),
       drawer: const NavDrawer(),
       //body: const SizedBox.shrink(
+    
       body: Align(
         alignment: Alignment.topLeft,
         child: Movie(movie: movie),
@@ -74,6 +76,7 @@ class _Movie extends State<Movie> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
         body: Align(
             //Main Body of the Movie Page
             alignment: Alignment.topLeft,
@@ -100,12 +103,13 @@ class _Movie extends State<Movie> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
+
                               children: [
                                 Title(
                                     //is all of the Title of the movie
                                     color: Colors.black,
-                                    child: const Text(
-                                      'Iron Man 3 - (12A)',
+                                    child:  Text(
+                                      widget.movie.name,
                                       style: TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.bold,
@@ -119,6 +123,9 @@ class _Movie extends State<Movie> {
                       Column(
                         children: [
                           Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+
                             children: [
                               Image.asset(
                                 widget.movie.imagePath,
@@ -128,15 +135,17 @@ class _Movie extends State<Movie> {
                         
                             Expanded(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                      'Movie Description'),
+                                      'Movie Description', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
 
 
-                                    const Text(
-                                  'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
+                                    //const Text(
+                                  //'after his personal world is destroyed, Stark undertakes a challenging quest for those responsible, relying on his own ingenuity, instincts, and devices to survive and protect his loved ones. Along the way, he ultimately confronts the question that has long haunted him: whether the man makes the suit or the suit makes the man.'),
 
-                                  
+                                  Text(widget.movie.description),
 
 
                                 ]
@@ -191,7 +200,7 @@ class _Movie extends State<Movie> {
                             DropdownMenuEntry(value: 5, label: '5 People')
                           ],
                         ),
-                        const Text('Adult - £7.50',
+                        Text('Adult - £${widget.movie.price}',
                             style:
                                 TextStyle(fontSize: 16, color: cinemaFontWhite))
                       ]),
@@ -208,6 +217,6 @@ class _Movie extends State<Movie> {
                           child: Text(added), //displayed text
                         )
                       ])
-                    ]))));
+                    ])]))));
   }
 }

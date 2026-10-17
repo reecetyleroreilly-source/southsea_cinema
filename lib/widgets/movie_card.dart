@@ -67,7 +67,8 @@ class MovieCard extends StatelessWidget {
                 ],
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 20,
                 children: [
                   Text(movie.date),
