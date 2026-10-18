@@ -19,6 +19,8 @@ class HomeView extends StatelessWidget {
           appTitle,
           style: cinemaHeaderStyle,
         ),
+
+        actions: const [BackButton()],
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,

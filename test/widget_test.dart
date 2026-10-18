@@ -6,7 +6,7 @@ import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 //import 'package:southsea_cinema/repositories/movie_respository.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
-import 'package:southsea_cinema/views/movie_screen.dart';
+//import 'package:southsea_cinema/views/movie_screen.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/Models/movie.dart';
@@ -27,7 +27,7 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: MovieItemDisplay(0, 'Iron Man 3'),
+            //body: MovieListing(movie: movie)
           ),
         ),
       );
