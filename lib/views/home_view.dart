@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_respository.dart';
@@ -20,7 +21,9 @@ class HomeView extends StatelessWidget {
           style: cinemaHeaderStyle,
         ),
 
-        actions: const [BackButton()],
+        actions: const [BasketButton()],
+
+
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,

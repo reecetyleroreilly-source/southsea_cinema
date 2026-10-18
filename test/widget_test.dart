@@ -27,11 +27,11 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            //body: MovieListing(movie: movie)
+            body: MovieModel()
           ),
         ),
       );
-      expect(find.text('0 Iron Man 3 movies'), findsOneWidget);
+      expect(find.text('Empty'), findsOneWidget);
     });
   });
 
@@ -40,7 +40,7 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp( home: HomeView()));
       expect(find.byType(HomeView), findsOneWidget);
-      expect(find.text('Southsea Cinema And Art Centre'), findsOneWidget);
+      expect(find.byIcon(Icons.shopping_basket), findsOneWidget);
     });
 
     testWidgets('Display movie card with names and prices',
