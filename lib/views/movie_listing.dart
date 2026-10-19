@@ -179,7 +179,7 @@ class _Movie extends State<Movie> {
                             //Drop Down Menu
                             initialSelection: 5,
                             //label: const Text('Number of People'),
-
+                            //add on selected
                             dropdownMenuEntries: [
                               DropdownMenuEntry(value: 1, label: '1 Person'),
                               DropdownMenuEntry(value: 2, label: '2 People'),
