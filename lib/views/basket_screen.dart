@@ -124,6 +124,22 @@ class _BasketScreenState extends State<BasketScreen> {
             });
           }),
     ));
+
+    if (_confirmationMessage.isEmpty) {
+      children.add(const SizedBox(
+        height: 12,
+      ));
+
+      children.add(
+        Text(_confirmationMessage,
+        style: const TextStyle(fontWeight: FontWeight.bold))
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+    );
   }
 
   @override
@@ -150,7 +166,8 @@ class _BasketScreenState extends State<BasketScreen> {
         content = _buildEmptyState();
       }
     } else {
-      content = const Text('Basket list placeholder');
+      //  content = const Text('Basket list placeholder');
+      content = _buildBasketList(cart, items);
     }
 
     return Scaffold(
