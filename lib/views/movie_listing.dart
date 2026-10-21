@@ -5,6 +5,7 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class MovieListing extends StatelessWidget {
   final MovieModel movie;
@@ -126,7 +127,7 @@ class _Movie extends State<Movie> {
                             children: [
                               Image.asset(
                                 widget.movie.imagePath,
-                                width: 200,
+                                width: 175,
                                 height: 300,
                               ),
                               Expanded(
@@ -177,9 +178,15 @@ class _Movie extends State<Movie> {
                         Row(children: [
                           DropdownMenu<int>(
                             //Drop Down Menu
-                            initialSelection: 5,
-                            //label: const Text('Number of People'),
-                            //add on selected
+                            initialSelection: _quantity,
+                            onSelected: (int? value){
+                              if (value != null){
+                                setState(() {
+                                  _quantity = value;
+                                });
+                              }
+                            },
+
                             dropdownMenuEntries: [
                               DropdownMenuEntry(value: 1, label: '1 Person'),
                               DropdownMenuEntry(value: 2, label: '2 People'),
@@ -195,20 +202,33 @@ class _Movie extends State<Movie> {
 
                         //const SizedBox(height: 20),
                         Row(children: [
+
+                          // SizedBox(
+                          //   width: double.infinity,
+                          //   child: PrimaryButton(label: 'Add to Basket', onPressed: _addedBasket),
+                          // ),
+
+                          // SizedBox(
+                          //   width: double.infinity,
+                          //   child: PrimaryButton(label: 'Remove', onPressed: _removeBasket),
+                          // ),
+
+                          // Text(_comformationMessage, style: const TextStyle(fontWeight: FontWeight.bold),),
+
                           ElevatedButton(
-                            onPressed:
-                                _addedBasket, // calls on the function and changes the code
-                            child: const Text('Add to Basket'),
-                          ),
-                          ElevatedButton(
-                            onPressed:
-                                _removeBasket, // calls on the function and changes the code
-                            child: const Text('Remove'),
-                          ),
-                          Container(
-                            color: Colors.blue,
-                            child: Text(_comformationMessage), //displayed text
-                          ),
+                             onPressed:
+                                 _addedBasket, // calls on the function and changes the code
+                             child: const Text('Add to Basket'),
+                           ),
+                           ElevatedButton(
+                             onPressed:
+                                 _removeBasket, // calls on the function and changes the code
+                             child: const Text('Remove'),
+                           ),
+                           Container(
+                             color: Colors.blue,
+                             child: Text(_comformationMessage), //displayed text
+                           ),
                         ])
                       ])
                     ])))));
