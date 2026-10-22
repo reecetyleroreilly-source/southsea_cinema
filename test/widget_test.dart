@@ -8,6 +8,7 @@ import 'package:southsea_cinema/views/movie_listing.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
 //import 'package:southsea_cinema/views/movie_screen.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/Models/movie.dart';
 //import 'package:southsea_cinema/views/movie_listing.dart';
@@ -26,9 +27,7 @@ void main() {
     testWidgets('display zero movies', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: HomeView()
-          ),
+          home: Scaffold(body: HomeView()),
         ),
       );
       expect(find.text('Book'), findsWidgets);
@@ -38,14 +37,14 @@ void main() {
   group('App Smoke Tests', () {
     testWidgets('App display movie screen as home',
         (WidgetTester tester) async {
-      await tester.pumpWidget(const MaterialApp( home: HomeView()));
+      await tester.pumpWidget(const MaterialApp(home: HomeView()));
       expect(find.byType(HomeView), findsOneWidget);
       expect(find.byIcon(Icons.shopping_basket), findsOneWidget);
     });
 
     testWidgets('Display movie card with names and prices',
         (WidgetTester tester) async {
-      await tester.pumpWidget(const MaterialApp( home: HomeView()));
+      await tester.pumpWidget(const MaterialApp(home: HomeView()));
       expect(find.text('Iron Man 3'), findsOneWidget);
       expect(find.text('Book Tickets - £7.50'), findsOneWidget);
       expect(find.text('Pacific Rim'), findsOneWidget);
@@ -55,7 +54,11 @@ void main() {
 
     testWidgets('Tapping book naviagtion to movie info screen of selected mive',
         (WidgetTester tester) async {
-      await tester.pumpWidget(const MaterialApp( home: HomeView(),),);
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: HomeView(),
+        ),
+      );
 
       await tester.tap(find.text('Book').first);
       await tester.pumpAndSettle();
@@ -68,7 +71,6 @@ void main() {
       //   of: find.text('Add to Basket'),
       //   matching: find.byType(ElevatedButton),
       // );
-
 
       // await tester.tap(find.text('Add to Basket'));
       // await tester.pump();
@@ -119,5 +121,43 @@ void main() {
 
       expect(find.text('Please select at least 1 person'), findsOneWidget);
     });
+  });
+
+  testWidgets('PrimaryButton renders its label', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: PrimaryButton(
+            label: 'Checkout',
+            onPressed: () {},
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Checkout'), findsOneWidget);
+  });
+
+  testWidgets('PrimaryButton invokes onPressed when tapped',
+      (WidgetTester tester) async {
+    bool wasPressed = false;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: PrimaryButton(
+            label: 'Checkout',
+            onPressed: () {
+              wasPressed = true;
+            },
+          ),
+        ),
+      ),
+    );
+
+    await tester.tap(find.text('Checkout'));
+    await tester.pump();
+
+    expect(wasPressed, isTrue);
   });
 }

@@ -5,7 +5,7 @@ import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 
 void main() {
-  testWidgets('MovieScreen shows the sandwich list and a basket button', (
+  testWidgets('MovieScreen shows the movie list and a basket button', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const MaterialApp(home: HomeView()));
