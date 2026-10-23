@@ -58,7 +58,7 @@ class _Movie extends State<Movie> {
   void _addedBasket() {
     if (_quantity > 0) {
       final Cartitem item =
-          (Cartitem(movie: widget.movie, quantity: _quantity));
+          (Cartitem(movie: widget.movie, quantity: _quantity, date: widget.movie.date));
       CartRepository.instance.additem(item);
       setState(() {
         _comformationMessage =

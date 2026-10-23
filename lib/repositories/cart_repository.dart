@@ -38,7 +38,7 @@ class CartRepository {
   double getSubtotal() {
     double sum = 0.0;
     for (final Cartitem item in _items) {
-      sum += item.LineTotal;
+      sum += item.lineTotal;
     }
     return sum;
   }

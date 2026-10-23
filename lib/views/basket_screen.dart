@@ -4,6 +4,7 @@ import 'package:southsea_cinema/Models/CartItem.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class BasketScreen extends StatefulWidget {
   const BasketScreen({super.key});
@@ -39,13 +40,17 @@ class _BasketScreenState extends State<BasketScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '£${item.quantity} x ${item.movie.name}',
+                '${item.quantity} x ${item.movie.name}',
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               const SizedBox(
                 height: 4,
               ),
-              Text('£${item.LineTotal.toStringAsFixed(2)}'),
+              Text('${item.movie.date}'),
+              const SizedBox(
+                height: 4,
+              ),
+              Text('£${item.lineTotal.toStringAsFixed(2)}'),
             ],
           )),
           IconButton(
@@ -174,7 +179,9 @@ class _BasketScreenState extends State<BasketScreen> {
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
         actions: const [BasketButton()],
+        
       ),
+      drawer: const NavDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         //child: Text('Basket Placeholder'),

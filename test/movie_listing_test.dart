@@ -21,10 +21,10 @@ void main() {
 
   testWidgets('OrderScreen shows Quantity buttons and ',
       (WidgetTester tester) async {
-        await tester.pumpWidget(
-          const MaterialApp(home: MovieListing(movie: testMovie)),
-        );
+    await tester.pumpWidget(
+      const MaterialApp(home: MovieListing(movie: testMovie)),
+    );
 
-        expect(find.text(''), matcher)
-      });
+    expect(find.text(''), findsOneWidget);
+  });
 }
