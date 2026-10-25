@@ -6,6 +6,7 @@ import 'package:southsea_cinema/views/basket_screen.dart';
 //import 'package:southsea_cinema/views/movie_screen.dart';
 //import 'package:southsea_cinema/views/movie_listing.dart';
 //import 'package:southsea_cinema/views/movie_screen.dart';
+import 'package:southsea_cinema/views/settings_screen.dart';
 
 void main() {
   runApp(const SouthseaCinemaApp());
@@ -26,7 +27,10 @@ class SouthseaCinemaApp extends StatelessWidget {
         },
         '/basket': (BuildContext context){
           return const BasketScreen();
-        }
+        },
+        '/settings': (BuildContext context){
+          return const SettingsScreen();
+        },
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(

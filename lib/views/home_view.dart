@@ -5,6 +5,7 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_respository.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:southsea_cinema/widgets/Settings_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -21,7 +22,7 @@ class HomeView extends StatelessWidget {
           style: cinemaHeaderStyle,
         ),
 
-        actions: const [BasketButton()],
+        actions: const [SettingsButton(), BasketButton()],
 
 
         backgroundColor: cinemaSurface,

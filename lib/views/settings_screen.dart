@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+//import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/Models/User_Settings.dart';
@@ -62,7 +61,77 @@ class _SettingScreenState extends State<SettingsScreen> {
         actions: const [BasketButton()],
       ),
       body: SingleChildScrollView(
-        padding: ,
+        padding: const EdgeInsets.all(16.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Text(
+            'Customer Profile',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _nameController,
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Full Name',
+              hintText: 'Enter Your Name',
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          TextField(
+            controller: _addressController,
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Address',
+              hintText: 'Enter Your Address',
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          TextField(
+            controller: _emailController,
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Email Address',
+              hintText: 'Enter Your Email Address',
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              const Expanded(child: Text('Receive Ticket By Email')),
+              Switch(
+                  value: _receiveMovieTicket,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _receiveMovieTicket = value;
+                    });
+                  },
+                ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
+            child: PrimaryButton(
+              label: 'Save Settings', 
+              onPressed: _saveSettings,
+            ),
+          ),
+
+          if (_confirmationMessage.isEmpty)...{
+            const SizedBox(height: 12),
+            Text(
+              _confirmationMessage,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          }
+
+
+        ]),
       ),
     );
   }
