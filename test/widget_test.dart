@@ -7,7 +7,7 @@ import 'package:southsea_cinema/views/movie_listing.dart';
 //import 'package:southsea_cinema/repositories/movie_respository.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
 //import 'package:southsea_cinema/views/movie_screen.dart';
-import 'package:southsea_cinema/widgets/movie_card.dart';
+//import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 //import 'package:southsea_cinema/Models/movie.dart';

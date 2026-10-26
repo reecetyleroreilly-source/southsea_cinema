@@ -5,7 +5,7 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
-import 'package:southsea_cinema/widgets/primary_button.dart';
+//import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class MovieListing extends StatelessWidget {
   final MovieModel movie;
@@ -219,6 +219,11 @@ class _Movie extends State<Movie> {
                              onPressed:
                                  _addedBasket, // calls on the function and changes the code
                              child: const Text('Add to Basket'),
+                           ),
+                          ElevatedButton(
+                             onPressed:
+                                 _removeBasket, // calls on the function and changes the code
+                             child: const Text('Remove'),
                            ),
                           //  ElevatedButton(
                           //    onPressed:
