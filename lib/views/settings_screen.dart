@@ -68,6 +68,7 @@ class _SettingScreenState extends State<SettingsScreen> {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
+          
           TextField(
             controller: _nameController,
             keyboardType: TextInputType.emailAddress,

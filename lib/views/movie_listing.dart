@@ -88,11 +88,11 @@ class _Movie extends State<Movie> {
             alignment: Alignment.topLeft,
             //aligns the code to the top left
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
             child: Container(
                 //Holds the words
                 color: Color(0xFF1B1E28),
-                //width: 600,
+              
                 //height: 900,
 
                 child: Column(
@@ -133,12 +133,11 @@ class _Movie extends State<Movie> {
                               Expanded(
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment:CrossAxisAlignment.start,
                                     children: [
                                       const Text('Movie Description',
                                           style: TextStyle(
-                                              fontSize: 22,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold)),
 
                                       //const Text(
@@ -154,7 +153,11 @@ class _Movie extends State<Movie> {
                               height: 5), //used to space out the code
                         ],
                       ),
-                      Column(children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment:CrossAxisAlignment.start,
+                        children: [
+                          
                         Row(children: [
                           const Text('Select Quntities (Up to 5 in total)',
                               style: TextStyle(

@@ -20,10 +20,9 @@ void main (){
   ) async {
     await tester.pumpWidget(const MaterialApp(home: SettingsScreen()));
 
-    final Finder name = find.widgetWithText(TextField, 'Full name');
-    final Finder address =
-        find.widgetWithText(TextField, 'Address');
-    final Finder email = find.widgetWithText(TextField, 'Email address');
+    final Finder name = find.widgetWithText(TextField, 'Full Name');
+    final Finder address = find.widgetWithText(TextField, 'Address');
+    final Finder email = find.widgetWithText(TextField, 'Email Address');
 
     await tester.enterText(name, 'Alex Smith');
     await tester.enterText(address, '10 Elm Road, Portsmouth');

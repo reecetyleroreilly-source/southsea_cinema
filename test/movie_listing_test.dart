@@ -25,6 +25,6 @@ void main() {
       const MaterialApp(home: MovieListing(movie: testMovie)),
     );
 
-    expect(find.text(''), findsOneWidget);
+    expect(find.text('Add to Basket'), findsOneWidget);
   });
 }
