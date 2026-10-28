@@ -1,7 +1,3 @@
-import 'dart:convert';
-
-import 'package:southsea_cinema/views/movie_listing.dart';
-
 class MovieModel {
   final String id;
   final String name;
@@ -39,20 +35,33 @@ class MovieModel {
         description: description,
         date: date,
         price: price,
-        imagePath: imagePath);
+        imagePath: imagePath
+      );
   }
 
-  Map<String, dynamic> toJson(){
-    final Map<String, dynamic> data = <String, dynamic>(
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = <String, dynamic>(
+  //     'id': id,
+  //     'name': name,
+  //     'description': description,
+  //     'date': date,
+  //     'price': price,
+  //     'imagePath': imagePath
+  //   );
+  //   return data;
+  // }
+
+    Map<String, dynamic> toJson() {
+    return {
       'id': id,
       'name': name,
       'description': description,
       'date': date,
       'price': price,
-      'imagePath': = imagePath
-    );
-    return data;
+      'imagePath': imagePath,
+    };
   }
+
 
   //Movie(this.id, this.name, this.description, this.imagePath)
 }

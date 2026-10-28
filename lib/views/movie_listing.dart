@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/Models/CartItem.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/widgets/Settings_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
@@ -25,7 +26,7 @@ class MovieListing extends StatelessWidget {
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
-        actions: const [BasketButton()],
+        actions: const [SettingsButton(),BasketButton()],
       ),
       drawer: const NavDrawer(),
       //body: const SizedBox.shrink(
