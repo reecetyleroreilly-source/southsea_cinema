@@ -5,7 +5,21 @@ import 'package:southsea_cinema/views/movie_listing.dart';
 
 class MovieRespository {
   List<MovieModel>? _cachedMovies;
+
+  // List<MovieModel> getMovies() {
+  //   final List<MovieModel>? cachedMovies = _cachedMovies;
+  //   if (cachedMovies != null) {
+  //     return cachedMovies;
+  //   }
+  // }
+
   List<MovieModel> getMovies() {
+
+    final List<MovieModel>? cachedMovies = _cachedMovies;
+    if (cachedMovies != null) {
+      return cachedMovies;
+    }
+
     return const [
       MovieModel(
           id: 'ironman3',
