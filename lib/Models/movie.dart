@@ -35,8 +35,7 @@ class MovieModel {
         description: description,
         date: date,
         price: price,
-        imagePath: imagePath
-      );
+        imagePath: imagePath);
   }
 
   // Map<String, dynamic> toJson() {
@@ -51,8 +50,8 @@ class MovieModel {
   //   return data;
   // }
 
-    Map<String, dynamic> toJson() {
-    return {
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String,dynamic> {
       'id': id,
       'name': name,
       'description': description,
@@ -60,8 +59,8 @@ class MovieModel {
       'price': price,
       'imagePath': imagePath,
     };
+    return data;
   }
-
 
   //Movie(this.id, this.name, this.description, this.imagePath)
 }

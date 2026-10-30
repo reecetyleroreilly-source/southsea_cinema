@@ -55,7 +55,7 @@ class MovieRespository {
     final String jsonString = await rootBundle.loadString(assetPath);
     final dynamic decodedData = jsonDecode(jsonString);
     final List<dynamic> jsonList = decodedData as List<dynamic>;
-    final List<MovieModel> loadedMovies = {};
+    final List<MovieModel> loadedMovies =[];
 
     for (final dynamic item in jsonList) {
       final Map<String, dynamic> itemMap = item as Map<String, dynamic>;
