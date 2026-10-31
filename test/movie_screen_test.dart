@@ -11,7 +11,7 @@ void main() {
   ) async {
     await tester.pumpWidget(const MaterialApp(home: HomeView()));
 
-    expect(find.byType(MovieCard), findsWidgets);
+    expect(find.byType(HomeView), findsWidgets);
     expect(find.byIcon(Icons.person_outline), findsOneWidget);
     expect(find.byIcon(Icons.shopping_basket), findsOneWidget);
   });

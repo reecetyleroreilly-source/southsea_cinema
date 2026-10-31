@@ -12,8 +12,8 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MovieRespository respository = MovieRespository();
-    final List<MovieModel> movies = respository.getMovies();
+    // final MovieRespository respository = MovieRespository();
+    // final List<MovieModel> movies = respository.getMovies();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -48,18 +48,19 @@ class HomeView extends StatelessWidget {
 
       body: Align(
         alignment: Alignment.topLeft,
-        child: view(),
+        child: HomeViewState(),
       ),
     );
   }
 }
 
-class view extends StatefulWidget {
+class HomeViewState extends StatefulWidget {
+  const HomeViewState({super.key});
   @override
-  State<view> createState() => _view();
+  State<HomeViewState> createState() => _HomeViewState();
 }
 
-class _view extends State<view> {
+class _HomeViewState extends State<HomeViewState> {
   List<MovieModel> _movieList = [];
   bool _loading = true;
   String _errorMessage = '';
@@ -95,8 +96,8 @@ class _view extends State<view> {
 
   @override
   Widget build(BuildContext context) {
-    // final MovieRespository respository = MovieRespository();
-    // final List<MovieModel> movies = respository.getMovies();
+     //final MovieRespository respository = MovieRespository();
+     //final List<MovieModel> movies = respository.getMovies();
 
     final Widget body;
     if (_loading) {
