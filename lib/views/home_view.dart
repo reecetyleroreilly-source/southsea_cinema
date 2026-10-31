@@ -12,7 +12,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final MovieRespository respository = MovieRespository();
     final List<MovieModel> movies = respository.getMovies();
     return Scaffold(
@@ -21,10 +20,7 @@ class HomeView extends StatelessWidget {
           appTitle,
           style: cinemaHeaderStyle,
         ),
-
         actions: const [SettingsButton(), BasketButton()],
-
-
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
@@ -50,12 +46,89 @@ class HomeView extends StatelessWidget {
       //   ),
       // ),
 
-          body: ListView.builder(
-            itemCount: movies.length,
-            itemBuilder: (context, index) {
-            return MovieCard(movie: movies[index]);
-          }),
+      body: Align(
+        alignment: Alignment.topLeft,
+        child: view(),
+      ),
+    );
+  }
+}
 
+class view extends StatefulWidget {
+  @override
+  State<view> createState() => _view();
+}
+
+class _view extends State<view> {
+  List<MovieModel> _movieList = [];
+  bool _loading = true;
+  String _errorMessage = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMovies();
+  }
+
+  Future<void> _loadMovies() async {
+    try {
+      final MovieRespository respository = MovieRespository();
+      final List<MovieModel> movies =
+          await respository.LoadmovieJSONFromAssets();
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _movieList = movies;
+        _loading = false;
+      });
+    } catch (error) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _errorMessage = 'Could not load avaliable Movies: $error';
+        _loading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // final MovieRespository respository = MovieRespository();
+    // final List<MovieModel> movies = respository.getMovies();
+
+    final Widget body;
+    if (_loading) {
+      body = const Center(child: CircularProgressIndicator());
+    } else if (_errorMessage.isNotEmpty) {
+      body = Center(child: Text(_errorMessage));
+    } else {
+      body = ListView.builder(
+          itemCount: _movieList.length,
+          itemBuilder: (context, index) {
+            return MovieCard(movie: _movieList[index]);
+          });
+    }
+
+    return Scaffold(
+      //     appBar: AppBar(
+      // title: const Text(
+      //   appTitle,
+      //   style: cinemaHeaderStyle,
+      // ),
+
+      // actions: const [SettingsButton(), BasketButton()],
+
+      // ),
+
+      // body: ListView.builder(
+      //     itemCount: movies.length,
+      //     itemBuilder: (context, index) {
+      //       return MovieCard(movie: movies[index]);
+      //     }),
+
+      body: body,
     );
   }
 }
