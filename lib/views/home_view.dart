@@ -75,7 +75,7 @@ class _HomeViewState extends State<HomeViewState> {
     try {
       final MovieRespository respository = MovieRespository();
       final List<MovieModel> movies =
-          await respository.LoadmovieJSONFromAssets();
+          await respository.loadMovieJSONFromAssets();
       if (!mounted) {
         return;
       }

@@ -5,7 +5,8 @@
         "id": "ironman3",
         "imagePath": "assets/images/Iron Man Poster.jpg",
         "name": "Iron Man 3",
-        "price": 7.50
+        "price": 7.50,
+        "age_rating": "(12a)"
     },
     {
         "date": "Thursday 12th Decemeber 2026 - 13:00 to 15:11",
@@ -13,6 +14,25 @@
         "id": "pacificrim",
         "imagePath": "assets/images/Pacific Rim Poster.jpg",
         "name": "Pacific Rim",
-        "price": 6.50
+        "price": 6.50,
+        "age_rating": "(12a)"
+    },
+    {
+        "date": "Sunday 1st November 2026 - 16:00 to 17:30",
+        "description": "supervillain Megamind as he achieves his dream of defeating his nemesis, Metro Man, only to find himself without a purpose and forced to create a new hero-turned-villain to restore balance",
+        "id": "megamind",
+        "imagePath": "assets/images/MegaMind Poster.jpg",
+        "name": "MegaMind",
+        "price": 9.99,
+        "age_rating": "(PG)"
+    },
+    {
+        "date": "Non Existent",
+        "description": "This Movie doesnt exist",
+        "id": "Non Existent",
+        "imagePath": "assets/images/non-existent.jpg",
+        "name": "Non Existent ",
+        "price": 0.00,
+        "age_rating": "(12a)"
     }
 ]

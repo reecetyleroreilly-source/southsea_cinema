@@ -48,10 +48,15 @@ void main() {
     testWidgets('Display movie card with names and prices',
         (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp(home: HomeView()));
+      await tester.pumpAndSettle();
       expect(find.text('Iron Man 3'), findsOneWidget);
       expect(find.text('Book Tickets - £7.50'), findsOneWidget);
       expect(find.text('Pacific Rim'), findsOneWidget);
       expect(find.text('Book Tickets - £6.50'), findsOneWidget);
+      // expect(find.text('MegaMind'), findsOneWidget);
+      // expect(find.text('Book Tickets - £9.99'), findsOneWidget);
+      // expect(find.text('Non Existent'), findsOneWidget);
+      // expect(find.text('Book Tickets - £0.00'), findsOneWidget);
       expect(find.text('Book'), findsNWidgets(2));
     });
 
@@ -92,7 +97,8 @@ void main() {
           description: 'test description',
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
-          imagePath: 'assets/images/Iron Man Poster.jpg');
+          imagePath: 'assets/images/Iron Man Poster.jpg',
+          age_rating: '(12a)');
 
       await tester.pumpWidget(
         const MaterialApp(home: Movie(movie: movie)),
@@ -111,7 +117,8 @@ void main() {
           description: 'test description',
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
-          imagePath: 'assets/images/Iron Man Poster.jpg');
+          imagePath: 'assets/images/Iron Man Poster.jpg',
+          age_rating: '(12a)');
 
       await tester.pumpWidget(const MaterialApp(
         home: MovieListing(movie: movie),

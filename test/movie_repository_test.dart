@@ -3,6 +3,8 @@ import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_respository.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   group('repository unit test', () {
     test('getMovie returns two movies', () {
       final MovieRespository respository = MovieRespository();
@@ -37,6 +39,18 @@ void main() {
       final MovieModel? movie = respository.getMoviesByID('non-existent');
 
       expect(movie, isNull);
+    });
+
+    test('LoadMoviesFromAssets reads the bundled JSON menu', () async {
+      final MovieRespository respository = MovieRespository();
+      final List<MovieModel> movies =
+          await respository.loadMovieJSONFromAssets();
+
+      expect(movies.length, 4);
+      expect(movies[0].id, 'ironman3');
+      expect(movies[1].id, 'pacificrim');
+      expect(movies[2].id, 'megamind');
+      expect(movies[3].id, 'Non Existent');
     });
   });
 }

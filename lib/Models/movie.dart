@@ -5,15 +5,16 @@ class MovieModel {
   final String date;
   final double price;
   final String imagePath;
+  final String age_rating;
 
-  const MovieModel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.date,
-    required this.price,
-    required this.imagePath,
-  });
+  const MovieModel(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.date,
+      required this.price,
+      required this.imagePath,
+      required this.age_rating});
 
   String get formattedPrice {
     final String formattedValue = price.toStringAsFixed(2);
@@ -27,6 +28,7 @@ class MovieModel {
     final String date = json['date'] as String;
     final num priceNumber = json['price'] as num;
     final double price = priceNumber.toDouble();
+    final String age_rating = json['age_rating'] as String;
     final String imagePath = json['imagePath'] as String;
 
     return MovieModel(
@@ -35,6 +37,7 @@ class MovieModel {
         description: description,
         date: date,
         price: price,
+        age_rating: age_rating,
         imagePath: imagePath);
   }
 
@@ -51,13 +54,14 @@ class MovieModel {
   // }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String,dynamic> {
+    final Map<String, dynamic> data = <String, dynamic>{
       'id': id,
       'name': name,
       'description': description,
       'date': date,
       'price': price,
       'imagePath': imagePath,
+      'age_rating': age_rating
     };
     return data;
   }

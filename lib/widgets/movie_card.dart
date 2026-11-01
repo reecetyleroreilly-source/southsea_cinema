@@ -32,19 +32,28 @@ class MovieCard extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text('(12a)')
+                  Text(movie.age_rating)
                 ],
               ),
               Row(
                   spacing: 10.0,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      movie.imagePath,
-                      width: 200,
-                      height: 240,
-                      fit: BoxFit.cover,
-                    ),
+                    Image.asset(movie.imagePath,
+                        width: 200,
+                        height: 240,
+                        fit: BoxFit.cover, 
+                        errorBuilder: (
+                          BuildContext context,
+                          Object error,
+                          StackTrace? stacktrace,
+                        ) {
+                          return const SizedBox(
+                            width: 80,
+                            height: 80,
+                            child: Center(child: Text('Image Unavaliable')),
+                          );
+                        }),
                     Expanded(
                         child: Container(
                       color: Color(0xFF1B1E28),
@@ -62,8 +71,13 @@ class MovieCard extends StatelessWidget {
                   ]),
               Row(
                 children: [
-                  Text('Book Tickets - ${movie.formattedPrice}',
-                      style: const TextStyle(color: cinemaFontWhite, fontSize: 16, fontWeight: FontWeight.bold),),
+                  Text(
+                    'Book Tickets - ${movie.formattedPrice}',
+                    style: const TextStyle(
+                        color: cinemaFontWhite,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Column(
@@ -81,7 +95,7 @@ class MovieCard extends StatelessWidget {
                       },
                       //child: Text('Book - ${movie.name}'))
                       child: Text('Book')),
-                ],    
+                ],
               )
             ],
           )),

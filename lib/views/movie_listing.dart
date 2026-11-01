@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/Models/CartItem.dart';
 import 'package:southsea_cinema/Models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/repositories/movie_respository.dart';
+//import 'package:southsea_cinema/repositories/movie_respository.dart';
 import 'package:southsea_cinema/widgets/Settings_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
@@ -120,6 +120,8 @@ class _Movie extends State<Movie> {
                                             fontWeight: FontWeight.bold,
                                             color: cinemaFontWhite),
                                       )),
+                                    
+                                    Text(widget.movie.age_rating),
 
                                   const SizedBox(
                                       height: 5), //spacing between words
