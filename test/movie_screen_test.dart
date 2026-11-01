@@ -7,7 +7,9 @@ import 'package:flutter/services.dart';
 //import 'package:southsea_cinema/widgets/movie_card.dart';
 
 void main() {
-  setUp(() {});
+  setUp(() {
+    rootBundle.clear();
+  });
 
   testWidgets(
       'MovieScreen shows the movie list and a basket button, settings button', (

@@ -5,22 +5,23 @@ import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
-//import 'package:southsea_cinema/repositories/movie_respository.dart';
-//import 'package:southsea_cinema/screens/movie_info_screen.dart';
-//import 'package:southsea_cinema/views/movie_screen.dart';
-//import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
-
-import 'movie_listing_test.dart';
-//import 'package:southsea_cinema/widgets/movie_card.dart';
-//import 'package:southsea_cinema/Models/movie.dart';
-//import 'package:southsea_cinema/views/movie_listing.dart';
-//import 'package:southsea_cinema/widgets/movie_card.dart';
-//import 'package:southsea_cinema/widgets/movie_card.dart';
-//import 'package:southsea_cinema/screens/movie_info_screen.dart';
-//import 'package:southsea_cinema/widgets/movie_card.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  setUp(() {
+    rootBundle.clear();
+  });
+
+  const MovieModel testMovie = MovieModel(
+      id: 'ironman3',
+      name: 'Iron Man 3',
+      description: 'test description',
+      date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
+      price: 7.50,
+      imagePath: 'assets/images/Iron Man Poster.jpg',
+      age_rating: '(12a)');
+
   testWidgets('Basic app loading test', (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
     expect(find.text('Southsea Cinema And Art Centre'), findsOneWidget);
@@ -30,7 +31,10 @@ void main() {
     testWidgets('display zero movies', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(body: MovieCard(movie: testMovie,)),
+          home: Scaffold(
+              body: MovieCard(
+            movie: testMovie,
+          )),
         ),
       );
       expect(find.text('Book'), findsWidgets);
@@ -58,13 +62,23 @@ void main() {
       // expect(find.text('Non Existent'), findsOneWidget);
       // expect(find.text('Book Tickets - £0.00'), findsOneWidget);
       expect(find.text('Book'), findsNWidgets(2));
+
+      await tester.scrollUntilVisible(find.text('MegaMind'), 150);
+      //expect(find.text('£9.99'), findsOneWidget);
+      await tester.scrollUntilVisible(find.text('Non Existent'), 150);
+      await tester.pump();
+      //expect(find.text('£0.00'), findsOneWidget);
+      //expect(find.text('Image unavaliable'), findsOneWidget);
+      expect(tester.takeException(), isNull);
     });
 
     testWidgets('Tapping book naviagtion to movie info screen of selected mive',
         (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: MovieCard(movie: testMovie,),
+          home: MovieCard(
+            movie: testMovie,
+          ),
         ),
       );
 
