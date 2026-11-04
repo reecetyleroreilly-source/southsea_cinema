@@ -4,6 +4,12 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/Models/User_Settings.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+const String prefName = 'User_name';
+const String prefAddress = 'user_address';
+const String prefEmail = 'user_email';
+const String prefNewsletter = 'user_ticket';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -18,7 +24,8 @@ class _SettingScreenState extends State<SettingsScreen> {
   late TextEditingController _nameController;
   late TextEditingController _addressController;
   late TextEditingController _emailController;
-  bool _receiveMovieTicket = false;
+
+  bool _recieveNewsletter = false;
   String _confirmationMessage = '';
 
   @override
@@ -27,6 +34,7 @@ class _SettingScreenState extends State<SettingsScreen> {
     _nameController = TextEditingController();
     _addressController = TextEditingController();
     _emailController = TextEditingController();
+    _loadSettings();
   }
 
   @override
@@ -37,19 +45,67 @@ class _SettingScreenState extends State<SettingsScreen> {
     super.dispose();
   }
 
-  void _saveSettings() {
+  Future<void> _saveSettings() async {
     final String name = _nameController.text.trim();
     final String address = _addressController.text.trim();
     final String email = _emailController.text.trim();
+
+    final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+    await prefs.setString(prefName, name);
+    await prefs.setString(prefAddress, address);
+    await prefs.setString(prefEmail, email);
+    await prefs.setBool(prefNewsletter, _recieveNewsletter);
 
     final UserSettings settings = UserSettings(
         name: name,
         address: address,
         email: email,
-        receiveMovieTicket: _receiveMovieTicket);
+        recieveNewsletter: _recieveNewsletter);
 
     setState(() {
-      _confirmationMessage = 'Settins saved for ${settings.name}';
+      if (!mounted) {
+        return;
+      }
+
+      _confirmationMessage = 'Settings saved for ${settings.name}';
+    });
+  }
+
+  Future<void> _loadSettings() async {
+    final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+    final String? savedName = await prefs.getString(prefName);
+    final String? savedAddress = await prefs.getString(prefAddress);
+    final String? savedEmail = await prefs.getString(prefEmail);
+    final bool? savedNewsletter = await prefs.getBool(prefNewsletter);
+
+    String name = '';
+    if (savedName != null) {
+      name = savedName;
+    }
+
+    String address = '';
+    if (savedAddress != null) {
+      name = savedAddress;
+    }
+
+    String email = '';
+    if (savedEmail != null) {
+      name = savedEmail;
+    }
+
+    bool newsletter = false;
+    if (savedNewsletter != null) {
+      newsletter = savedNewsletter;
+    }
+
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      _nameController.text = name;
+      _addressController.text = address;
+      _emailController.text = email;
+      _recieveNewsletter = newsletter;
     });
   }
 
@@ -68,7 +124,7 @@ class _SettingScreenState extends State<SettingsScreen> {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           TextField(
             controller: _nameController,
             keyboardType: TextInputType.emailAddress,
@@ -103,35 +159,40 @@ class _SettingScreenState extends State<SettingsScreen> {
           const SizedBox(height: 16),
           Row(
             children: [
-              const Expanded(child: Text('Receive Ticket By Email')),
+              const Expanded(child: Text('Receive newsletter By Email')),
               Switch(
-                  value: _receiveMovieTicket,
-                  onChanged: (bool value) {
-                    setState(() {
-                      _receiveMovieTicket = value;
-                    });
-                  },
-                ),
+                value: _recieveNewsletter,
+                onChanged: (bool value) {
+                  setState(() {
+                    _recieveNewsletter = value;
+                  });
+                },
+              ),
             ],
           ),
           const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
             child: PrimaryButton(
-              label: 'Save Settings', 
-              onPressed: _saveSettings,
+              label: 'Save Settings',
+              onPressed: (_saveSettings),
             ),
           ),
 
-          if (_confirmationMessage.isEmpty)...{
+          if (_confirmationMessage.isEmpty) ...{
             const SizedBox(height: 12),
             Text(
               _confirmationMessage,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-          }
+          },
 
+          Text(_confirmationMessage),
 
+          //these just to see if something from the
+          Text(_nameController.text),
+          Text(_addressController.text),
+          Text(_emailController.text),
         ]),
       ),
     );

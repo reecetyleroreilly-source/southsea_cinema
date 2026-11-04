@@ -238,16 +238,14 @@ class _Movie extends State<Movie> {
                                         _addedBasket, // calls on the function and changes the code
                                     child: const Text('Add to Basket'),
                                   ),
-                                  ElevatedButton(
-                                    onPressed:
-                                        _removeBasket, // calls on the function and changes the code
-                                    child: const Text('Remove'),
-                                  ),
-                                  //  ElevatedButton(
-                                  //    onPressed:
-                                  //        _removeBasket, // calls on the function and changes the code
-                                  //    child: const Text('Remove'),
-                                  //  ),
+
+
+                                   ElevatedButton(
+                                     onPressed:
+                                         _removeBasket, // calls on the function and changes the code
+                                     child: const Text('Remove'),
+                                   ),
+
                                   Container(
                                     color: Colors.blue,
                                     child: Text(
