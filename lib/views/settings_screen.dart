@@ -5,6 +5,8 @@ import 'package:southsea_cinema/Models/User_Settings.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:southsea_cinema/widgets/Settings_button.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 const String prefName = 'User_name';
 const String prefAddress = 'user_address';
@@ -85,12 +87,12 @@ class _SettingScreenState extends State<SettingsScreen> {
 
     String address = '';
     if (savedAddress != null) {
-      name = savedAddress;
+      address = savedAddress;
     }
 
     String email = '';
     if (savedEmail != null) {
-      name = savedEmail;
+      email = savedEmail;
     }
 
     bool newsletter = false;
@@ -114,8 +116,12 @@ class _SettingScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
-        actions: const [BasketButton()],
+        actions: const [SettingsButton(), BasketButton()],
+        iconTheme: const IconThemeData(color: cinemaBrand),
       ),
+
+      drawer: const NavDrawer(),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -190,9 +196,9 @@ class _SettingScreenState extends State<SettingsScreen> {
           Text(_confirmationMessage),
 
           //these just to see if something from the
-          Text(_nameController.text),
-          Text(_addressController.text),
-          Text(_emailController.text),
+          // Text(_nameController.text),
+          // Text(_addressController.text),
+          // Text(_emailController.text),
         ]),
       ),
     );

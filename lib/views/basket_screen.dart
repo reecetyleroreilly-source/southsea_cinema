@@ -179,6 +179,7 @@ class _BasketScreenState extends State<BasketScreen> {
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
         actions: const [BasketButton()],
+        iconTheme: const IconThemeData(color: cinemaBrand),
         
       ),
       drawer: const NavDrawer(),
