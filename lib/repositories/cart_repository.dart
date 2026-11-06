@@ -1,4 +1,4 @@
-import 'package:southsea_cinema/Models/CartItem.dart';
+import 'package:southsea_cinema/Models/cart_item.dart';
 
 class CartRepository {
   CartRepository._internal();
