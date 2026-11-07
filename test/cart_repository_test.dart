@@ -12,7 +12,7 @@ const MovieModel testMovie1 = MovieModel(
     date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
     price: 7.50,
     imagePath: 'assets/images/Iron Man Poster.jpg', 
-    age_rating: '(12a)');
+    ageRating: '(12a)');
 
 const MovieModel testmovie2 = MovieModel(
     id: 'pacificrim',
@@ -22,7 +22,7 @@ const MovieModel testmovie2 = MovieModel(
     date: 'Thursday 12th Decemeber 2026 - 13:00 to 15:11 ',
     price: 6.50,
     imagePath: 'assets/images/Pacific Rim Poster.jpg',
-    age_rating: '(12a)');
+    ageRating: '(12a)');
 
 void main() {
   setUp(() {

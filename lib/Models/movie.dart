@@ -5,7 +5,7 @@ class MovieModel {
   final String date;
   final double price;
   final String imagePath;
-  final String age_rating;
+  final String ageRating;
 
   const MovieModel(
       {required this.id,
@@ -14,7 +14,7 @@ class MovieModel {
       required this.date,
       required this.price,
       required this.imagePath,
-      required this.age_rating});
+      required this.ageRating});
 
   String get formattedPrice {
     final String formattedValue = price.toStringAsFixed(2);
@@ -28,7 +28,7 @@ class MovieModel {
     final String date = json['date'] as String;
     final num priceNumber = json['price'] as num;
     final double price = priceNumber.toDouble();
-    final String age_rating = json['age_rating'] as String;
+    final String ageRating = json['ageRating'] as String;
     final String imagePath = json['imagePath'] as String;
 
     return MovieModel(
@@ -37,7 +37,7 @@ class MovieModel {
         description: description,
         date: date,
         price: price,
-        age_rating: age_rating,
+        ageRating: ageRating,
         imagePath: imagePath);
   }
 
@@ -61,7 +61,7 @@ class MovieModel {
       'date': date,
       'price': price,
       'imagePath': imagePath,
-      'age_rating': age_rating
+      'ageRating': ageRating
     };
     return data;
   }

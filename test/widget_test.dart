@@ -20,7 +20,7 @@ void main() {
       date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
       price: 7.50,
       imagePath: 'assets/images/Iron Man Poster.jpg',
-      age_rating: '(12a)');
+      ageRating: '(12a)');
 
   testWidgets('Basic app loading test', (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
@@ -112,7 +112,7 @@ void main() {
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
           imagePath: 'assets/images/Iron Man Poster.jpg',
-          age_rating: '(12a)');
+          ageRating: '(12a)');
 
       await tester.pumpWidget(
         const MaterialApp(home: Movie(movie: movie)),
@@ -132,7 +132,7 @@ void main() {
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
           imagePath: 'assets/images/Iron Man Poster.jpg',
-          age_rating: '(12a)');
+          ageRating: '(12a)');
 
       await tester.pumpWidget(const MaterialApp(
         home: MovieListing(movie: movie),

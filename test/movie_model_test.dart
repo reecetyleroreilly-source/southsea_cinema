@@ -15,7 +15,7 @@ void main() {
           date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
           price: 7.50,
           imagePath: 'assets/images/Iron Man Poster.jpg',
-          age_rating: '(12a)');
+          ageRating: '(12a)');
 
       expect(movie.id, 'ironman3');
       expect(movie.name, 'Iron Man 3');
@@ -37,7 +37,7 @@ void main() {
         date: 'Thursday 12th Decemeber 2026 - 13:00 to 15:11',
         price: 7.50,
         imagePath: 'assets/images/Pacific Rim Poster.jpg',
-        age_rating: '(12a)',
+        ageRating: '(12a)',
       );
 
       expect(movie.formattedPrice, '£7.50');
@@ -52,7 +52,7 @@ void main() {
         'date': 'Friday 2nd October 2026 - 9:00am to 11:10am',
         'price': 7.50,
         'imagePath': 'assets/images/Iron Man Poster.jpg',
-        'age_rating': '(12a)'
+        'ageRating': '(12a)'
       };
 
       final MovieModel movies = MovieModel.fromJson(data);
@@ -63,7 +63,7 @@ void main() {
       expect(movies.date, 'Friday 2nd October 2026 - 9:00am to 11:10am');
       expect(movies.price, 7.50);
       expect(movies.imagePath, 'assets/images/Iron Man Poster.jpg');
-      expect(movies.age_rating, '(12a)');
+      expect(movies.ageRating, '(12a)');
       expect(movies.toJson(), data);
     });
 
@@ -75,7 +75,7 @@ void main() {
         'date': 'friday 2nd October 2026 - 9:00am to 11:10am ',
         'price': 7,
         'imagePath': 'assets/images/Iron Man Poster.jpg',
-        'age_rating': '(12a)'
+        'ageRating': '(12a)'
       };
       final MovieModel movies = MovieModel.fromJson(data);
       expect(movies.price, 7.0);

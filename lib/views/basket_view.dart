@@ -47,7 +47,7 @@ class _BasketScreenState extends State<BasketScreen> {
               const SizedBox(
                 height: 4,
               ),
-              Text('${item.movie.date}'),
+              Text(item.movie.date),
               const SizedBox(
                 height: 4,
               ),

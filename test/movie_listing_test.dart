@@ -13,7 +13,7 @@ const MovieModel testMovie = MovieModel(
     date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
     price: 7.50,
     imagePath: 'assets/images/Iron Man Poster.jpg',
-    age_rating: '(12a)');
+    ageRating: '(12a)');
 
 void main() {
   setUp(() {

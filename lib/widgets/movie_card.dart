@@ -32,7 +32,7 @@ class MovieCard extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(movie.age_rating)
+                  Text(movie.ageRating)
                 ],
               ),
               Row(

@@ -121,7 +121,7 @@ class _Movie extends State<Movie> {
                                             color: cinemaFontWhite),
                                       )),
                                     
-                                    Text(widget.movie.age_rating),
+                                    Text(widget.movie.ageRating),
 
                                   const SizedBox(
                                       height: 5), //spacing between words
