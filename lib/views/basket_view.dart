@@ -5,6 +5,7 @@ import 'package:southsea_cinema/repositories/cart_repository.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/widgets/settings_button.dart';
 
 class BasketScreen extends StatefulWidget {
   const BasketScreen({super.key});
@@ -178,7 +179,7 @@ class _BasketScreenState extends State<BasketScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
-        actions: const [BasketButton()],
+        actions: const [SettingsButton(), BasketButton()],
         iconTheme: const IconThemeData(color: cinemaBrand),
         
       ),
