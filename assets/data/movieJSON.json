@@ -6,7 +6,7 @@
         "imagePath": "assets/images/Iron Man Poster.jpg",
         "name": "Iron Man 3",
         "price": 7.50,
-        "age_rating": "(12a)"
+        "ageRating": "(12a)"
     },
     {
         "date": "Thursday 12th Decemeber 2026 - 13:00 to 15:11",
@@ -15,7 +15,7 @@
         "imagePath": "assets/images/Pacific Rim Poster.jpg",
         "name": "Pacific Rim",
         "price": 6.50,
-        "age_rating": "(12a)"
+        "ageRating": "(12a)"
     },
     {
         "date": "Sunday 1st November 2026 - 16:00 to 17:30",
@@ -24,7 +24,7 @@
         "imagePath": "assets/images/MegaMind Poster.jpg",
         "name": "MegaMind",
         "price": 9.99,
-        "age_rating": "(PG)"
+        "ageRating": "(PG)"
     },
     {
         "date": "Non Existent",
@@ -33,6 +33,6 @@
         "imagePath": "assets/images/non-existent.jpg",
         "name": "Non Existent ",
         "price": 0.00,
-        "age_rating": "(12a)"
+        "ageRating": "(12a)"
     }
 ]

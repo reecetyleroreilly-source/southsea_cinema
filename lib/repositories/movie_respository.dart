@@ -53,7 +53,7 @@ class MovieRespository {
   }
 
   Future<List<MovieModel>> loadMovieJSONFromAssets({
-    String assetPath = 'assets/data/movieJSON.json',
+    String assetPath = 'assets/data/moviejson.json',
   }) async {
     final String jsonString = await rootBundle.loadString(assetPath);
     final dynamic decodedData = jsonDecode(jsonString);
