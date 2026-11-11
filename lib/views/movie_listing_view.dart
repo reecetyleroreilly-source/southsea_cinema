@@ -246,12 +246,17 @@ class _Movie extends State<Movie> {
                                      child: const Text('Remove'),
                                    ),
 
-                                  Container(
+                                ]),
+
+                                Row(
+                                  children: [
+                                    Container(
                                     color: Colors.blue,
-                                    child: Text(
+                                      child: Text(
                                         _comformationMessage), //displayed text
                                   ),
-                                ])
+                                  ],
+                                )
                               ])
                         ])))));
   }
