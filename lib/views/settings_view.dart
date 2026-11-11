@@ -1,7 +1,7 @@
 //import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/Models/user_settings.dart';
+import 'package:southsea_cinema/models/user_settings.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';

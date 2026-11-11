@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:southsea_cinema/Models/booking_record.dart';
+import 'package:southsea_cinema/models/booking_record.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MovieDataBase {

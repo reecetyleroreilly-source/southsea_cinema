@@ -1,4 +1,4 @@
-import 'package:southsea_cinema/Models/movie.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class Cartitem {
   final MovieModel movie;

@@ -1,4 +1,4 @@
-import 'package:southsea_cinema/Models/movie.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 //import 'package:southsea_cinema/views/movie_listing.dart';

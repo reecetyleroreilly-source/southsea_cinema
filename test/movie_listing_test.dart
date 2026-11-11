@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 //import 'package:southsea_cinema/Models/CartItem.dart';
-import 'package:southsea_cinema/Models/movie.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
 //import 'package:southsea_cinema/views/basket_screen.dart';
 import 'package:southsea_cinema/views/movie_listing_view.dart';

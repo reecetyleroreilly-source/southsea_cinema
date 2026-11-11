@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:southsea_cinema/Models/cart_item.dart';
-import 'package:southsea_cinema/Models/movie.dart';
+import 'package:southsea_cinema/models/cart_item.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
 //import 'package:southsea_cinema/repositories/movie_respository.dart';
 import 'package:southsea_cinema/widgets/settings_button.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:southsea_cinema/Models/movie.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_respository.dart';
 
 void main() {
