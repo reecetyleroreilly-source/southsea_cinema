@@ -8,6 +8,7 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
 //import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/widgets/booking_button.dart';
 
 class MovieListing extends StatelessWidget {
   final MovieModel movie;
@@ -27,7 +28,7 @@ class MovieListing extends StatelessWidget {
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
-        actions: const [SettingsButton(), BasketButton()],
+        actions: const [BookingButton(), BasketButton(), SettingsButton()],
       ),
       drawer: const NavDrawer(),
       //body: const SizedBox.shrink(

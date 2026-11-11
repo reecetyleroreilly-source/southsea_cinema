@@ -3,6 +3,8 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/database/cinema_db.dart';
 import 'package:southsea_cinema/models/booking_record.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
+import 'package:southsea_cinema/widgets/booking_button.dart';
+import 'package:southsea_cinema/widgets/settings_button.dart';
 
 class BookingView extends StatefulWidget {
   const BookingView({super.key});
@@ -25,7 +27,7 @@ class _BookingViewState extends State<BookingView> {
       body = const Center(child: CircularProgressIndicator());
     } else if (_errorMessage.isNotEmpty) {
       body = Center(child: Text(_errorMessage));
-    } else if (_orders.isEmpty) {
+    } else if (_booking.isEmpty) {
       body = const Center(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 32.0),
@@ -48,7 +50,7 @@ class _BookingViewState extends State<BookingView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
-        actions: const [BasketButton()],
+        actions: const [BookingButton(), BasketButton(), SettingsButton()],
       ),
       body: body,
     );

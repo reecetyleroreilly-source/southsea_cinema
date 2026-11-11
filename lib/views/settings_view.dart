@@ -7,6 +7,7 @@ import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:southsea_cinema/widgets/settings_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/widgets/booking_button.dart';
 
 const String prefName = 'User_name';
 const String prefAddress = 'user_address';
@@ -116,7 +117,7 @@ class _SettingScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
-        actions: const [SettingsButton(), BasketButton()],
+        actions: const [BookingButton(), BasketButton(), SettingsButton()],
         iconTheme: const IconThemeData(color: cinemaBrand),
       ),
 

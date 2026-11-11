@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/views/booking_view.dart';
 import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/views/basket_view.dart';
 //import 'package:southsea_cinema/widgets/basket_button.dart';
@@ -8,6 +9,7 @@ import 'package:southsea_cinema/views/basket_view.dart';
 //import 'package:southsea_cinema/views/movie_screen.dart';
 import 'package:southsea_cinema/views/settings_view.dart';
 import 'package:flutter/foundation.dart';
+import 'package:southsea_cinema/views/booking_view.dart';
 
 bool isSupportedPlatform() {
   if (kIsWeb) {
@@ -45,6 +47,10 @@ class SouthseaCinemaApp extends StatelessWidget {
         },
         '/settings': (BuildContext context){
           return const SettingsScreen();
+        },
+
+         '/bookings': (BuildContext context) {
+          return const BookingView();
         },
       },
       debugShowCheckedModeBanner: false,
