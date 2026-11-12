@@ -7,6 +7,8 @@ import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/settings_button.dart';
 import 'package:southsea_cinema/widgets/booking_button.dart';
+import 'package:southsea_cinema/database/cinema_db.dart';
+import 'package:southsea_cinema/models/booking_record.dart';
 
 class BasketScreen extends StatefulWidget {
   const BasketScreen({super.key});
@@ -125,10 +127,12 @@ class _BasketScreenState extends State<BasketScreen> {
       child: PrimaryButton(
           label: 'checkout',
           onPressed: () {
-            setState(() {
-              cart.clear();
-              _confirmationMessage = 'Your Movie is booked';
-            });
+            // setState(() {
+            //   cart.clear();
+            //   _confirmationMessage = 'Your Movie is booked';
+            // });
+
+            _checkout(cart, items);
           }),
     ));
 
@@ -137,16 +141,65 @@ class _BasketScreenState extends State<BasketScreen> {
         height: 12,
       ));
 
-      children.add(
-        Text(_confirmationMessage,
-        style: const TextStyle(fontWeight: FontWeight.bold))
-      );
+      children.add(Text(_confirmationMessage,
+          style: const TextStyle(fontWeight: FontWeight.bold)));
     }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: children,
     );
+  }
+
+  String _buildSummary(List<Cartitem> items) {
+    final List<String> parts = [];
+    for (final Cartitem item in items) {
+      parts.add('${item.quantity} X ${item.movie.name}');
+    }
+    return parts.join(', ');
+  }
+
+  String _formatDate(DateTime now) {
+    final String day = now.day.toString().padLeft(2, '0');
+    final String month = now.month.toString().padLeft(2, '0');
+    final String hour = now.hour.toString().padLeft(2, '0');
+    final String minute = now.minute.toString().padLeft(2, '0');
+
+    return '$day/$month/${now.year} $hour:$minute';
+  }
+
+  Future<void> _checkout(CartRepository cart, List<Cartitem> items) async {
+    final String summary = _buildSummary(items);
+    final double total = cart.getTotalDue();
+    final String date = _formatDate(DateTime.now());
+
+    try {
+      final MovieDataBase database = MovieDataBase.instance;
+      final int bookingNumber = await database.getNextBookingNumber();
+      final BookingRecord record = BookingRecord(
+          bookingNumber: bookingNumber,
+          summary: summary,
+          total: total,
+          date: date);
+
+      await database.insertBooking(record);
+      cart.clear();
+
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _confirmationMessage = 'Booking $bookingNumber saved';
+      });
+      Navigator.pushNamed(context, '/bookings');
+    } catch (error) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _confirmationMessage = 'Could not save your booking: $error';
+      });
+    }
   }
 
   @override
@@ -182,7 +235,6 @@ class _BasketScreenState extends State<BasketScreen> {
         title: const Text(appTitle, style: cinemaHeaderStyle),
         actions: const [BookingButton(), BasketButton(), SettingsButton()],
         iconTheme: const IconThemeData(color: cinemaBrand),
-        
       ),
       drawer: const NavDrawer(),
       body: SingleChildScrollView(

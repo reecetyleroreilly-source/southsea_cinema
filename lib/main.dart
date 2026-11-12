@@ -9,7 +9,7 @@ import 'package:southsea_cinema/views/basket_view.dart';
 //import 'package:southsea_cinema/views/movie_screen.dart';
 import 'package:southsea_cinema/views/settings_view.dart';
 import 'package:flutter/foundation.dart';
-import 'package:southsea_cinema/views/booking_view.dart';
+
 
 bool isSupportedPlatform() {
   if (kIsWeb) {

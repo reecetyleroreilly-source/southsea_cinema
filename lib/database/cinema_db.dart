@@ -3,6 +3,8 @@ import 'package:southsea_cinema/models/booking_record.dart';
 import 'package:sqflite/sqflite.dart';
 
 class MovieDataBase {
+  static const String _bookingsTable = 'Booking';
+
   MovieDataBase._internal();
   static final MovieDataBase instance = MovieDataBase._internal();
   static Database? _database;
@@ -34,7 +36,7 @@ class MovieDataBase {
 
   Future<void> createTables(Database db, int version) async {
     await db.execute('''
-      CREATE TABLE IF NOT EXISTS Booking (
+      CREATE TABLE IF NOT EXISTS $_bookingsTable (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         booking_number INTEGER NOT NULL,
         summary TEXT NOT NULL,
@@ -47,21 +49,21 @@ class MovieDataBase {
   Future<void> _createDB(Database db, int version) async {
     await createTables(db, version);
 
-    await db.insert('Booking', <String, Object?>{
+    await db.insert(_bookingsTable, <String, Object?>{
       'booking_number': 1003,
       'summary': '2 x Iron Man 3 ',
       'total': 15.00,
       'date': '18/04/2026 12:45',
     });
 
-    await db.insert('Booking', <String, Object?>{
+    await db.insert(_bookingsTable, <String, Object?>{
       'booking_number': 1002,
       'summary': '1 x Pacific Rim',
       'total': 6.50,
       'date': '02/03/2026 18:10',
     });
 
-    await db.insert('Booking', <String, Object?>{
+    await db.insert(_bookingsTable, <String, Object?>{
       'booking_number': 1001,
       'summary': '3 x Iron Man 3',
       'total': 22.50,
@@ -69,16 +71,16 @@ class MovieDataBase {
     });
   }
 
-  Future<int> insertBooking(BookingRecord order) async {
+  Future<int> insertBooking(BookingRecord booking) async {
     final Database db = await database;
-    final int id = await db.insert('Booking', order.toMap());
+    final int id = await db.insert(_bookingsTable, booking.toMap());
     return id;
   }
 
   Future<List<BookingRecord>> getAllbookings() async {
     final Database db = await database;
     final List<Map<String, Object?>> records = await db.query(
-      'bookings',
+      _bookingsTable,
       orderBy: 'booking_number DESC',
     );
 
@@ -92,7 +94,7 @@ class MovieDataBase {
     Future<int> getNextBookingNumber() async {
     final Database db = await database;
     final List<Map<String, Object?>> records = await db.rawQuery(
-      'SELECT MAX(booking_number) as max_num FROM orders',
+      'SELECT MAX(booking_number) as max_num FROM $_bookingsTable',
     );
 
     if (records.isEmpty) {

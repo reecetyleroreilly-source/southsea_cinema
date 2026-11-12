@@ -86,8 +86,9 @@ class _BookingViewState extends State<BookingView> {
     }
   }
 
-  Widget _buildBookCard(BookingRecord order) {
+  Widget _buildBookCard(BookingRecord booking) {
     return Card(
+      color: Color(0xFF1B1E28),
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -98,18 +99,18 @@ class _BookingViewState extends State<BookingView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Order #${order.bookingNumber}',
+                  'Order #${booking.bookingNumber}',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text('£${order.total.toStringAsFixed(2)}'),
+                Text('£${booking.total.toStringAsFixed(2)}'),
               ],
             ),
             const SizedBox(height: 4),
-            Text(order.summary),
+            Text(booking.summary),
             const SizedBox(height: 4),
             Text(
-              order.date,
-              style: const TextStyle(fontSize: 12, color: Colors.black54),
+              booking.date,
+              style: const TextStyle(fontSize: 12, color:cinemaFontWhite),
             ),
           ],
         ),
