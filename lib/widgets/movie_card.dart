@@ -3,6 +3,7 @@ import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
 import 'package:southsea_cinema/views/movie_listing_view.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class MovieCard extends StatelessWidget {
   final MovieModel movie;
@@ -40,20 +41,19 @@ class MovieCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(movie.imagePath,
-                        width: 200,
-                        height: 240,
-                        fit: BoxFit.cover, 
-                        errorBuilder: (
-                          BuildContext context,
-                          Object error,
-                          StackTrace? stacktrace,
-                        ) {
-                          return const SizedBox(
-                            width: 80,
-                            height: 80,
-                            child: Center(child: Text('Image Unavaliable')),
-                          );
-                        }),
+                        width: 150,
+                        height: 180,
+                        fit: BoxFit.cover, errorBuilder: (
+                      BuildContext context,
+                      Object error,
+                      StackTrace? stacktrace,
+                    ) {
+                      return const SizedBox(
+                        width: 80,
+                        height: 80,
+                        child: Center(child: Text('Image Unavaliable')),
+                      );
+                    }),
                     Expanded(
                         child: Container(
                       color: Color(0xFF1B1E28),
@@ -86,15 +86,28 @@ class MovieCard extends StatelessWidget {
                 spacing: 20,
                 children: [
                   Text(movie.date),
-                  ElevatedButton(
+                  // ElevatedButton(
+                  //     onPressed: () {
+                  //       Navigator.push(context,
+                  //           MaterialPageRoute(builder: (context) {
+                  //         return MovieListing(movie: movie);
+                  //       }));
+                  //     },
+                  //     //child: Text('Book - ${movie.name}'))
+                  //     child: Text('Book')),
+
+                  SizedBox(
+                    width: double.infinity,
+                    child:                   
+                    PrimaryButton(
+                      label: 'Book',
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return MovieListing(movie: movie);
                         }));
-                      },
-                      //child: Text('Book - ${movie.name}'))
-                      child: Text('Book')),
+                      }),
+                  )
                 ],
               )
             ],

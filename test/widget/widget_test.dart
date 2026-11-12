@@ -65,8 +65,8 @@ void main() {
 
       await tester.scrollUntilVisible(find.text('MegaMind'), 150);
       //expect(find.text('£9.99'), findsOneWidget);
-      await tester.scrollUntilVisible(find.text('Non Existent'), 150);
-      await tester.pump();
+      // await tester.scrollUntilVisible(find.text('Non Existent'), 150);
+      // await tester.pump();
       //expect(find.text('£0.00'), findsOneWidget);
       //expect(find.text('Image unavaliable'), findsOneWidget);
       expect(tester.takeException(), isNull);
@@ -103,25 +103,25 @@ void main() {
       // expect(find.text('Empty'), findsOneWidget);
     });
 
-    testWidgets('MovieScreen quantity does not drop below zero',
-        (WidgetTester tester) async {
-      const movie = MovieModel(
-          id: 'ironman3',
-          name: 'Iron Man 3',
-          description: 'test description',
-          date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
-          price: 7.50,
-          imagePath: 'assets/images/Iron Man Poster.jpg',
-          ageRating: '(12a)');
+    // testWidgets('MovieScreen quantity does not drop below zero',
+    //     (WidgetTester tester) async {
+    //   const movie = MovieModel(
+    //       id: 'ironman3',
+    //       name: 'Iron Man 3',
+    //       description: 'test description',
+    //       date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
+    //       price: 7.50,
+    //       imagePath: 'assets/images/Iron Man Poster.jpg',
+    //       ageRating: '(12a)');
 
-      await tester.pumpWidget(
-        const MaterialApp(home: Movie(movie: movie)),
-      );
+    //   await tester.pumpWidget(
+    //     const MaterialApp(home: Movie(movie: movie)),
+    //   );
 
-      await tester.tap(find.text('Remove'));
-      await tester.pump();
-      expect(find.text('Empty'), findsOneWidget);
-    });
+    //   await tester.tap(find.text('Remove'));
+    //   await tester.pump();
+    //   expect(find.text('Empty'), findsOneWidget);
+    // });
 
     testWidgets('Movie Screen quantity does not exceed max quantity',
         (WidgetTester tester) async {

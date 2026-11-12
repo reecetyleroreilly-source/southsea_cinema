@@ -46,11 +46,11 @@ void main() {
       final List<MovieModel> movies =
           await respository.loadMovieJSONFromAssets();
 
-      expect(movies.length, 4);
+      expect(movies.length, 3);
       expect(movies[0].id, 'ironman3');
       expect(movies[1].id, 'pacificrim');
       expect(movies[2].id, 'megamind');
-      expect(movies[3].id, 'Non Existent');
+
     });
   });
 }

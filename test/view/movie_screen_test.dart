@@ -44,7 +44,7 @@ void main() {
     expect(find.byType(BasketScreen), findsOneWidget);
   });
 
-  testWidgets('Taping basket button navigates to settings Screen', (
+  testWidgets('Taping settings button navigates to settings Screen', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(

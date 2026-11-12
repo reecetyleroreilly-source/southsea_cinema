@@ -25,14 +25,6 @@
         "name": "MegaMind",
         "price": 9.99,
         "ageRating": "(PG)"
-    },
-    {
-        "date": "Non Existent",
-        "description": "This Movie doesnt exist",
-        "id": "Non Existent",
-        "imagePath": "assets/images/non-existent.jpg",
-        "name": "Non Existent ",
-        "price": 0.00,
-        "ageRating": "(12a)"
     }
+ 
 ]

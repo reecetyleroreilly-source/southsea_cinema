@@ -7,7 +7,7 @@ import 'package:southsea_cinema/widgets/settings_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/basket_button.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
-//import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:southsea_cinema/widgets/booking_button.dart';
 
 class MovieListing extends StatelessWidget {
@@ -221,33 +221,13 @@ class _Movie extends State<Movie> {
                                 ]),
 
                                 //const SizedBox(height: 20),
-                                Row(children: [
-                                  // SizedBox(
-                                  //   width: double.infinity,
-                                  //   child: PrimaryButton(label: 'Add to Basket', onPressed: _addedBasket),
-                                  // ),
-
-                                  // SizedBox(
-                                  //   width: double.infinity,
-                                  //   child: PrimaryButton(label: 'Remove', onPressed: _removeBasket),
-                                  // ),
-
-                                  // Text(_comformationMessage, style: const TextStyle(fontWeight: FontWeight.bold),),
-
-                                  ElevatedButton(
-                                    onPressed:
-                                        _addedBasket, // calls on the function and changes the code
-                                    child: const Text('Add to Basket'),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: PrimaryButton(
+                                    label: 'Add to Basket',
+                                    onPressed: _addedBasket,
                                   ),
-
-
-                                   ElevatedButton(
-                                     onPressed:
-                                         _removeBasket, // calls on the function and changes the code
-                                     child: const Text('Remove'),
-                                   ),
-
-                                ]),
+                                ),
 
                                 Row(
                                   children: [

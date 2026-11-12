@@ -15,6 +15,7 @@ class PrimaryButton extends StatelessWidget {//neeed to write the test for it
             backgroundColor: cinemaBrand, foregroundColor: cinemaFontWhite),
             onPressed: onPressed,
             child: Text(label),
+            
     );
   }
 }
