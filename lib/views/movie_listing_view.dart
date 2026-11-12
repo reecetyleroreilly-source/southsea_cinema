@@ -74,14 +74,14 @@ class _Movie extends State<Movie> {
     }
   }
 
-  void _removeBasket() {
-    //if (_quantity < widget.maxquantity) {
-    setState(() {
-      _comformationMessage = "Empty";
-      _quantity = _quantity - 1;
-    });
-    //}
-  }
+  // void _removeBasket() {
+  //   //if (_quantity < widget.maxquantity) {
+  //   setState(() {
+  //     _comformationMessage = "Empty";
+  //     _quantity = _quantity - 1;
+  //   });
+  //   //}
+  // }
 
 
 
