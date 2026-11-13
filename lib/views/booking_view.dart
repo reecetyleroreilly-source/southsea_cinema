@@ -32,7 +32,7 @@ class _BookingViewState extends State<BookingView> {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 32.0),
           child: Text(
-            'No orders yet',
+            'No bookings yet',
             style: TextStyle(fontSize: 16, color: Colors.grey),
           ),
         ),
