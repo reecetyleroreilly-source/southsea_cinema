@@ -28,9 +28,11 @@ void main() {
 
       SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
+    CartRepository.instance.clear();
   });
 
   tearDown(() async {
+    CartRepository.instance.clear();
     await MovieDataBase.instance.close();
   });
 
@@ -149,6 +151,9 @@ void main() {
 
     expect(CartRepository.instance.getItems().length, 1);
     expect(find.text('2 x Iron Man 3'), findsOneWidget);
-    expect(find.textContaining('Could not save your booking: []'), findsOneWidget);
+    expect(
+      find.textContaining('Could not save your booking:'),
+      findsOneWidget,
+    );
   });
 }

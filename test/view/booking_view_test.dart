@@ -24,6 +24,11 @@ void main(){
       SharedPreferencesAsyncPlatform.instance =
       InMemorySharedPreferencesAsync.empty();
   });
+
+  tearDown(() async {
+    await MovieDataBase.instance.close();
+  });
+
    testWidgets('BookingView lists saved orders newest-first', (
     WidgetTester tester,
   ) async {
