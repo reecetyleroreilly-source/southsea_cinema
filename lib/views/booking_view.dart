@@ -49,7 +49,7 @@ class _BookingViewState extends State<BookingView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
+        title: const Text(appTitle),
         actions: const [BookingButton(), BasketButton(), SettingsButton()],
       ),
       body: body,

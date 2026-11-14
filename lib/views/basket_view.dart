@@ -232,7 +232,7 @@ class _BasketScreenState extends State<BasketScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
+        title: const Text(appTitle),
         actions: const [BookingButton(), BasketButton(), SettingsButton()],
         iconTheme: const IconThemeData(color: cinemaBrand),
       ),

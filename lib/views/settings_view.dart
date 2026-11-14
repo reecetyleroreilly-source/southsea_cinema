@@ -7,6 +7,7 @@ import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:southsea_cinema/widgets/settings_button.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/font_size_settings.dart';
 
 
 const String prefName = 'User_name';
@@ -27,6 +28,7 @@ class _SettingScreenState extends State<SettingsScreen> {
   late TextEditingController _nameController;
   late TextEditingController _addressController;
   late TextEditingController _emailController;
+  final FontSizeSettings _localFontSizeSettings = FontSizeSettings();
 
   bool _recieveNewsletter = false;
   String _confirmationMessage = '';
@@ -45,6 +47,7 @@ class _SettingScreenState extends State<SettingsScreen> {
     _nameController.dispose();
     _addressController.dispose();
     _emailController.dispose();
+    _localFontSizeSettings.dispose();
     super.dispose();
   }
 
@@ -114,9 +117,12 @@ class _SettingScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final FontSizeSettings fontSizeSettings =
+        FontSizeSettingsScope.maybeOf(context) ?? _localFontSizeSettings;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
+        title: const Text(appTitle),
         actions: const [BasketButton(), SettingsButton()],
         iconTheme: const IconThemeData(color: cinemaBrand),
       ),
@@ -176,6 +182,35 @@ class _SettingScreenState extends State<SettingsScreen> {
                 },
               ),
             ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              const Expanded(child: Text('Use dark theme')),
+              Switch(
+                value: fontSizeSettings.themeMode == ThemeMode.dark,
+                onChanged: (bool value) {
+                  fontSizeSettings.setThemeMode(
+                    value ? ThemeMode.dark : ThemeMode.light,
+                  );
+                },
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Text size: ${fontSizeSettings.textScale.toStringAsFixed(1)}x',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Slider(
+            value: fontSizeSettings.textScale,
+            min: minTextScale,
+            max: maxTextScale,
+            divisions: 7,
+            label: '${fontSizeSettings.textScale.toStringAsFixed(1)}x',
+            onChanged: (double value) {
+              fontSizeSettings.setTextScale(value);
+            },
           ),
           const SizedBox(height: 16),
           SizedBox(

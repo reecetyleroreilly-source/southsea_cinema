@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
+import 'package:southsea_cinema/models/font_size_settings.dart';
 import 'package:southsea_cinema/views/settings_view.dart';
 
 void main() {
@@ -18,7 +19,7 @@ void main() {
 
     expect(find.text('Customer Profile'), findsOneWidget);
     expect(find.byType(TextField), findsNWidgets(3));
-    expect(find.byType(Switch), findsOneWidget);
+    expect(find.byType(Switch), findsNWidgets(2));
     expect(find.text('Save Settings'), findsOneWidget);
   });
 
@@ -35,7 +36,7 @@ void main() {
     await tester.enterText(address, '10 Elm Road, Portsmouth');
     await tester.enterText(email, 'alex@example.com');
 
-    final Finder switchFinder = find.byType(Switch);
+    final Finder switchFinder = find.byType(Switch).first;
     expect(tester.widget<Switch>(switchFinder).value, isFalse);
     await tester.tap(switchFinder);
     await tester.pump();
@@ -73,7 +74,8 @@ void main() {
       findsOneWidget,
     );
 
-    final Switch reopenedSwithc = tester.widget<Switch>(find.byType(Switch));
+    final Switch reopenedSwithc =
+        tester.widget<Switch>(find.byType(Switch).first);
     expect(reopenedSwithc.value, isTrue);
 
     //expect(find.text('Settings saved for Alex '), findsOneWidget);
@@ -96,7 +98,26 @@ void main() {
     expect(find.text('Reece'), findsOneWidget);
     expect(find.text('Portsmouth Guildhall, po1 2AJ'), findsOneWidget);
     expect(find.text('R@gmail.com'), findsOneWidget);
-    final Switch switchWidget = tester.widget<Switch>(find.byType(Switch));
+    final Switch switchWidget =
+        tester.widget<Switch>(find.byType(Switch).first);
     expect(switchWidget.value, isTrue);
+  });
+
+  testWidgets('Theme switch persists the selected mode', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MaterialApp(home: SettingsScreen()));
+
+    final Finder themeSwitch = find.byType(Switch).at(1);
+    expect(tester.widget<Switch>(themeSwitch).value, isTrue);
+
+    await tester.tap(themeSwitch);
+    await tester.pump();
+
+    expect(
+      await SharedPreferencesAsync().getString(prefThemeMode),
+      ThemeMode.light.name,
+    );
+    expect(tester.widget<Switch>(find.byType(Switch).at(1)).value, isFalse);
   });
 }

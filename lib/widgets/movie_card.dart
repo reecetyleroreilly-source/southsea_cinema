@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/models/movie.dart';
-import 'package:southsea_cinema/constants.dart';
 //import 'package:southsea_cinema/screens/movie_info_screen.dart';
 import 'package:southsea_cinema/views/movie_listing_view.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
@@ -12,9 +11,11 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color textColor = Theme.of(context).colorScheme.onSurface;
+
     return Card(
-      color: Color(0xFF1B1E28),
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      color: Theme.of(context).colorScheme.surface,
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
@@ -25,10 +26,10 @@ class MovieCard extends StatelessWidget {
                 children: [
                   Text(
                     movie.name,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: cinemaFontWhite),
+                        color: textColor),
                   ),
                   const SizedBox(
                     height: 8,
@@ -56,14 +57,14 @@ class MovieCard extends StatelessWidget {
                     }),
                     Expanded(
                         child: Container(
-                      color: Color(0xFF1B1E28),
+                      color: Theme.of(context).colorScheme.surface,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             movie.description,
-                            style: const TextStyle(color: cinemaFontWhite),
+                            style: TextStyle(color: textColor),
                           )
                         ],
                       ),
@@ -73,8 +74,8 @@ class MovieCard extends StatelessWidget {
                 children: [
                   Text(
                     'Book Tickets - ${movie.formattedPrice}',
-                    style: const TextStyle(
-                        color: cinemaFontWhite,
+                    style: TextStyle(
+                        color: textColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),

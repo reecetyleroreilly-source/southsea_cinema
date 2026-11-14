@@ -19,10 +19,8 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           appTitle,
-          style: cinemaHeaderStyle,
         ),
         actions: const [BasketButton(), SettingsButton()],
-        backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
       ),

@@ -24,8 +24,7 @@ class MovieListing extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
-        backgroundColor: cinemaSurface,
+        title: const Text(appTitle),
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
         actions: const [BookingButton(), BasketButton(), SettingsButton()],
