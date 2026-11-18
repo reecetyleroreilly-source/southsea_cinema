@@ -218,6 +218,21 @@ class _Movie extends State<Movie> {
                                           fontSize: 16, color: textColor))
                                 ]),
 
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text('Current Order subtotal for ${widget.movie.name}:',
+                                      style: const TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Text(
+                                    '£${(widget.movie.price * _quantity).toStringAsFixed(2)}',
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  )
+                                  ],
+                                ),
+
+                                const SizedBox(height: 12,),
                                 //const SizedBox(height: 20),
                                 SizedBox(
                                   width: double.infinity,
