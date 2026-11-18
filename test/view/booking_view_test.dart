@@ -76,4 +76,62 @@ void main(){
 
     expect(find.text('No bookings yet'), findsOneWidget);
   });
+
+  testWidgets('Booking cards use the light theme surface', (
+    WidgetTester tester,
+  ) async {
+    await tester.runAsync(() async {
+      await MovieDataBase.instance.insertBooking(
+        const BookingRecord(
+          bookingNumber: 1001,
+          summary: '1 x Pacific Rim',
+          total: 4.50,
+          date: '01/01/2026 10:00',
+        ),
+      );
+    });
+
+    final ThemeData lightTheme = ThemeData.light();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: lightTheme,
+        home: const BookingView(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final Card card = tester.widget<Card>(
+      find.byKey(const ValueKey<String>('booking_card_1001')),
+    );
+    expect(card.color, lightTheme.colorScheme.surface);
+  });
+
+  testWidgets('Booking cards use the dark theme surface', (
+    WidgetTester tester,
+  ) async {
+    await tester.runAsync(() async {
+      await MovieDataBase.instance.insertBooking(
+        const BookingRecord(
+          bookingNumber: 1002,
+          summary: '2 x Iron Man 3',
+          total: 15.00,
+          date: '02/01/2026 11:00',
+        ),
+      );
+    });
+
+    final ThemeData darkTheme = ThemeData.dark();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: darkTheme,
+        home: const BookingView(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final Card card = tester.widget<Card>(
+      find.byKey(const ValueKey<String>('booking_card_1002')),
+    );
+    expect(card.color, darkTheme.colorScheme.surface);
+  });
 }

@@ -87,8 +87,11 @@ class _BookingViewState extends State<BookingView> {
   }
 
   Widget _buildBookCard(BookingRecord booking) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return Card(
-      color: Color(0xFF1B1E28),
+      key: ValueKey<String>('booking_card_${booking.bookingNumber}'),
+      color: colorScheme.surface,
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -110,7 +113,10 @@ class _BookingViewState extends State<BookingView> {
             const SizedBox(height: 4),
             Text(
               booking.date,
-              style: const TextStyle(fontSize: 12, color:cinemaFontWhite),
+              style: TextStyle(
+                fontSize: 12,
+                color: colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),

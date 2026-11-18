@@ -28,4 +28,36 @@ void main() {
 
     expect(find.text('Add to Basket'), findsOneWidget);
   });
+
+  testWidgets('Movie listing uses the light theme surface',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.light(),
+        home: const MovieListing(movie: testMovie),
+      ),
+    );
+
+    final Container body =
+        tester.widget<Container>(find.byKey(const ValueKey<String>(
+      'movie_listing_body',
+    )));
+    expect(body.color, ThemeData.light().colorScheme.surface);
+  });
+
+  testWidgets('Movie listing uses the dark theme surface',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.dark(),
+        home: const MovieListing(movie: testMovie),
+      ),
+    );
+
+    final Container body =
+        tester.widget<Container>(find.byKey(const ValueKey<String>(
+      'movie_listing_body',
+    )));
+    expect(body.color, ThemeData.dark().colorScheme.surface);
+  });
 }

@@ -82,10 +82,10 @@ class _Movie extends State<Movie> {
   //   //}
   // }
 
-
-
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final Color textColor = colorScheme.onSurface;
 
     return Scaffold(
         body: Align(
@@ -95,8 +95,8 @@ class _Movie extends State<Movie> {
             child: SingleChildScrollView(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                    //Holds the words
-                    color: Color(0xFF1B1E28),
+                    key: const ValueKey<String>('movie_listing_body'),
+                    color: colorScheme.surface,
 
                     //height: 900,
 
@@ -118,10 +118,10 @@ class _Movie extends State<Movie> {
                                         style: TextStyle(
                                             fontSize: 22,
                                             fontWeight: FontWeight.bold,
-                                            color: cinemaFontWhite),
+                                            color: textColor),
                                       )),
-                                    
-                                    Text(widget.movie.ageRating),
+
+                                  Text(widget.movie.ageRating),
 
                                   const SizedBox(
                                       height: 5), //spacing between words
@@ -168,23 +168,22 @@ class _Movie extends State<Movie> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(children: [
-                                  const Text(
+                                  Text(
                                       'Select Quntities (Up to 5 in total)',
                                       style: TextStyle(
-                                          fontSize: 16,
-                                          color: cinemaFontWhite)),
+                                          fontSize: 16, color: textColor)),
                                 ]),
 
                                 const SizedBox(height: 5),
 
                                 Row(
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Tickets',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
-                                          color: cinemaFontWhite),
+                                          color: textColor),
                                     )
                                   ],
                                 ),
@@ -216,7 +215,7 @@ class _Movie extends State<Movie> {
                                   ),
                                   Text('Adult - £${widget.movie.price}',
                                       style: TextStyle(
-                                          fontSize: 16, color: cinemaFontWhite))
+                                          fontSize: 16, color: textColor))
                                 ]),
 
                                 //const SizedBox(height: 20),
@@ -231,10 +230,10 @@ class _Movie extends State<Movie> {
                                 Row(
                                   children: [
                                     Container(
-                                    color: Colors.blue,
+                                      color: Colors.blue,
                                       child: Text(
-                                        _comformationMessage), //displayed text
-                                  ),
+                                          _comformationMessage), //displayed text
+                                    ),
                                   ],
                                 )
                               ])

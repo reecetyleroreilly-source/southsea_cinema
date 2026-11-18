@@ -6,6 +6,7 @@ import 'package:southsea_cinema/views/home_view.dart';
 import 'package:southsea_cinema/views/movie_listing_view.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/repositories/cart_repository.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
@@ -15,6 +16,7 @@ void main() {
     rootBundle.clear();
     SharedPreferencesAsyncPlatform.instance =
         InMemorySharedPreferencesAsync.empty();
+    CartRepository.instance.clear();
   });
 
   const MovieModel testMovie = MovieModel(
@@ -98,34 +100,36 @@ void main() {
       //   matching: find.byType(ElevatedButton),
       // );
 
-      // await tester.tap(find.text('Add to Basket'));
-      // await tester.pump();
-      // expect(find.text('Added to Basket'), findsOneWidget);
+      await tester.tap(find.byType(DropdownMenu<int>));
+      await tester.pump();
+      await tester.tap(find.text('1 Person').last);
+      await tester.pump();
 
-      // await tester.tap(find.text('Remove'));
-      // await tester.pump();
-      // expect(find.text('Empty'), findsOneWidget);
+      await tester.tap(find.text('Add to Basket'));
+      await tester.pump();
+      expect(find.text('Added 1 Iron Man 3 to basket'), findsOneWidget);
+      expect(CartRepository.instance.getTotalItems(), 1);
     });
 
-    // testWidgets('MovieScreen quantity does not drop below zero',
-    //     (WidgetTester tester) async {
-    //   const movie = MovieModel(
-    //       id: 'ironman3',
-    //       name: 'Iron Man 3',
-    //       description: 'test description',
-    //       date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
-    //       price: 7.50,
-    //       imagePath: 'assets/images/Iron Man Poster.jpg',
-    //       ageRating: '(12a)');
+    testWidgets('MovieScreen quantity does not drop below zero',
+        (WidgetTester tester) async {
+      const movie = MovieModel(
+          id: 'ironman3',
+          name: 'Iron Man 3',
+          description: 'test description',
+          date: 'Friday 2nd October 2026 - 9:00am to 11:10am',
+          price: 7.50,
+          imagePath: 'assets/images/Iron Man Poster.jpg',
+          ageRating: '(12a)');
 
-    //   await tester.pumpWidget(
-    //     const MaterialApp(home: Movie(movie: movie)),
-    //   );
+      await tester.pumpWidget(
+        const MaterialApp(home: Movie(movie: movie)),
+      );
 
-    //   await tester.tap(find.text('Remove'));
-    //   await tester.pump();
-    //   expect(find.text('Empty'), findsOneWidget);
-    // });
+      await tester.tap(find.text('Add to Basket'));
+      await tester.pump();
+      expect(find.text('Please select at least 1 person'), findsOneWidget);
+    });
 
     testWidgets('Movie Screen quantity does not exceed max quantity',
         (WidgetTester tester) async {
