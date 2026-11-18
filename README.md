@@ -100,7 +100,7 @@ This app supports **Android only** and is designed to run on an Android emulator
 Clone the repository and install the dependencies:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/reecetyleroreilly-source/southsea_cinema.git
 cd southsea_cinema
 flutter pub get
 ```
