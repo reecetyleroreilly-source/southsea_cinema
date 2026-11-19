@@ -8,6 +8,7 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/settings_button.dart';
 import 'package:southsea_cinema/widgets/booking_button.dart';
 import 'package:southsea_cinema/database/cinema_db.dart';
+import 'package:southsea_cinema/models/booking_item.dart';
 import 'package:southsea_cinema/models/booking_record.dart';
 
 class BasketScreen extends StatefulWidget {
@@ -182,7 +183,17 @@ class _BasketScreenState extends State<BasketScreen> {
           total: total,
           date: date);
 
-      await database.insertBooking(record);
+      final List<BookingItem> bookingItems = [];
+      for (final Cartitem item in items) {
+        bookingItems.add(BookingItem(
+          movieId: item.movie.id,
+          movieName: item.movie.name,
+          price: item.movie.price,
+          quantity: item.quantity,
+        ));
+      }
+
+      await database.insertBookingWithItems(record, bookingItems);
       cart.clear();
 
       if (!mounted) {

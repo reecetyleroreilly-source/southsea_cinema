@@ -37,8 +37,7 @@ class _BookingViewState extends State<BookingView> {
           ),
         ),
       );
-    }
-    else {
+    } else {
       body = ListView.builder(
         itemCount: _booking.length,
         itemBuilder: (BuildContext context, int index) {
@@ -109,7 +108,20 @@ class _BookingViewState extends State<BookingView> {
               ],
             ),
             const SizedBox(height: 4),
-            Text(booking.summary),
+            if (booking.items.isEmpty)
+              Text(booking.summary)
+            else
+              ...booking.items.map((item) {
+                final ColorScheme colorScheme = Theme.of(context).colorScheme;
+                return Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    '${item.quantity} x ${item.movieName} - '
+                    '£${(item.price * item.quantity).toStringAsFixed(2)}',
+                    style: TextStyle(color: colorScheme.onSurface),
+                  ),
+                );
+              }),
             const SizedBox(height: 4),
             Text(
               booking.date,

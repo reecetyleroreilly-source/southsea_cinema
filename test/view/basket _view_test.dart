@@ -20,14 +20,15 @@ void main() {
     final Database database = await databaseFactoryFfiNoIsolate.openDatabase(
       inMemoryDatabasePath,
       options: OpenDatabaseOptions(
-        version: 1,
+        version: 2,
+        onConfigure: MovieDataBase.instance.configureDatabase,
         onCreate: MovieDataBase.instance.createTables,
       ),
     );
     MovieDataBase.instance.setDatabase(database);
 
-      SharedPreferencesAsyncPlatform.instance =
-      InMemorySharedPreferencesAsync.empty();
+    SharedPreferencesAsyncPlatform.instance =
+        InMemorySharedPreferencesAsync.empty();
     CartRepository.instance.clear();
   });
 
@@ -94,7 +95,7 @@ void main() {
   testWidgets('Checkout saves the order, clears the basket and opens booking', (
     WidgetTester tester,
   ) async {
-     CartRepository.instance.additem(
+    CartRepository.instance.additem(
       const Cartitem(movie: testMovie, quantity: 2, date: 'Test'),
     );
     await tester.pumpWidget(
@@ -108,17 +109,17 @@ void main() {
       ),
     );
 
-      await tester.runAsync(() async {
+    await tester.runAsync(() async {
       await tester.tap(find.text('checkout'));
       await tester.pumpAndSettle();
     });
     await tester.pumpAndSettle();
 
-       final List<BookingRecord>? bookings = await tester.runAsync(() async {
+    final List<BookingRecord>? bookings = await tester.runAsync(() async {
       return await MovieDataBase.instance.getAllbookings();
     });
 
-     expect(bookings, isNotNull);
+    expect(bookings, isNotNull);
     if (bookings != null) {
       expect(bookings.length, 1);
       expect(bookings[0].bookingNumber, 1001);
@@ -137,7 +138,7 @@ void main() {
       const Cartitem(movie: testMovie, quantity: 2, date: 'test'),
     );
 
-     await tester.runAsync(() async {
+    await tester.runAsync(() async {
       final Database database = await MovieDataBase.instance.database;
       await database.execute('DROP TABLE booking');
     });

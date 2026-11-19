@@ -2,34 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/database/cinema_db.dart';
 import 'package:southsea_cinema/models/booking_record.dart';
+import 'package:southsea_cinema/models/booking_item.dart';
 import 'package:southsea_cinema/views/booking_view.dart';
 import 'package:sqflite_common_ffi/sqflite_common_ffi.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
-
-void main(){
-
-    setUp(() async {
+void main() {
+  setUp(() async {
     sqfliteFfiInit();
     final Database database = await databaseFactoryFfiNoIsolate.openDatabase(
       inMemoryDatabasePath,
       options: OpenDatabaseOptions(
-        version: 1,
+        version: 2,
+        onConfigure: MovieDataBase.instance.configureDatabase,
         onCreate: MovieDataBase.instance.createTables,
       ),
     );
     MovieDataBase.instance.setDatabase(database);
 
-      SharedPreferencesAsyncPlatform.instance =
-      InMemorySharedPreferencesAsync.empty();
+    SharedPreferencesAsyncPlatform.instance =
+        InMemorySharedPreferencesAsync.empty();
   });
 
   tearDown(() async {
     await MovieDataBase.instance.close();
   });
 
-   testWidgets('BookingView lists saved orders newest-first', (
+  testWidgets('BookingView lists saved orders newest-first', (
     WidgetTester tester,
   ) async {
     await tester.runAsync(() async {
@@ -55,7 +55,7 @@ void main(){
       await tester.pumpAndSettle();
     });
 
-        await tester.pump();
+    await tester.pump();
 
     expect(find.text('Order #1002'), findsOneWidget);
     expect(find.text('Order #1001'), findsOneWidget);
@@ -133,5 +133,40 @@ void main(){
       find.byKey(const ValueKey<String>('booking_card_1002')),
     );
     expect(card.color, darkTheme.colorScheme.surface);
+  });
+
+  testWidgets('Booking cards show linked items instead of the old summary', (
+    WidgetTester tester,
+  ) async {
+    await tester.runAsync(() async {
+      await MovieDataBase.instance.insertBookingWithItems(
+        const BookingRecord(
+          bookingNumber: 1003,
+          summary: '2 x Iron Man 3',
+          total: 15.00,
+          date: '03/01/2026 12:00',
+        ),
+        const <BookingItem>[
+          BookingItem(
+            movieId: 'iron-man-3',
+            movieName: 'Iron Man 3',
+            price: 7.50,
+            quantity: 2,
+          ),
+        ],
+      );
+    });
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData.dark(),
+        darkTheme: ThemeData.dark(),
+        themeMode: ThemeMode.dark,
+        home: const BookingView(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('2 x Iron Man 3 - £15.00'), findsOneWidget);
   });
 }
