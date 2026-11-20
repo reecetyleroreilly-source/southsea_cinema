@@ -21,8 +21,6 @@ class CartRepository {
     }
   }
 
-
-
   int getTotalItems() {
     int total = 0;
     for (final Cartitem item in _items) {

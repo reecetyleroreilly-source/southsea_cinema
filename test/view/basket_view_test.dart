@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/models/cart_item.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
 import 'package:southsea_cinema/views/basket_view.dart';
 import 'package:southsea_cinema/views/home_view.dart';
@@ -13,6 +14,26 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 import 'movie_listing_test.dart';
+
+const MovieModel pacificRimMovie = MovieModel(
+  id: 'pacificrim',
+  name: 'Pacific Rim',
+  description: 'Test movie description',
+  date: 'Thursday 12th December 2026 - 13:00',
+  price: 6.50,
+  imagePath: 'assets/images/Pacific Rim Poster.jpg',
+  ageRating: '(12a)',
+);
+
+const MovieModel megaMindMovie = MovieModel(
+  id: 'megamind',
+  name: 'MegaMind',
+  description: 'A supervillain creates a new hero-turned-villain.',
+  date: 'Sunday 1st November 2026 - 16:00 to 17:30',
+  price: 9.99,
+  imagePath: 'assets/images/MegaMind Poster.jpg',
+  ageRating: '(PG)',
+);
 
 void main() {
   setUp(() async {
@@ -128,6 +149,71 @@ void main() {
     }
     expect(CartRepository.instance.getItems(), isEmpty);
     expect(find.byType(BookingView), findsOneWidget);
+    expect(find.text('Order #1001'), findsOneWidget);
+  });
+
+  testWidgets(
+      'Three movies can be added, middle removed, and remaining movies checked out',
+      (WidgetTester tester) async {
+    CartRepository.instance
+      ..additem(const Cartitem(movie: testMovie, quantity: 1, date: 'Test'))
+      ..additem(
+          const Cartitem(movie: pacificRimMovie, quantity: 1, date: 'Test'))
+      ..additem(
+          const Cartitem(movie: megaMindMovie, quantity: 1, date: 'Test'));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: const BasketScreen(),
+        routes: {
+          '/bookings': (BuildContext context) {
+            return const BookingView();
+          },
+        },
+      ),
+    );
+
+    expect(find.text('1 x Iron Man 3'), findsOneWidget);
+    expect(find.text('1 x Pacific Rim'), findsOneWidget);
+    expect(find.text('1 x MegaMind'), findsOneWidget);
+    expect(find.byIcon(Icons.delete_outline), findsNWidgets(3));
+
+    await tester.tap(find.byIcon(Icons.delete_outline).at(1));
+    await tester.pumpAndSettle();
+
+    expect(find.text('1 x Iron Man 3'), findsOneWidget);
+    expect(find.text('1 x Pacific Rim'), findsNothing);
+    expect(find.text('1 x MegaMind'), findsOneWidget);
+    expect(CartRepository.instance.getItems().length, 2);
+    expect(CartRepository.instance.getSubtotal(), closeTo(17.49, 0.001));
+
+    await tester.tap(find.text('checkout'));
+    await tester.pumpAndSettle();
+
+    expect(CartRepository.instance.getItems(), isEmpty);
+    expect(find.byType(BookingView), findsOneWidget);
+
+    final List<BookingRecord>? bookings = await tester.runAsync(() async {
+      return await MovieDataBase.instance.getAllbookings();
+    });
+
+    expect(bookings, isNotNull);
+    if (bookings != null) {
+      expect(bookings.length, 1);
+      expect(bookings[0].bookingNumber, 1001);
+      expect(bookings[0].total, closeTo(17.49, 0.001));
+      expect(bookings[0].summary, '1 X Iron Man 3, 1 X MegaMind');
+      expect(bookings[0].items.length, 2);
+      expect(
+        bookings[0].items.map((item) => item.movieName),
+        containsAll(<String>['Iron Man 3', 'MegaMind']),
+      );
+      expect(
+        bookings[0].items.map((item) => item.movieName),
+        isNot(contains('Pacific Rim')),
+      );
+    }
+
     expect(find.text('Order #1001'), findsOneWidget);
   });
 
